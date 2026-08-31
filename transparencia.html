@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLÍTICA DE TRANSPARENCIA - AEROMAR GROUP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --azul-marino: #0d233a;
+            --azul-oceano: #1a4f7c;
+            --naranja-sar: #f36c21;
+            --ambar: #ffaa00;
+            --blanco: #ffffff;
+            --gris-bg: #f4f7f9;
+            --gris-borde: #cbd5e1;
+            --gris-texto: #333333;
+            --verde-exito: #10b981;
+            --rojo-alerta: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: var(--gris-bg); color: var(--gris-texto); line-height: 1.6; padding-bottom: 40px; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+        header {
+            background-color: var(--azul-marino);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-bottom: 3px solid var(--ambar);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text h1 { font-size: 1.3rem; color: var(--blanco); letter-spacing: 1px; }
+        .logo-text p { font-size: 0.75rem; color: var(--ambar); }
+
+        .header-actions { display: flex; gap: 12px; align-items: center; }
+
+        .btn-header {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver { background-color: rgba(255,255,255,0.15); color: var(--blanco); border: 1px solid var(--ambar); }
+        .btn-volver:hover { background-color: var(--ambar); color: var(--azul-marino); }
+
+        .btn-admin { background-color: var(--naranja-sar); color: var(--blanco); }
+        .btn-admin:hover { background-color: #d9530f; }
+
+        /* Main Container */
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+
+        .banner-transparencia {
+            background: linear-gradient(135deg, var(--azul-marino), var(--azul-oceano));
+            color: var(--blanco);
+            padding: 25px 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--naranja-sar);
+        }
+
+        .banner-transparencia h2 { font-size: 1.8rem; margin-bottom: 8px; color: var(--ambar); }
+        .banner-transparencia blockquote { font-size: 1.1rem; font-style: italic; opacity: 0.9; margin-bottom: 8px; }
+        .banner-transparencia p { font-size: 0.95rem; color: #cbd5e1; }
+
+        /* Control Panel Tools */
+        .toolbar {
+            background-color: var(--blanco);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--gris-borde);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .toolbar-title { font-weight: bold; color: var(--azul-marino); display: flex; align-items: center; gap: 8px; }
+        .badge-mode {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .mode-lectura { background-color: #e2e8f0; color: #475569; }
+        .mode-edicion { background-color: #dcfce7; color: #166534; border: 1px solid var(--verde-exito); }
+
+        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .btn-tool {
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-add { background-color: var(--azul-oceano); color: var(--blanco); }
+        .btn-add:hover { background-color: #123859; }
+
+        .btn-save { background-color: var(--verde-exito); color: var(--blanco); }
+        .btn-save:hover { background-color: #059669; }
+
+        .btn-pw { background-color: #64748b; color: var(--blanco); }
+        .btn-pw:hover { background-color: #475569; }
+
+        /* Table Styling - Adaptada al texto */
+        .table-wrapper {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            overflow-x: auto;
+            border: 1px solid var(--gris-borde);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+            table-layout: auto; /* Permite que las columnas se adapten al texto */
+        }
+
+        thead {
+            background-color: var(--azul-marino);
+            color: var(--blanco);
+        }
+
+        th {
+            padding: 12px 14px;
+            font-weight: bold;
+            border-bottom: 3px solid var(--naranja-sar);
+            white-space: nowrap; /* Títulos de columna bien definidos */
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+            word-break: break-word; /* Evita que el texto largo se corte */
+            min-width: 110px;
+        }
+
+        tbody tr:nth-child(even) { background-color: #f8fafc; }
+        tbody tr:hover { background-color: #f1f5f9; }
+
+        /* MODO LECTURA: Texto fluido y visible */
+        .cell-text {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--gris-texto);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* MODO EDICIÓN: Inputs y Textareas ajustables */
+        .cell-input {
+            display: none;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--gris-borde);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--gris-texto);
+            background-color: var(--blanco);
+            resize: vertical;
+        }
+
+        .editable-active .cell-text { display: none; }
+        .editable-active .cell-input { display: block; }
+
+        .cell-input:focus {
+            border-color: var(--azul-oceano);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(26, 79, 124, 0.2);
+        }
+
+        .btn-delete {
+            background-color: transparent;
+            color: var(--rojo-alerta);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 6px 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .btn-delete:hover { background-color: #fee2e2; }
+        .editable-active .btn-delete { display: inline-block; }
+
+        /* Status Alert */
+        #statusAlert {
+            display: none;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h3 { margin-bottom: 15px; color: var(--azul-marino); text-align: center; }
+        .modal-content .form-group { margin-bottom: 15px; }
+        .modal-content label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; }
+        .modal-content input { width: 100%; padding: 10px; border: 1px solid var(--gris-borde); border-radius: 4px; }
+
+        .close-modal { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #888; }
+        .close-modal:hover { color: #000; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-text">
+                <h1>AEROMAR GROUP</h1>
+                <p>Red de Profesionales Marítimos y Aeronáuticos</p>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="btn-header btn-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Inicio</a>
+                <button onclick="toggleModoGestion()" id="btnModo" class="btn-header btn-admin"><i class="fa-solid fa-lock"></i> Acceso Intranet / Edición</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="banner-transparencia">
+            <h2>POLÍTICA DE TRANSPARENCIA</h2>
+            <blockquote>“Todos los que participamos de AEROMAR GROUP sabemos lo que hacemos.”</blockquote>
+            <p>Tabla de servicios prestados y relación construida en la red profesional.</p>
+        </div>
+
+        <div id="statusAlert"></div>
+
+        <div class="toolbar">
+            <div class="toolbar-title">
+                <i class="fa-solid fa-table-list"></i> Registro Oficial de Servicios
+                <span id="badgeModo" class="badge-mode mode-lectura">Modo Lectura</span>
+            </div>
+            <div class="btn-group" id="editorControls" style="display: none;">
+                <button onclick="agregarFila()" class="btn-tool btn-add"><i class="fa-solid fa-plus"></i> Nueva Fila</button>
+                <button onclick="guardarCambios()" class="btn-tool btn-save"><i class="fa-solid fa-floppy-disk"></i> Guardar Cambios Online</button>
+                <button onclick="abrirModalCambioPassword()" class="btn-tool btn-pw"><i class="fa-solid fa-key"></i> Cambiar Clave</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="tablaTransparencia">
+                <thead>
+                    <tr>
+                        <th style="min-width: 60px;">Índice</th>
+                        <th style="min-width: 140px;">Fecha contacto cliente</th>
+                        <th style="min-width: 180px;">Cliente</th>
+                        <th style="min-width: 150px;">Colaborador referente</th>
+                        <th style="min-width: 160px;">Colaborador presta servicio</th>
+                        <th style="min-width: 250px;">Servicio realizado</th>
+                        <th style="min-width: 140px;">Fecha de finalización</th>
+                        <th style="min-width: 200px;">Observaciones</th>
+                        <th class="col-accion" style="display: none; width: 60px;">Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyTransparencia">
+                    <!-- Filas generadas dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Modal Login -->
+    <div id="modalLogin" class="modal">
+        <div class="modal-content">
+            <span onclick="cerrarModal('modalLogin')" class="close-modal">&times;</span>
+            <h3><i class="fa-solid fa-user-shield"></i> Intranet Referentes</h3>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px; text-align: center;">Ingrese su contraseña para habilitar la gestión y edición online de la tabla.</p>
+            <div class="form-group">
+                <label for="inputPassword">Contraseña de Acceso:</label>
+                <input type="password" id="inputPassword" placeholder="Escriba su clave aquí...">
+            </div>
+            <button onclick="validarPassword()" class="btn-header btn-admin" style="width: 100%; justify-content: center; padding: 10px; border-radius: 4px;">Ingresar y Editar</button>
+        </div>
+    </div>
+
+    <!-- Modal Cambiar Contraseña -->
+    <div id="modalCambiarPw" class="modal">
+        <div class="modal-content">
+            <span onclick="cerrarModal('modalCambiarPw')" class="close-modal">&times;</span>
+            <h3><i class="fa-solid fa-key"></i> Gestionar Contraseña</h3>
+            <div class="form-group">
+                <label for="pwActual">Contraseña Actual:</label>
+                <input type="password" id="pwActual" placeholder="Actual...">
+            </div>
+            <div class="form-group">
+                <label for="pwNueva">Nueva Contraseña:</label>
+                <input type="password" id="pwNueva" placeholder="Nueva clave...">
+            </div>
+            <div class="form-group">
+                <label for="pwConfirmar">Confirmar Nueva Contraseña:</label>
+                <input type="password" id="pwConfirmar" placeholder="Repita nueva clave...">
+            </div>
+            <button onclick="procesarCambioPassword()" class="btn-header btn-save" style="width: 100%; justify-content: center; padding: 10px; border-radius: 4px; border:none;">Actualizar Clave</button>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_PW = "AEROMAR2026";
+        let esModoEdicion = false;
+
+        const datosIniciales = [
+            { indice: "1", fechaContacto: "02/09/26", cliente: "Quien será el primero", referente: "Juan", prestador: "Gabriel", servicio: "Capacitación en mejora de servicios", fechaFin: "15/09/26", obs: "" }
+        ];
+
+        function getClaveActual() {
+            return localStorage.getItem('aeromar_transparencia_pw') || DEFAULT_PW;
+        }
+
+        function getDatosTabla() {
+            const data = localStorage.getItem('aeromar_transparencia_tabla');
+            return data ? JSON.parse(data) : datosIniciales;
+        }
+
+        function renderTabla() {
+            const tbody = document.getElementById('tbodyTransparencia');
+            const data = getDatosTabla();
+            tbody.innerHTML = '';
+
+            data.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <span class="cell-text">${row.indice || (index + 1)}</span>
+                        <input type="text" class="cell-input" value="${row.indice || (index + 1)}">
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.fechaContacto || '-'}</span>
+                        <input type="text" class="cell-input" value="${row.fechaContacto || ''}">
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.cliente || '-'}</span>
+                        <input type="text" class="cell-input" value="${row.cliente || ''}">
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.referente || '-'}</span>
+                        <input type="text" class="cell-input" value="${row.referente || ''}">
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.prestador || '-'}</span>
+                        <input type="text" class="cell-input" value="${row.prestador || ''}">
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.servicio || '-'}</span>
+                        <textarea class="cell-input" rows="2">${row.servicio || ''}</textarea>
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.fechaFin || '-'}</span>
+                        <input type="text" class="cell-input" value="${row.fechaFin || ''}">
+                    </td>
+                    <td>
+                        <span class="cell-text">${row.obs || '-'}</span>
+                        <textarea class="cell-input" rows="2">${row.obs || ''}</textarea>
+                    </td>
+                    <td class="col-accion" style="display: ${esModoEdicion ? 'table-cell' : 'none'}; text-align: center;">
+                        <button class="btn-delete" onclick="eliminarFila(this)" title="Eliminar Fila"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function toggleModoGestion() {
+            if (esModoEdicion) {
+                esModoEdicion = false;
+                actualizarInterfaz();
+            } else {
+                document.getElementById('inputPassword').value = '';
+                document.getElementById('modalLogin').style.display = 'flex';
+            }
+        }
+
+        function validarPassword() {
+            const ingresada = document.getElementById('inputPassword').value;
+            if (ingresada === getClaveActual()) {
+                esModoEdicion = true;
+                cerrarModal('modalLogin');
+                actualizarInterfaz();
+                mostrarAlerta('Modo edición activado. Puede modificar la tabla y guardar cambios online.', 'exito');
+            } else {
+                alert('Contraseña incorrecta.');
+            }
+        }
+
+        function actualizarInterfaz() {
+            const badge = document.getElementById('badgeModo');
+            const controls = document.getElementById('editorControls');
+            const btnModo = document.getElementById('btnModo');
+            const table = document.getElementById('tablaTransparencia');
+
+            if (esModoEdicion) {
+                badge.className = 'badge-mode mode-edicion';
+                badge.innerText = 'Modo Edición Habilitado';
+                controls.style.display = 'flex';
+                btnModo.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Bloquear / Salir Edición';
+                table.classList.add('editable-active');
+            } else {
+                badge.className = 'badge-mode mode-lectura';
+                badge.innerText = 'Modo Lectura';
+                controls.style.display = 'none';
+                btnModo.innerHTML = '<i class="fa-solid fa-lock"></i> Acceso Intranet / Edición';
+                table.classList.remove('editable-active');
+            }
+            renderTabla();
+        }
+
+        function agregarFila() {
+            const tbody = document.getElementById('tbodyTransparencia');
+            const num = tbody.children.length + 1;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>
+                    <span class="cell-text">${num}</span>
+                    <input type="text" class="cell-input" value="${num}">
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <input type="text" class="cell-input" value="">
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <input type="text" class="cell-input" value="">
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <input type="text" class="cell-input" value="">
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <input type="text" class="cell-input" value="">
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <textarea class="cell-input" rows="2"></textarea>
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <input type="text" class="cell-input" value="">
+                </td>
+                <td>
+                    <span class="cell-text">-</span>
+                    <textarea class="cell-input" rows="2"></textarea>
+                </td>
+                <td class="col-accion" style="display: table-cell; text-align: center;">
+                    <button class="btn-delete" onclick="eliminarFila(this)" title="Eliminar Fila"><i class="fa-solid fa-trash"></i></button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function eliminarFila(btn) {
+            if (confirm('¿Desea eliminar esta fila?')) {
+                const tr = btn.closest('tr');
+                tr.remove();
+            }
+        }
+
+        function guardarCambios() {
+            const rows = document.querySelectorAll('#tbodyTransparencia tr');
+            const nuevasFilas = [];
+
+            rows.forEach(tr => {
+                const inputs = tr.querySelectorAll('.cell-input');
+                nuevasFilas.push({
+                    indice: inputs[0].value,
+                    fechaContacto: inputs[1].value,
+                    cliente: inputs[2].value,
+                    referente: inputs[3].value,
+                    prestador: inputs[4].value,
+                    servicio: inputs[5].value,
+                    fechaFin: inputs[6].value,
+                    obs: inputs[7].value
+                });
+            });
+
+            localStorage.setItem('aeromar_transparencia_tabla', JSON.stringify(nuevasFilas));
+            mostrarAlerta('¡Cambios guardados con éxito online!', 'exito');
+            esModoEdicion = false;
+            actualizarInterfaz();
+        }
+
+        function abrirModalCambioPassword() {
+            document.getElementById('pwActual').value = '';
+            document.getElementById('pwNueva').value = '';
+            document.getElementById('pwConfirmar').value = '';
+            document.getElementById('modalCambiarPw').style.display = 'flex';
+        }
+
+        function procesarCambioPassword() {
+            const actual = document.getElementById('pwActual').value;
+            const nueva = document.getElementById('pwNueva').value;
+            const confirmar = document.getElementById('pwConfirmar').value;
+
+            if (actual !== getClaveActual()) {
+                alert('La contraseña actual es incorrecta.');
+                return;
+            }
+
+            if (nueva.length < 4) {
+                alert('La nueva contraseña debe tener al menos 4 caracteres.');
+                return;
+            }
+
+            if (nueva !== confirmar) {
+                alert('La nueva contraseña y su confirmación no coinciden.');
+                return;
+            }
+
+            localStorage.setItem('aeromar_transparencia_pw', nueva);
+            cerrarModal('modalCambiarPw');
+            mostrarAlerta('Contraseña actualizada correctamente.', 'exito');
+        }
+
+        function mostrarAlerta(msg, tipo) {
+            const alert = document.getElementById('statusAlert');
+            alert.innerText = msg;
+            alert.style.display = 'block';
+            if (tipo === 'exito') {
+                alert.style.backgroundColor = '#dcfce7';
+                alert.style.color = '#166534';
+                alert.style.border = '1px solid #10b981';
+            }
+            setTimeout(() => { alert.style.display = 'none'; }, 4000);
+        }
+
+        function cerrarModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTabla();
+        });
+    </script>
+</body>
+</html>
