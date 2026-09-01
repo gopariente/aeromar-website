@@ -495,7 +495,7 @@
                 <h3><i class="fa-solid fa-bullhorn"></i> Publicar Novedad</h3>
                 <form class="publish-form" id="newsForm">
                     <input type="text" id="newsTitle" placeholder="Título de la novedad..." required>
-                    <textarea id="newsContent" rows="3" placeholder="Detalles o noticias internas de la red..." required></textarea>
+                    <textarea id="newsContent" rows="3" placeholder="Detalles o noticias internas de la red..." required></textarea> <label for="newsImage" style="font-size:0.85rem; color:var(--azul-marino); font-weight:600; margin-top:4px;"><i class="fa-solid fa-image"></i> Imagen (opcional)</label> <input type="file" id="newsImage" accept="image/*" style="margin-bottom:4px;"> <img id="newsImagePreview" src="" alt="" style="display:none; max-width:180px; max-height:120px; border-radius:6px; margin-bottom:8px; object-fit:cover;">
                     <button type="submit" class="btn btn-primary" style="width: fit-content; border: none; cursor: pointer;">Publicar Novedad</button>
                 </form>
             </div>
@@ -755,7 +755,7 @@
         }
 
         const newsForm = document.getElementById('newsForm');
-        const customNewsContainer = document.getElementById('customNewsContainer');
+        const customNewsContainer = document.getElementById('customNewsContainer'); const newsImageInput = document.getElementById('newsImage'); const newsImagePreview = document.getElementById('newsImagePreview'); let newsImageDataUrl = ''; newsImageInput.addEventListener('change', () => { const file = newsImageInput.files[0]; if (!file) { newsImageDataUrl = ''; newsImagePreview.style.display = 'none'; return; } const reader = new FileReader(); reader.onload = (ev) => { newsImageDataUrl = ev.target.result; newsImagePreview.src = newsImageDataUrl; newsImagePreview.style.display = 'block'; }; reader.readAsDataURL(file); });
 
         newsForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -765,14 +765,14 @@
 
             const card = document.createElement('div');
             card.className = 'custom-news-card';
-            card.innerHTML = `
+            card.innerHTML = `${newsImageDataUrl ? `<img src="${newsImageDataUrl}" alt="${title}" style="width:100%; max-height:200px; object-fit:cover; border-radius:6px; margin-bottom:10px;">` : ''}
                 <h4>${title}</h4>
                 <span>Publicado el ${date}</span>
                 <p>${content}</p>
             `;
 
             customNewsContainer.prepend(card);
-            newsForm.reset();
+            newsForm.reset(); newsImageDataUrl = ''; newsImagePreview.style.display = 'none';
         });
 
         const AERO_KEYWORDS = ['flybondi', 'anac', 'eana', 'pilotos', 'piloto', 'aviación', 'aeronáutica', 'avión', 'aerolínea', 'vuelo', 'aeropuerto', 'fuerza aérea', 'boeing', 'airbus', 'flight', 'airline', 'aviation', 'airport', 'drone', 'rpas', 'uas'];
