@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEROMAR NETWORK - Red de Profesionales Marítimos y Aeronáuticos</title>
+    <title data-i18n="meta_title">AEROMAR NETWORK - Red de Profesionales Marítimos y Aeronáuticos</title>
+    <meta name="description" content="Red de consultoría marítima y aeronáutica: SAR, seguridad operacional, ISPS, UAS/RPAS, calidad y automatización." data-i18n-attr="content:meta_desc" id="metaDescription">
+    <link rel="alternate" hreflang="es" href="https://aeromarnetwork.com.ar/index.html">
+    <link rel="alternate" hreflang="en" href="https://aeromarnetwork.com.ar/index.html?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://aeromarnetwork.com.ar/index.html">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -321,20 +325,21 @@
                 </div>
                 <div class="logo-text">
                     <h1>AEROMAR NETWORK</h1>
-                    <p>Red de Profesionales Marítimos y Aeronáuticos</p>
+                    <p data-i18n="nav_tagline">Red de Profesionales Marítimos y Aeronáuticos</p>
                 </div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#transversales">Transversales</a></li>
-                    <li><a href="#noticias">Noticias</a></li>
-                    <li><a href="#novedades-red">Novedades</a></li>
+                    <li><a href="#servicios" data-i18n="nav_servicios">Servicios</a></li>
+                    <li><a href="#transversales" data-i18n="nav_transversales">Transversales</a></li>
+                    <li><a href="#noticias" data-i18n="nav_noticias">Noticias</a></li>
+                    <li><a href="#novedades-red" data-i18n="nav_novedades">Novedades</a></li>
                     <li><a href="sar-info.html">SAR App</a></li>
-                    <li><a href="#nosotros">La Red</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#nosotros" data-i18n="nav_lared">La Red</a></li>
+                    <li><a href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
                     <!-- BOTÓN INTRANET PROTEGIDO CON CLAVE QUE DIRECCIONA A TRANSPARENCIA.HTML -->
-                    <li><a href="javascript:void(0)" onclick="abrirIntranet()" class="btn-intranet"><i class="fa-solid fa-lock"></i> Intranet</a></li>
+                    <li><a href="javascript:void(0)" onclick="abrirIntranet()" class="btn-intranet"><i class="fa-solid fa-lock"></i> <span data-i18n="nav_intranet">Intranet</span></a></li>
+                    <li><button type="button" id="btnLangToggle" onclick="toggleIdioma()" class="btn-intranet" style="cursor:pointer;" title="Switch language / Cambiar idioma"><i class="fa-solid fa-globe"></i> <span id="langToggleLabel">EN</span></button></li>
                 </ul>
             </nav>
         </div>
@@ -342,78 +347,78 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h2>Soluciones Integrales y Consultoría Especializada Marítima y Aeronáutica</h2>
-            <p>Conectamos talento interdisciplinario de alto prestigio para la toma de decisiones complejas en la industria.</p>
+            <h2 data-i18n="hero_title">Soluciones Integrales y Consultoría Especializada Marítima y Aeronáutica</h2>
+            <p data-i18n="hero_desc">Conectamos talento interdisciplinario de alto prestigio para la toma de decisiones complejas en la industria.</p>
             <div class="hero-buttons">
-                <a href="#servicios" class="btn btn-primary">Explorar Servicios</a>
-                <a href="#contacto" class="btn btn-secondary">Solicitar Asesoría</a>
+                <a href="#servicios" class="btn btn-primary" data-i18n="hero_btn1">Explorar Servicios</a>
+                <a href="#contacto" class="btn btn-secondary" data-i18n="hero_btn2">Solicitar Asesoría</a>
             </div>
         </div>
     </section>
 
     <section class="selector-section">
-        <h3>¿A qué sector pertenece tu organización?</h3>
+        <h3 data-i18n="selector_title">¿A qué sector pertenece tu organización?</h3>
         <div class="sector-tabs">
-            <button class="tab-btn active" onclick="filterServices('todos')">Todos los servicios</button>
-            <button class="tab-btn" onclick="filterServices('maritimo')"><i class="fa-solid fa-anchor"></i> Sector Marítimo</button>
-            <button class="tab-btn" onclick="filterServices('aero')"><i class="fa-solid fa-plane"></i> Sector Aeronáutico</button>
+            <button class="tab-btn active" onclick="filterServices('todos')" data-i18n="tab_todos">Todos los servicios</button>
+            <button class="tab-btn" onclick="filterServices('maritimo')"><i class="fa-solid fa-anchor"></i> <span data-i18n="tab_maritimo">Sector Marítimo</span></button>
+            <button class="tab-btn" onclick="filterServices('aero')"><i class="fa-solid fa-plane"></i> <span data-i18n="tab_aero">Sector Aeronáutico</span></button>
         </div>
     </section>
 
     <section class="services-section" id="servicios">
-        <h2 class="section-title">Nuestros Servicios Especializados</h2>
+        <h2 class="section-title" data-i18n="svc_title">Nuestros Servicios Especializados</h2>
         <div class="services-grid">
             
             <div class="service-card maritimo">
                 <i class="fa-solid fa-shield-halved"></i>
-                <h3>Protección e Infraestructura Marítima</h3>
-                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;">Cumplimiento integral de normativas internacionales ISPS e infraestructura naval.</p>
+                <h3 data-i18n="svc1_h">Protección e Infraestructura Marítima</h3>
+                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;" data-i18n="svc1_p">Cumplimiento integral de normativas internacionales ISPS e infraestructura naval.</p>
                 <ul>
-                    <li>Planes de protección e ISPS para buques e instalaciones</li>
-                    <li>Auditorías, capacitaciones y evaluaciones de riesgo</li>
-                    <li>Certificaciones internacionales náuticas y portuarias</li>
-                    <li>Trámites y gestiones técnicas en Náutica Deportiva</li>
+                    <li data-i18n="svc1_li1">Planes de protección e ISPS para buques e instalaciones</li>
+                    <li data-i18n="svc1_li2">Auditorías, capacitaciones y evaluaciones de riesgo</li>
+                    <li data-i18n="svc1_li3">Certificaciones internacionales náuticas y portuarias</li>
+                    <li data-i18n="svc1_li4">Trámites y gestiones técnicas en Náutica Deportiva</li>
                 </ul>
             </div>
 
             <div class="service-card maritimo">
                 <i class="fa-solid fa-ship"></i>
-                <h3>Pericias y Emergencias Marítimas</h3>
-                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;">Gestión técnica de siniestros y respuesta ante emergencias marítimas.</p>
+                <h3 data-i18n="svc2_h">Pericias y Emergencias Marítimas</h3>
+                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;" data-i18n="svc2_p">Gestión técnica de siniestros y respuesta ante emergencias marítimas.</p>
                 <ul>
-                    <li>Investigación de Siniestros Navales y Pericias</li>
-                    <li>Capacitación especializada en Operaciones SAR</li>
-                    <li>Implementación de herramientas tecnológicas navales</li>
-                    <li>Asesoramiento normativo y regulatorio</li>
+                    <li data-i18n="svc2_li1">Investigación de Siniestros Navales y Pericias</li>
+                    <li data-i18n="svc2_li2">Capacitación especializada en Operaciones SAR</li>
+                    <li data-i18n="svc2_li3">Implementación de herramientas tecnológicas navales</li>
+                    <li data-i18n="svc2_li4">Asesoramiento normativo y regulatorio</li>
                 </ul>
             </div>
 
             <div class="service-card aero">
                 <i class="fa-solid fa-wrench"></i>
-                <h3>Aeronáutica: Técnica e Infraestructura</h3>
-                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;">Consultoría técnica en aeronavegabilidad e infraestructura aeroportuaria.</p>
+                <h3 data-i18n="svc3_h">Aeronáutica: Técnica e Infraestructura</h3>
+                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;" data-i18n="svc3_p">Consultoría técnica en aeronavegabilidad e infraestructura aeroportuaria.</p>
                 <ul>
-                    <li>Realizar auditorías para preparar a un TAR para la habilitación ANAC</li>
-                    <li>Evaluar el estado de aeronavegabilidad de una aeronave (Aviación General)</li>
-                    <li>Analizar factores que intervienen en la valorización de una aeronave</li>
-                    <li>Analizar y adecuar programas de mantenimiento para las necesidades del usuario</li>
-                    <li>Análisis y diseño de LAD. Tramitación ante ANAC</li>
-                    <li>Informe sobre requisitos normativos para habilitación de LAD y Helipuertos</li>
+                    <li data-i18n="svc3_li1">Realizar auditorías para preparar a un TAR para la habilitación ANAC</li>
+                    <li data-i18n="svc3_li2">Evaluar el estado de aeronavegabilidad de una aeronave (Aviación General)</li>
+                    <li data-i18n="svc3_li3">Analizar factores que intervienen en la valorización de una aeronave</li>
+                    <li data-i18n="svc3_li4">Analizar y adecuar programas de mantenimiento para las necesidades del usuario</li>
+                    <li data-i18n="svc3_li5">Análisis y diseño de LAD. Tramitación ante ANAC</li>
+                    <li data-i18n="svc3_li6">Informe sobre requisitos normativos para habilitación de LAD y Helipuertos</li>
                 </ul>
             </div>
 
             <div class="service-card aero">
                 <i class="fa-solid fa-shield-cat"></i>
-                <h3>Aeronáutica: Operativas, Safety y SAR</h3>
-                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;">Gestión de la seguridad, entrenamiento preventivo y respuesta SAR.</p>
+                <h3 data-i18n="svc4_h">Aeronáutica: Operativas, Safety y SAR</h3>
+                <p style="font-size: 0.88rem; margin-bottom: 12px; color: #555;" data-i18n="svc4_p">Gestión de la seguridad, entrenamiento preventivo y respuesta SAR.</p>
                 <ul>
-                    <li>Análisis y estudio de mercado para la adquisición de aeronaves por tipo de servicio</li>
-                    <li>Investigación de incidentes para la mejora de la seguridad de la empresa o escuela</li>
-                    <li>Pericias aeronáuticas</li>
-                    <li>Entrenamiento In-Company en gestión de la Seguridad Operacional (Identificación de Peligros, gestión y mitigación de riesgos)</li>
-                    <li>Implementación de la Cultura Justa en la Organización</li>
-                    <li>Servicios de capacitación en operaciones SAR y herramientas (SAR_App)</li>
-                    <li>Primeros Auxilios, Principios médicos en triaje, Comunicación y gestión de crisis</li>
+                    <li data-i18n="svc4_li1">Análisis y estudio de mercado para la adquisición de aeronaves por tipo de servicio</li>
+                    <li data-i18n="svc4_li2">Investigación de incidentes para la mejora de la seguridad de la empresa o escuela</li>
+                    <li data-i18n="svc4_li3">Pericias aeronáuticas</li>
+                    <li data-i18n="svc4_li4">Entrenamiento In-Company en gestión de la Seguridad Operacional (Identificación de Peligros, gestión y mitigación de riesgos)</li>
+                    <li data-i18n="svc4_li5">Implementación de la Cultura Justa en la Organización</li>
+                    <li data-i18n="svc4_li6">Servicios de capacitación en operaciones SAR y herramientas (SAR_App)</li>
+                    <li data-i18n="svc4_li7">Primeros Auxilios, Principios médicos en triaje, Comunicación y gestión de crisis</li>
                 </ul>
             </div>
 
@@ -421,60 +426,60 @@
     </section>
 
     <section class="transversal-section" id="transversales">
-        <h2 class="section-title" style="color: var(--azul-marino);">Servicios Transversales</h2>
-        <p style="text-align:center; max-width:750px; margin: -20px auto 35px; font-size:0.9rem; color:#555;">Disciplinas que potencian a todas las áreas de la red, marítimas y aeronáuticas por igual.</p>
+        <h2 class="section-title" style="color: var(--azul-marino);" data-i18n="trans_title">Servicios Transversales</h2>
+        <p style="text-align:center; max-width:750px; margin: -20px auto 35px; font-size:0.9rem; color:#555;" data-i18n="trans_sub">Disciplinas que potencian a todas las áreas de la red, marítimas y aeronáuticas por igual.</p>
         <div class="transversal-grid">
 
             <div class="transversal-card">
                 <div class="t-icon"><i class="fa-solid fa-award"></i></div>
-                <h3>Gestión de Calidad</h3>
-                <p class="t-desc">Diseño e implementación de sistemas de gestión orientados a la mejora continua y el cumplimiento normativo.</p>
+                <h3 data-i18n="t1_h">Gestión de Calidad</h3>
+                <p class="t-desc" data-i18n="t1_p">Diseño e implementación de sistemas de gestión orientados a la mejora continua y el cumplimiento normativo.</p>
                 <ul>
-                    <li>Implementación de sistemas de gestión de calidad</li>
-                    <li>Auditorías internas y de certificación</li>
-                    <li>Documentación y control de procesos</li>
-                    <li>Indicadores de desempeño y mejora continua</li>
+                    <li data-i18n="t1_li1">Implementación de sistemas de gestión de calidad</li>
+                    <li data-i18n="t1_li2">Auditorías internas y de certificación</li>
+                    <li data-i18n="t1_li3">Documentación y control de procesos</li>
+                    <li data-i18n="t1_li4">Indicadores de desempeño y mejora continua</li>
                 </ul>
             </div>
 
             <div class="transversal-card">
                 <div class="t-icon"><i class="fa-solid fa-robot"></i></div>
-                <h3>Automatización Inteligente de Procesos (IPA)</h3>
-                <p class="t-desc">Diseño e integración de sistemas donde la IA realiza tareas operativas de forma autónoma.</p>
+                <h3 data-i18n="t2_h">Automatización Inteligente de Procesos (IPA)</h3>
+                <p class="t-desc" data-i18n="t2_p">Diseño e integración de sistemas donde la IA realiza tareas operativas de forma autónoma.</p>
                 <ul>
-                    <li>Automatización con Python: reportes de mantenimiento y flota, cargas de datos, procesos administrativos</li>
-                    <li>Flujos automatizados con N8N entre sistemas de flotas, buques, aeronaves y áreas administrativas</li>
-                    <li>IA aplicada al negocio: chatbots, clasificación documental, asistentes internos</li>
-                    <li>Gestión de proyectos end-to-end, del relevamiento a la entrega</li>
+                    <li data-i18n="t2_li1">Automatización con Python: reportes de mantenimiento y flota, cargas de datos, procesos administrativos</li>
+                    <li data-i18n="t2_li2">Flujos automatizados con N8N entre sistemas de flotas, buques, aeronaves y áreas administrativas</li>
+                    <li data-i18n="t2_li3">IA aplicada al negocio: chatbots, clasificación documental, asistentes internos</li>
+                    <li data-i18n="t2_li4">Gestión de proyectos end-to-end, del relevamiento a la entrega</li>
                 </ul>
             </div>
 
             <div class="transversal-card">
                 <div class="t-icon"><i class="fa-solid fa-helicopter"></i></div>
-                <h3>Asesoría Integral en UAS / RPAS</h3>
-                <p class="t-desc">Acompañamiento integral en el uso profesional de drones: planificación, normativa ANAC, seguridad operacional, capacitación y tecnología.</p>
+                <h3 data-i18n="t3_h">Asesoría Integral en UAS / RPAS</h3>
+                <p class="t-desc" data-i18n="t3_p">Acompañamiento integral en el uso profesional de drones: planificación, normativa ANAC, seguridad operacional, capacitación y tecnología.</p>
                 <ul>
-                    <li>Consultoría normativa (RAAC 100/101/102) y planificación de operaciones</li>
-                    <li>Seguridad operacional, gestión de riesgos y capacitación</li>
-                    <li>Aplicaciones marítimas, portuarias, SAR e inspección</li>
+                    <li data-i18n="t3_li1">Consultoría normativa (RAAC 100/101/102) y planificación de operaciones</li>
+                    <li data-i18n="t3_li2">Seguridad operacional, gestión de riesgos y capacitación</li>
+                    <li data-i18n="t3_li3">Aplicaciones marítimas, portuarias, SAR e inspección</li>
                 </ul>
-                <a href="uas-rpas.html" class="t-link">Ampliar información <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="uas-rpas.html" class="t-link"><span data-i18n="t3_link">Ampliar información</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="transversal-card">
                 <div class="t-icon"><i class="fa-solid fa-hard-hat"></i></div>
-                <h3>Seguridad e Higiene Especializada</h3>
-                <p class="t-desc">Cumplimiento normativo integral en riesgos laborales, medioambientales y de gestión documental.</p>
+                <h3 data-i18n="t4_h">Seguridad e Higiene Especializada</h3>
+                <p class="t-desc" data-i18n="t4_p">Cumplimiento normativo integral en riesgos laborales, medioambientales y de gestión documental.</p>
                 <ul>
-                    <li>Auditorías de Higiene y Seguridad con elaboración de informes</li>
-                    <li>Confeccionamiento de Legajo Técnico</li>
-                    <li>Seguimiento de ART: accidentes, RAR, RGRL</li>
-                    <li>Estudios en ambientes laborales</li>
-                    <li>Capacitaciones sobre Riesgos Laborales</li>
-                    <li>Estudios de impacto ambiental</li>
-                    <li>Inscripciones y recategorizaciones (Residuos Peligrosos/Patógenos)</li>
-                    <li>Habilitaciones, Programas de Seguridad y Mapa de Riesgos</li>
-                    <li>Plan de Evacuación y Estudio de Carga de Fuego</li>
+                    <li data-i18n="t4_li1">Auditorías de Higiene y Seguridad con elaboración de informes</li>
+                    <li data-i18n="t4_li2">Confeccionamiento de Legajo Técnico</li>
+                    <li data-i18n="t4_li3">Seguimiento de ART: accidentes, RAR, RGRL</li>
+                    <li data-i18n="t4_li4">Estudios en ambientes laborales</li>
+                    <li data-i18n="t4_li5">Capacitaciones sobre Riesgos Laborales</li>
+                    <li data-i18n="t4_li6">Estudios de impacto ambiental</li>
+                    <li data-i18n="t4_li7">Inscripciones y recategorizaciones (Residuos Peligrosos/Patógenos)</li>
+                    <li data-i18n="t4_li8">Habilitaciones, Programas de Seguridad y Mapa de Riesgos</li>
+                    <li data-i18n="t4_li9">Plan de Evacuación y Estudio de Carga de Fuego</li>
                 </ul>
             </div>
 
@@ -483,65 +488,65 @@
 
     <section class="red-news-section" id="novedades-red">
         <div class="red-news-container">
-            <h2 class="section-title">Novedades y Anuncios de la Red AEROMAR</h2>
+            <h2 class="section-title" data-i18n="news_red_title">Novedades y Anuncios de la Red AEROMAR</h2>
 
             <div style="text-align:right; margin-bottom:10px;">
                 <button type="button" onclick="solicitarAccesoNovedades()" style="background:none; border:1px solid var(--gris-borde); color:var(--azul-marino); padding:6px 12px; border-radius:6px; font-size:0.8rem; cursor:pointer;">
-                    <i class="fa-solid fa-lock"></i> Acceso Referentes (publicar novedad)
+                    <i class="fa-solid fa-lock"></i> <span data-i18n="news_red_access">Acceso Referentes (publicar novedad)</span>
                 </button>
             </div>
 
             <div class="publish-card" id="publishCard" style="display:none;">
-                <h3><i class="fa-solid fa-bullhorn"></i> Publicar Novedad</h3>
+                <h3><i class="fa-solid fa-bullhorn"></i> <span data-i18n="news_red_publish_h">Publicar Novedad</span></h3>
                 <form class="publish-form" id="newsForm">
-                    <input type="text" id="newsTitle" placeholder="Título de la novedad..." required>
-                    <textarea id="newsContent" rows="3" placeholder="Detalles o noticias internas de la red..." required></textarea> <label for="newsImage" style="font-size:0.85rem; color:var(--azul-marino); font-weight:600; margin-top:4px;"><i class="fa-solid fa-image"></i> Imagen (opcional)</label> <input type="file" id="newsImage" accept="image/*" style="margin-bottom:4px;"> <img id="newsImagePreview" src="" alt="" style="display:none; max-width:180px; max-height:120px; border-radius:6px; margin-bottom:8px; object-fit:cover;">
-                    <button type="submit" class="btn btn-primary" style="width: fit-content; border: none; cursor: pointer;">Publicar Novedad</button>
+                    <input type="text" id="newsTitle" placeholder="Título de la novedad..." required data-i18n-placeholder="news_red_title_ph">
+                    <textarea id="newsContent" rows="3" placeholder="Detalles o noticias internas de la red..." required data-i18n-placeholder="news_red_content_ph"></textarea> <label for="newsImage" style="font-size:0.85rem; color:var(--azul-marino); font-weight:600; margin-top:4px;"><i class="fa-solid fa-image"></i> <span data-i18n="news_red_image_label">Imagen (opcional)</span></label> <input type="file" id="newsImage" accept="image/*" style="margin-bottom:4px;"> <img id="newsImagePreview" src="" alt="" style="display:none; max-width:180px; max-height:120px; border-radius:6px; margin-bottom:8px; object-fit:cover;">
+                    <button type="submit" class="btn btn-primary" style="width: fit-content; border: none; cursor: pointer;" data-i18n="news_red_publish_btn">Publicar Novedad</button>
                 </form>
             </div>
 
             <div class="custom-news-list" id="customNewsContainer">
                 <div class="custom-news-card">
-                    <h4>Consolidación de la Red AEROMAR NETWORK</h4>
-                    <span>Anuncio Oficial</span>
-                    <p>Integración estratégica de servicios técnicos y alianzas interdisciplinarias aeronáuticas y marítimas.</p>
+                    <h4 data-i18n="news_red_default_h">Consolidación de la Red AEROMAR NETWORK</h4>
+                    <span data-i18n="news_red_default_tag">Anuncio Oficial</span>
+                    <p data-i18n="news_red_default_p">Integración estratégica de servicios técnicos y alianzas interdisciplinarias aeronáuticas y marítimas.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="news-section" id="noticias">
-        <h2 class="section-title">Actualidad y Noticias del Sector</h2>
+        <h2 class="section-title" data-i18n="news_sector_title">Actualidad y Noticias del Sector</h2>
 
         <div class="news-search-bar">
-            <input type="text" id="newsSearchInput" placeholder="Buscar por palabra clave: ANAC, buque, hidrovía, drones..." onkeydown="if(event.key==='Enter') buscarNoticias();">
-            <button class="btn-buscar-noticias" onclick="buscarNoticias()"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
-            <button class="btn-limpiar-busqueda" id="btnLimpiarBusqueda" onclick="limpiarBusquedaNoticias()">Ver todas</button>
+            <input type="text" id="newsSearchInput" placeholder="Buscar por palabra clave: ANAC, buque, hidrovía, drones..." onkeydown="if(event.key==='Enter') buscarNoticias();" data-i18n-placeholder="news_search_ph">
+            <button class="btn-buscar-noticias" onclick="buscarNoticias()"><i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="news_search_btn">Buscar</span></button>
+            <button class="btn-limpiar-busqueda" id="btnLimpiarBusqueda" onclick="limpiarBusquedaNoticias()" data-i18n="news_search_clear">Ver todas</button>
         </div>
         <div class="social-search-row">
-            <span class="label">Ampliar búsqueda en:</span>
-            <button class="btn-social-search" onclick="abrirBusquedaExterna('google')"><i class="fa-brands fa-google"></i> Google Noticias</button>
-            <button class="btn-social-search" onclick="abrirBusquedaExterna('twitter')"><i class="fa-brands fa-x-twitter"></i> X / Twitter</button>
-            <button class="btn-social-search" onclick="abrirBusquedaExterna('linkedin')"><i class="fa-brands fa-linkedin"></i> LinkedIn</button>
-            <button class="btn-social-search" onclick="abrirBusquedaExterna('youtube')"><i class="fa-brands fa-youtube"></i> YouTube</button>
+            <span class="label" data-i18n="news_search_expand">Ampliar búsqueda en:</span>
+            <button class="btn-social-search" onclick="abrirBusquedaExterna('google')"><i class="fa-brands fa-google"></i> <span data-i18n="news_google">Google Noticias</span></button>
+            <button class="btn-social-search" onclick="abrirBusquedaExterna('twitter')"><i class="fa-brands fa-x-twitter"></i> <span data-i18n="news_twitter">X / Twitter</span></button>
+            <button class="btn-social-search" onclick="abrirBusquedaExterna('linkedin')"><i class="fa-brands fa-linkedin"></i> <span data-i18n="news_linkedin">LinkedIn</span></button>
+            <button class="btn-social-search" onclick="abrirBusquedaExterna('youtube')"><i class="fa-brands fa-youtube"></i> <span data-i18n="news_youtube">YouTube</span></button>
         </div>
 
         <div class="search-results-box" id="searchResultsBox">
-            <h4><i class="fa-solid fa-list-check"></i> Resultados de la búsqueda</h4>
+            <h4><i class="fa-solid fa-list-check"></i> <span data-i18n="news_results_h">Resultados de la búsqueda</span></h4>
             <div id="searchResultsList"></div>
         </div>
 
         <div class="news-grid" id="newsGridDefault">
             <div class="news-box">
-                <h3><i class="fa-solid fa-plane-departure"></i> Noticias Aeronáuticas</h3>
+                <h3><i class="fa-solid fa-plane-departure"></i> <span data-i18n="news_aero_h">Noticias Aeronáuticas</span></h3>
                 <div class="news-feed" id="aero-news">
-                    <p style="font-size:0.85rem; color:#666;">Cargando novedades aeronáuticas...</p>
+                    <p style="font-size:0.85rem; color:#666;" data-i18n="news_aero_loading">Cargando novedades aeronáuticas...</p>
                 </div>
             </div>
             <div class="news-box">
-                <h3><i class="fa-solid fa-anchor"></i> Noticias Marítimas</h3>
+                <h3><i class="fa-solid fa-anchor"></i> <span data-i18n="news_mar_h">Noticias Marítimas</span></h3>
                 <div class="news-feed" id="mar-news">
-                    <p style="font-size:0.85rem; color:#666;">Cargando novedades marítimas...</p>
+                    <p style="font-size:0.85rem; color:#666;" data-i18n="news_mar_loading">Cargando novedades marítimas...</p>
                 </div>
             </div>
         </div>
@@ -550,47 +555,47 @@
     <section class="sar-banner" id="sar-app">
         <div class="sar-container">
             <div class="sar-text">
-                <span class="badge-sar">Producto Destacado</span>
-                <h2>Plataforma y Servicios SAR App Gestion</h2>
-                <p>Desarrollamos soluciones avanzadas para operaciones de búsqueda y salvamento. Ofrecemos capacitaciones a medida en operaciones SAR, primeros auxilios, triaje médico y gestión de crisis.</p>
+                <span class="badge-sar" data-i18n="sar_badge">Producto Destacado</span>
+                <h2 data-i18n="sar_h">Plataforma y Servicios SAR App Gestion</h2>
+                <p data-i18n="sar_p">Desarrollamos soluciones avanzadas para operaciones de búsqueda y salvamento. Ofrecemos capacitaciones a medida en operaciones SAR, primeros auxilios, triaje médico y gestión de crisis.</p>
             </div>
             <div class="sar-action-box">
-                <a href="sar-info.html" title="Información y Contenidos SAR App Gestion" class="sar-logo-wrapper">
+                <a href="sar-info.html" title="Información y Contenidos SAR App Gestion" data-i18n-attr="title:sar_logo_title" class="sar-logo-wrapper">
                     <img src="data:image/png;base64,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" alt="Logo SAR App Gestion">
                 </a>
                 <a href="sar-info.html" class="btn btn-primary" style="background-color: var(--ambar); color: var(--azul-marino);">
-                    Más información y Acceso <i class="fa-solid fa-arrow-right"></i>
+                    <span data-i18n="sar_link">Más información y Acceso</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
     <section class="about-section" id="nosotros">
-        <h2 class="section-title">Nuestra Visión y Valores</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto;">Ser la red de servicios profesionales marítimos y aeronáuticos de mayor confianza y alcance global, convirtiéndonos en el aliado estratégico indispensable para la toma de decisiones complejas.</p>
+        <h2 class="section-title" data-i18n="about_title">Nuestra Visión y Valores</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;" data-i18n="about_p">Ser la red de servicios profesionales marítimos y aeronáuticos de mayor confianza y alcance global, convirtiéndonos en el aliado estratégico indispensable para la toma de decisiones complejas.</p>
         
         <div class="values-grid">
             <div class="value-box">
-                <h4>Excelencia Técnica</h4>
-                <p style="font-size: 0.85rem;">Rigor respaldado por la amplia trayectoria de nuestros expertos.</p>
+                <h4 data-i18n="val1_h">Excelencia Técnica</h4>
+                <p style="font-size: 0.85rem;" data-i18n="val1_p">Rigor respaldado por la amplia trayectoria de nuestros expertos.</p>
             </div>
             <div class="value-box">
-                <h4>Compromiso y Seguridad</h4>
-                <p style="font-size: 0.85rem;">Soluciones éticas enfocadas en la seguridad y el éxito del cliente.</p>
+                <h4 data-i18n="val2_h">Compromiso y Seguridad</h4>
+                <p style="font-size: 0.85rem;" data-i18n="val2_p">Soluciones éticas enfocadas en la seguridad y el éxito del cliente.</p>
             </div>
             <div class="value-box">
-                <h4>Seriedad e Integridad</h4>
-                <p style="font-size: 0.85rem;">Transparencia, confidencialidad y respeto a la normativa.</p>
+                <h4 data-i18n="val3_h">Seriedad e Integridad</h4>
+                <p style="font-size: 0.85rem;" data-i18n="val3_p">Transparencia, confidencialidad y respeto a la normativa.</p>
             </div>
             <div class="value-box">
-                <h4>Sinergia Colaborativa</h4>
-                <p style="font-size: 0.85rem;">Trabajo en red multidisciplinario para multiplicar resultados.</p>
+                <h4 data-i18n="val4_h">Sinergia Colaborativa</h4>
+                <p style="font-size: 0.85rem;" data-i18n="val4_p">Trabajo en red multidisciplinario para multiplicar resultados.</p>
             </div>
         </div>
     </section>
 
         <section class="allies-section">
-        <h3>Empresas y Entidades Amigas</h3>
+        <h3 data-i18n="allies_h">Empresas y Entidades Amigas</h3>
         <div class="allies-logos-grid">
             <div class="ally-logo-card" title="Galeón Consultora Marítima">
                 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCACRASwDASIAAhEBAxEB/8QAHgABAAICAwEBAQAAAAAAAAAAAAcIBgkDBAUBAgr/xABOEAABAwMCBAMFBAcEBgYLAAABAgMEAAUGBxEIEiExE0FRCRQiYXEygZGhFRYjQlJisRdDcsEzNDaCotEZY3WSs9ImN0RTc3R2tNPh8P/EABsBAQACAwEBAAAAAAAAAAAAAAACBAEFBgMH/8QAOhEAAQMCAwUFBgUDBQEAAAAAAQACAwQREiExBRNBUZFhcYGhsQYiMtHh8BQjUsHxFTNCQ1NicoLC/9oADAMBAAIRAxEAPwDanSlKIldGde4Fr/1uW1G+bquWu9WF5TdY9syS3Rrkyhy3T/2PM4OiVn7J/Hp9/wAqk0YjZecjsDcS99jKrNKOzN1hOH0TIT/zr0m3kOp5kLStP8STuKwS9aJ4teipfua4bp/vIzhQaw646B3i2pWrH8neSCD+wlggEenMgg17tbC7VxHhf9/2VR76pmbWBw77HoQR5qUL3ndix7cTrkw24P7tKuZf4CsLuPEFZo6iIcGVL9FK2bB/HrUNX/CMoxdS13OyPuMjqZUE+8I+pA+Ifga8GNLZlgll1LnL0UEnqn6juPvroKXZ9HKL7zEenlquI2ltzalMbbndjmc/PRTO/wARMkq/Y2RoD/rHyf6CuNHETOBHPZo5H8r6h/lURUrajZlJ+jzPzXNn2h2mTfe+Tfkpxg8RMNZAl2d9oeamXUr/ACO1ZZZtXcYvKkoTcBEdV0DctJb/ADPT86rFSvCTY9M74bj77Vch9qa+M/mWcO0W9Leiua08h9CVtrS4hQ3CkncH76/dVHx/Lrxi7oXbZzsdO+5a35m1fVJ6VMeGa5wropuLe0Jt0k9BISSWVH5+afv6fOtFU7KmgGJnvDs16LsaD2kpKshkvuO7dOvzspVpX5bcS6gLQoKSobhQO4Ir9VpV1qUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlfCQO5r7WF6qJ8HG3JSm3HWWSFOIbWUnl8+orIFzZRcS1pICzAvtjfdxI/3hUEa159Bv6UWa37PGO8FuTEnolQ/dT6/M13jopAyq1sXTH8imx25COdAf2dT9CD1BB6HrWDX7SLMMbCl+4NXmMn+9tytl7f/AA1f5GtvSMpWygzPItwItn1K5nacu0ZKcikjBDuIdfI8gQNfFT3pnlJyzEoklxQVKaHgSP8AGnz+8bH76yuq88POVoRkU21krQiSFJLTqShSH2+6Sk9jyk/gKk3UTVJjTyVbmpMB2SiaooQ4hQSnmA35dz5mvCrp8NQWRZh2Y8Va2bXbyhEtRkWZOyNwRrf1WcFIUCCNwfI1hOY6O41me7siEIk/b4ZsQ+G6k/Ud/oa4bFrDbL0lBVb7jFC+y1MFaT96f+VZrCuDFwaDjDnOn6EEfcaplr4jyK2zZIqhuWYPP5FVZznTK/6dhcl4G9WRPUzWG9nmR6uIHcfNP4VjTTqH2kONrS42sBSVpO4IPmDV0HWkPtKbcSFoUNlJUNwRVSM9xNOBZ9PtTKOS2zEmdCSOyATs4gfIKIO38xrpdm7Re94gmN76FfP/AGg2HDDEaulFrajhbmOXovJpXXkTWojjaXj4aXDypcV9nm8kk+RPlv3rsV1FwV87IIFylKUrKws5091TnYa6iLI55loJ2LBO6mvmj/y9vpVirTdot8gMzYT6ZEZ1PMhafP5fI/KqeVmOm2oL+E3QJdUp21PqHjsjry/zp+Y8/UfdWg2hs4TAyxCzvX6rtdibefSuFPUm8Z0P6fp6Kz9K4ospqbGakMOJdZdSFoWk7hQPUEVy1xei+rggi4SlKUWUpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpRErBdYMrYxvEJDRSl2XPBjsNK7EkdVH5Adazknaqt6pZScszSY4hfNCgkxY436Eg/Gr7z0+6r1FT/iZhHw49y0+1q4bPpHTD4tB3n5a+CzDh7yQwn38dccUppSPGj8x3PMBssfeNj9xqdNqqXg9yVacvs8pJ2CJSEq/wqPKfyNW1q9teARThzRk4LUezNW6ppCyQ3LD5HP5qs2aNnBNdnJjQ5GZRYuIA6AkHw3fxG1TdqThkfPsOm2xzo6pHiR3h3bcHVCh9+1RXxLQA3fsXnpGxcD8VR+qOYfmmpoxGZ+kcXtMkncuxWlE+p5RvVSU46aJ/EEj9x6rY0wEe0KiLg4Nd6tPoFFvDnkztytM2x3FCRMgrJ5FD7JCuVxI+QUNx8lVM6G0oGyUhI+VQLCYGG8R0hlscka6pS8EjoN1pKVf8SUGp7HavKqONzZf1C/jofMXVnZ43TH0/+2bDuyI6A28F9qGeJmwh3G7bf20bu2qSkuEDr4K/hX92x3+6pmrr3C3x7pDdiS2UPx3UlK21jcKB8qrxvMbw9uozV+aJs8bon6OBHVU0eZbkNLadQl1tY5VJUNwoVxQrNNYaV+jkuXFlpPMqFvu+2gdy2T/pEjzSeo8iRWW6pacf2YXuI5AUteOXFZabbWd/dHu4SD/ArsB5HbbvWOx5DsV9t5lxTTzagpC0HZSSOxBrvIpW1sQliOFw+7HmF8YqKd+yKg01S3Gw5945jkR9DcLrRZbM1nxGXA4jfY7dCD5gg9Qfketc1ZzDx6zaqkqbeRj+ZBP+sMpAZnAfxo7E+o7+YrDMgtF1wyZ7pkMIwVE7Ilo3VGd+i/3T8lfiaRVrce5nGF/ke4pUbIeIvxVGd5EeWo7COxcNKUrZrn1MmhWbqS4cclubpO7kNSj281N/1I++prqm8Cc9bZseXGWW5DDgcbUPJQO4q22NXtrI7FCuTPREloL2/hPmPuO4rjNr0oikEzdHev1X1f2Y2gaiA0sh95mn/X6fJenSlK59dslKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIsb1GyH9VsKu1yB2cZYV4Y9VnokfiRVT2GyyyhCjzLA+JXqrzP471O/EjcS1jFqt4O3vk5HMPVKAVn+gqDK63YkYDHyeC+Z+105MkVOOAJ65D0K7doSpd2gpT9pUhsD684q4lVX0ztRvGc2hnl5kIeD6/8KPi/qBVqaq7beDKxvIev8K/7IxltPLIdCQOg+qhXiZSDAxhX7wuJ2+nhq3qQ9MiTgNi37+6pqL+JSYHLjjUIHdSC9KUPkE8o/NVS9h0I27FLRGI2U3FbSR8+Ub1rXZUTb8XH0C6BnvbVeRwjAPi4lRJrDtB1fw2WjotSNifo6g/51OYqCNVF/pnWnGoLfxKjtt8wHkVupP9EGp3FeUotDHft9VZpzerntp7vW3ysvtKUqmtosM1gxdOXaeXiDt+3DJeYV5pcT8SSPvFVat8v36BHkbbF1tKyPQkdR+O9XTkth2O6g9lJIP4VSuAz7qiRHHQMyn2h9A6rauk2I8iR7OYv0/lcD7XQgwRTcQbdRf9l22nVsOIcbWptxBCkrSdikjsQfWpwwHUeBmsMWDJm2XZSxyIW8keHJHod+gX/WoNr9NNrddS20hbjpPwobBKifkB1roKyliqY7SZW48lxGy9oVFBMHQC99W8/ryKlPPNEbBYWXJtrvgx9HVXucg+KwT6JT9of7tRFHVJHiiUGQErKW1sk7LT6kHsT6da6WqWoVg0ohCfnl/RbZLieZm3FXvNxkf4GQdwP5lECqW6tcZWQ5iXrfibC8Ts6t0+OHA5PeT/ADODo3v6Njf+Y1q6RxgGFjy/yaPHMnwXV1tL/UXB74RD5vPgLAeOas1qrxBYppQ2tmfL98u+26LZFIW98uYdkD5q2++pe9nxxNva62nL7PNt8a1SLLIZeisMuKWpcd4K6qJ7qC0K32AHxDp5nUA64t5xbji1OOLUVKWskqUT3JJ6k/Oreey2yxyw8Tn6KCtmb5ZpUZSfIrbKXk/khf41GuD5oHF50z7Fsdl00FFM3dN1yucz991luCpSlciu5SlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlEULcRdluc/9BTIkJ+ZEhqdLwjI51JKk7A8o6kd6hFmaxIcLaHB4qe7St0rH1Sdj+VXVUpI2CiBv0APnWO5Np1juXtFF0tUeQryd5OVafmFDqK3FHtJ1I3d4bjzXLbV2DHtN++xlrrW5jp9VCmkeUWLEJc2ddHXUyVpDTQbaK+VPdR3HqdvwqVmdacTd73Bbf8AjYWP8qiTUfROfhMB67WGQ9dbYwOd63yDzPIR5ltfc7fwq339RUfsPtymG3mlBbTiQtCh2IPY1tmwUu1HOlDiHcRll5Lm5KzaPs8xlMWNLM7HPPnxGakG/S06oausCKVOQN24zSyNt20nncVt6Ht91WQJSy35JSkdB2qoFnvk7H5SpNvfMZ9SC34iQCoA99t+1fZuQXS5qJlXGVIJ/jeUR+G9Zm2U+TDGx1mtHjnqoUntJFBvJpWF0jzc2yAAFgOJ8uK9u83+92TUK4ZA5bnDK8dXhFbQcQlAHKnbY+m/3mvUTxL3iMdn4sf/AHojw/pvWAKPmr8VUaX4y+Rnd1fkloFR/AVa/AxtaBMWkAW0t/8AS139Ynkkc6lDwXG9g4HPuwKVbfxJzJI3NrivAd+Ra0H/AIhXuw+ImEvYS7PIa9VNOpX+R2qMbRp3k18IMe0SEIP95J/ZJ/Pr+VZ1ZOHmY7yru10bYT5tREcx/wC8r/lVCZuy2DPM9hPzst1SSe0UxuMh/wAgB+wPkvVvfEJAajkW23vPOKH25JDaU/hvvUR4/hd7yN1xVvt78gPPLeU8pPI2CtRUfiPl18t6sTYNJsax8pW3ATKfT/fSj4ivz6CsrcU1CjrWeVtptJUdugAFaxlbHTEmlZY8ybnpougk2TPXgDaMtwM8LRYX7zcnyVXs1tuF6KWP9M6l5dFtDG26IUdW7zx/hQnqpZ/wiqZ6y+0RuExqTZdJLKjDbUrdCr1JQly4vj1TvuGv+JX0rAuJu/XTia4nskZsLiJ3uLbsaA0t0J8RDAKnEt791KVzbAd9vlVcnmXIzzjLzamnW1FK0LGykkdCCPI1s4mGezqh2J2tuA8FXLYqO7KRga3S41Pjque63abfbjIuFymSLhPkK53pUp1TjrivVSlEk11aUrYaZKpqlTzwJT127i203cQdi5OdYP0XGdSf61A1TxwKQV3Di202QgE+HPdeP0RHdUf6V4z/ANp3cV7Qf3W94W8dP2R9K+18T9kfSvtcWu0SlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlEVfuNhrMGtHnLjgxlfrDbZbE6MIieZfO04lY+H94dCCD0IJHnUNY37Uix2yOxG1B07yjGbkhCUyHIsdLzBXt8RSFlCgnffYHfb1NXNzFyYzjFzct+3vqGFqa3G/xbHbvWs/EvaNGzXKVj2r2ncDInYTy4zt0tLaGH1cqiCpbC/gUT3+FSR8qvU7DK0tw4rdtiqNQ8RODi7DfsuFZiN7TXQS4sKTIvlzihQ2U3JtD2+3oeUEVEl74q+G1iS89a8yv8dpxZc9ziWdxaEknc8vOkbDfy32rI7LxMcHmYoDlwhQbM8rqWrvYloI+qkIWn86yRrW/g5siPGYueKbjqAzbXFq/ANV7sBhddjHg9h+irStZUswyuY4dov6lQdM4xNNXllrHMe1Ayt49EhqKzHSfw5j+VcbWsWqOVnbFOH26FCvsPXu4PkfeAGx+dS9e/aM8PuEMLRjlouF7dT9hFutIYbP+86U/0qDdQvayZbckux8Iw62Y40eiZVycMt4D1CE8qAfrvVoOqZNGnxcfoqP4ehh0w/8AlrfkVlUHEOLDIiFw8Lw/GkK7F6Ml5af++pyvXOnHFxbEbyNVMZx0f+7baisAfi0KpLnXFhq9qMtz9N6gXpbCz1iwpBiMj5cjXKNvrvUVzJb9wdU5LfdluK6lchxThP3qJr3FLIc3Fo8L+qx+KjbkwHrb0Wytpzi9sK+e36rYnkqk/wDs7iobnN8uiAfzr0YvG3rzpKtI1Q0ibvNsR0cuePlbSgP4tt1oP/DWrxKEoPMlKUkeYAG1WA4bNC9ZdZbowjDJt5sdk5gHr09LeZhtp8+Ub/tT/KkH5kVGSlaxt5C23db0KnHVOe7CwOv339Qrv332s2msWA0qzYxkt3uKkcy4jjTUcNK80qUVq329QDVeNX/aiZzqNj9wsWO45BxONNQWTLTIXJlpSeh5TslKTt57HarSa2YFhnC7wwXqRM8G85Q5CMVV7uDTfvk6QvcDqAOm56J8gO56mtQg3AG53Pma8qSGCW7gzIcz/C9KuaeKzS/XkFIulumtyzXLYMOy3pxvIErEhlFpiPzZLKkkHxCpsBKeU7Hfm71PHG9w/uYhaMc1AaQ6h+5tNx7v4sFULxJYSAt4Mq3KQpQJ7noR6VFfDpxU5HwzyLi/jVisFweuPKmS/dY7i3lIT9ltK0rHInck7AdT1O+wqQ9X+OG68TNhcxXM7LZ8dtS2yuNNtqXlqjygQULXzE7tnblIA3G+/XbarMjZxMHge6PTiq0boDCWE+8fXgqqUrnmQnYLxbd5Se6VtqC0LHqlQ6EVwVsgb6LWkWyKVbv2XWKOX7ifbuYRzNWOzypSleQU5ysp/wDEV+FVEraH7JfTY2XTzMM7lNcirxMTAirV38COCVkfIuLI/wByqVa/BA7tyV2iZjnb2Zq8+UZZZ8Jscq8X25RrTbIqC49KlOBDaEjzJNVoX7Q3Er3NfbwrCM1zyEwsocuVotgTGJH8KnVp3/Cqu8RWoNz4weLnH9IYU56Nh0W5pivtsK28QoBXIdPqUoSpKd+x3NbM8Twmx4Pj0GyWO1xrba4bSWWIzDYCUJA2H1Pqe5PU1zro2wsaXi5OduxdE2R0znBhsBlftUBSfaFaTWfH5k6/vXvGrrFSFKx+62txqe5v28JPVDg380r2HntVgsSyiBm2LWjILW4XrbdIjU2MtQ2Km3EBadx5HYjcVX3jU4ZLVrJppNlQoDbeQwUl6K80jZRUPL7+xrLuC+23izcL+nlvv0GTbbrEt3u70SY2UOthDq0oCknqPhCSPkRUHCMx4m5G+im0yCTC7SyyjXPXHHOH/BZWVZKp9UJkhKY8RIU88skAIQCQCTv5kdqy/F8kgZjjdrvtqfEm2XOK3MjPD99pxIUk/gR0rXjx9yr5r9qFcMJxkqetmE2ld7uikdU+Mo8jLZ+Z3Ufz8qkz2WesX66aKzcKmvc1zxORyMpWfiMJ4lbX/dWHUfIBNehgG43g149x0XmJzvt2dOHeNVMWs3GJguhF7NtyiJkCdkJWZkK0rfjAkkBPiggc3Tt8x61jWn/tA9M9UMkiWPGoOV3We+6hvZixOrS0FKCedwpJ5EDfqo9AAa9bjossGfw3Zg8/FaceaiLWhakDcHY+dQL7ImDHOmedyyygyVXppsulI5uURkEDf0BUr8ayyOMwOkIzHasPkkEzYwcir15DfY+NWWZc5SHnGIrSnVoYbK3FAAnZKR1JO3QedVduPtNtHbPMciXBvKYEtv7bEmxuNrR9Uk7irZLQlxJSpIUk9wRuK1He0yskG28Q9m92jNsiRGQXUoSAFftUjr+J/GsUsbJZMD+KzVSPijxs4K46PaSaUOx0vog5gthQ5kupx14pI9Qe1ZFpHx4aXa1agQMNx168fpual1TSJttUyj9mgrUConodknvUr5U7iWB4bLu94hw4togRi46oMpIShKdyAPoO1U7v+CWPHdVcF4lsMhIi4R+ipF0uBeAYX4LkRwNnwz3XzKA29D8qw0ROB90jlnx6LLjI0ixB55cOqt3qxrlhGiNk/SmZX+NZ2FHlabWSt55X8Lbad1LP0FQw/wAf2NMMe+/2dajLs5+IXL9AhLZT/EElwK2+6q2cEVnlcXfEXlequfI/SsbHkti3QJHxsR3nVKLSUpPTZtCCfmpQUewrZVItEKVHUw9EZcZUOUoUgEEUkYyA4HC54pG984xtNhwUc6P8TGnWutvkv4hkLM6VFR4kq2vIUxMjj1WysBW38w3HzqM8y9obpfgF3ft19hZXb3mnVtJW9YnEtu8pIKkKJAUk7bgjuKqRx46XSuGzV7HtS8BfcsEp9/nS7G6Bt4deo7FKgClST0UDsa9Pi/zS38Ruj2iGTQ4rUF/JJ7MSU2yAPBkFZZeQD6JXzbb+W1e7II3YX54XeRXg+d4xM/yb5hbGtNNSse1cwq2ZVi89Nxs1wb52nQClSSDspC0nqlaSCCk9QRWO606+45oRa41wyGJeJMZ5RSVWm3rlloAblSwn7KfmfOtbHDlrLkHAjrpc8EzYujCLhK5JZUCUx1b8qJrY9NgEuAd0jfqUjfahk8G2ZXiEwrRHuEKREUttwbLQtJTulST2IIIIIqvNEIXAjNp0ViGUytI0cNVBWm/H/pnqxlcLHsYiZRcrhKcQ3+zsbim2QpQHiOqBIQgb9VHoKsrvVLvZo4vbbPj2qr8eK0h8Ze/EDgQOYNNtoKE7+gK1dPmaulUJmsY/CwZKcLnOZifqvytIWhSVDdJGxHrWmv2h+ijmmOtEi8RmCi0339slQHwh0dx94/oa3LVBXF/oBH180qnW1tsfpeOkvQ3duqVjqKnTTbiUO4cVCph38Zbx4LRoDtX3mPqa9rMcKveA3x+0X+3PW2eyopLbySArbzSfMfSvErrwQ4XBXIFpabEJWW4BpLmWqcsxsTxu4X1YPKpyKyS0g/zOHZI/Gs44eLBpGLqq/au5I4xZ4q/2GO22O6/JnKHm4UDZtv5bgq+Q73rtftM9DMAtbFpxbD7+1boyQhpmJbmIzaQPQFwf0qnNPI04YmEnyVyGCNwxSvAHmqyYr7MjWTIENuTmbVYkK67SZJcWPuQNvzqV8Y9kZdXVoVkGdtMo/eRb4e5/FSj/AEqSB7XHTrfrhuUAeu0b/wDLXh5J7XrHWYrn6B09usqRt8KrlNZYbHzPJznatcX17tBbotiGUDeN+qkHGuBTQjh/jRr3lYN7eS+0y0/fHPEQp5a0obSloAJKitSQBse9Wqu0VePYpMRYYjDD0eOr3ZhDYCAQOg5R5fKqFYRKy7Wm423XjX64R8Q04xtwXKx44AWm5DyerTykq+JQB2Kd/iWdtgB3jzMvavZ2c3uD2LWOyjFgfDiRbtHcU+sAn9otSFjYq/h2Ow2896qmnmnda+IjXl3K0KiGBt7YQdOfeq28RetOo2q+ay42oF2XJk2uQ4y3AabDEaOQdt0NjzI/eO52PeomqXNRcwyriXuuQZa5ZLTFetLCJMtizRC2fCUvl5ySSpWx77nzqIu9dDDkzDYAjUBc9Nm/FckHQlfayXTyx47kOTxYeU5KMTs5PM/cjDXJ5UjqUhCATzHyJG2/esarIdPcbgZfmlos9zvUXHrfLeDb1ymr5GmU7E9VbbAnblBPQEjfpXq/4SvJnxDJZdr7OwpnKmrBgFsdiY7Z0eEJ0pRVIuDqgkqfWT23GwA6fQVGFZjq5bZFkzufbJEGHbzBS3Gaagul5tTSUDw1+IerhUnYlXn5ADasOqEIG7FlOY3kN16WNY7ccvyK2WO0R1SrpcpLcSKwkblbq1BKR+J6/IGt82nmm0XRnQu14fbNlIs9q8AuJG3iu8pLjn1UsqV99UW9lzwzuTrm7q9f4hTFjc8WwNup/wBI4fhdkjfySN0JPqVnyFbLnmkvMrbUN0LSUkfI1odoT437tug9VvtnwYGbx2p9Fp44GpIb49YJnK2kOyLwgc/cuFp0/jsDW4ha+RClbE7DfYedajuJ7TDJOE/iWt2qFjgqkWhu5ouba0ghvn32caWR2StJUnfy5jWzbR3W7ENccPiZDil2Ymx3UAvRisCREXt1aeb33SoHp6HuCQQa8qv8wMlbpa3cV60n5ZfE7W9+8KAtYvaE2/RbI5NqyDTPJ0sB5TUecFxwzKSP3k7r3G/fY7H5V3cB464mo2FXvJ2NP8gsGK2+HIeVf7i5HEUuNp/0aQlfMok9N0ggHuRUM+1Z1BxeTj9gxiNMiy8kEkSHGWVpW4w0N+q9vs7nYDfvvUN5Fq3a7hwmaH6PxbxGtzt8eSL2+XQlMOMqasFTp/d33B6+QJ7VNkDZImuw5k246c1F87mSubiyAv48lJHC1xQaaYtheb3LNkX9zLM1ub0u4LjWN+S2mOAUR2kOIBCglO5+qj6VCvCvq/atGOMliXbJEhnDr/MXaX/e2VMKSzIWC0pSFdU8j3IevlvW3LG8UxVmxQo9og2962x2UMMKjhC0ciUgJAI6HoBWt/2peldrsGQWDKbSY0V2RvGfZYWlK9+6VBIO/Qjv86zBIySUstbFlr04KM8b44w+98OfzV0eNs78M+a//JL/AKGq/wDsiP8A1T5z/wBut/8A2rddvK+Ia06zez3m3iZdogyFFr9wucZb6Q6JaByKJSTv+02Cx6hYrGfZP5vj1g07zi3XS+W62z1XhuQmNMlIZWpsx0J5wFEbjdJG48xUGscynkaRoQvRz2uqI3A6grYjWpb2pSFr19saGyUOKggIV22JcTsfxq+Wv/FpgGkuB3SanKrVcLyWVCHboMxt595wj4QEoJIG/mdgK1Jax5JJv0LTu7Xe5qud5mRHrtPWt0urbL01bgSepIASBsnyG2wrNDE4SB5GX0KjXStMZYDn9QrecUuh/ETH0fmSck1UXlljYaS5LtjMRuMHEpG5BKACrt59/Osv1OVJV7LzFRFKlBWOQufk67o5Rv8AlVuhqfpxlmMNOu5Xjs60S2Ur5nLix4a0kb9QVfkaplxe6941qveMK0K02ukWbGu11iwp79oUPdmGS4B4KVI+E7juE9AAfWoMfJIQwt0N9LKb2xxgvB1Ftbrn9kI80rCNSGkkeOm6xVqHnylghP5pVWwWtTvDFmMvgT4kL1jWfIdt+JX9IhquS0nwm1IWSw+f5QFKQv0C+bsK2pRMhtc+1Iuca4xJNuWjxETGX0rZUnvzBYOxHz3qFYLy7waO0U6M2j3Z1bqqUe1gDP8AY9YyrbxjcWwjfv57/wCdVTxqJKjcOmhC5AUGn9QFux+bzb96QncfLmSuph4vMjn8aWt9h0t0zUm72+0Oly5Xhn44kZR+ErUsdCEDm7faUQkb9dv3xz/qrofadD8KtEhC42LTIshbKFBTvgsrCluLA/eUeY/Mk1bhuxjIuJN/CyqS2dI+XgBbxurE8b/CnE11wl66WxlDOUW5KnWHgnqvbuk+oP8A/dqrvwEcVUzF/e9D8/dXFeaS7HsMmWrYtOAHeEsnyPdo/VHmgVsbx/IbXllmjXS0T410tstsOsyYrgcbcQobggitf/tDuENcoL1Jw+KpE5jZc1iMNlLAO4Wnb94dwf8A9VUgka4biXQ6dhVqdjmkTxajzClf2c3+y+q3/wBcTf8Awmqt5VI/ZSXCTdtGszmzHVPy5OTuuuur7rWY7BJPzJq7leVSLSuC9qY4omlKUpVZWVF+snDlhGuFpciZHaGXnSPgkpTs4g+oI671rt1v9mFl+IuSJ2ES03+3DdQiPnleSPQK7H7/AMa2xUqxFUSQn3Cq8tPHMPfC/ncyzBMiwWauJkFlm2h5J22lMlKT9Fdj9xrwq/oeyjTzG80irj3qzQ7g0sbKDzQVvVcNQfZr6SZkp16Db3sflL3PPAcKE7/4e35Vt49pjSRvRaiTZh/03dVpwqzmg2mWH6XYjF1i1dZMm1qVzY1iuwL14eT2eWg/3QPbfoftHpsFTy97J2RbcxgSUZOm44wy+l2XEeZ2feZSd1NpUnYAqA23I8zVZ+K/G9TrjqLcbvlmMTrZbGD7rbWGGiuLDiI6NtoKeiRsAT26/SrJqGVBEbHWB14HuCrCnfTgyPbcjTj4lY3xBcS+X8ROQiZfpIiWiOo+4WSKoiNFT2B2/fXt3UfuAFRNXwde3WvtbBjGxtDWiwWve9z3YnG5UjaA6wvaI6jw7+qELraXW1QrtbFdpcNzbxED0WNgpJ/iSPImry5P7NvC9YbPHzXTPKVRLZemRNiN8gWwpKxv0HdJ36Eb9CCNula1UIU4tKEJK1qISlKRuST0AA8zWzrhT1Dk8FWg0j+2S8NWuJcZHv1gxhCS7dGwobupLY+yFHlVy9AklW5BVsNbWBzCJIjZ2netlRlrwY5Rduvcqe6xcFWp2jfivzrOq7WxG598tySvYepR3H3b1C1kvCbDcESHYEKeltYK2JzAcBAPVOx7E9q2J5F7XK1S5L8aJpa9Oth3SDcLohC1j5oS2oD8TVdc64w8fv8AcJFyx/RbE7HeXNy3c5ajMdZV/GElKU8w7gnepRPqSMMrL+ICjKymBxRPt4Eqv2YMuR8pujTrrr6kvq2W/wDbKT1SFehAIG3lttU0cH3CjduJjOkJeQ9Cwu2uJVdrkkbcw7iO0fNxQ7n90dT12B5uHvhavevNydyzLbqjEsCS8Xrhkt0dSz7ySrdSWSvYEk77rPwj5npW3bQ+Hp1j+Aw7LptOs8vHbakNA2iW3ISFHqS4tJO61Hckq6k151NVuWYGZnnyXpTUu9fjfpy5rM8ex+3YpY4FntMRqBbILCI8aMwnlQ02kbJSB6ACvRrEI+r+Cy8h/QLGZ4+9e+fw/wBHN3RgyCr+Hw+bff5bb17/AOsFsF4Taf0jEF0U2XhCL6fHLYOxXyb83KD0322rnCDxXRAjguvlOIWfNLU7br1AZuENwFKm3kBQ2qulw9nHo7Muzk9i1zLatw/Ei3zHY4Py+BQ6VZeXeYFvlRo0mbHjyJKihhp11KVuqAKiEAndRABOw8hXgQdWcJud7fs0TL7DKu7AUXYDNyZW+2EjdW6ArcbAdenSpsc9ubCQouax2TwCo8tHBlpHY8Wm2KJiEJMeaNpMhxPiPvf4nFbqP3msYi+zv0NisIb/AFQad5e63HVqUr6knrVi4t1hzrc1Pjy2JEF1sOtyWnAppaCNwoKB2I28xXnMZvjsmK/KZv1sdjMMJkuvNzG1IbaVvyuKIVsEnlVso9DsfSsiSTgSsbuM2uAvM0y0pxbR7Fxj+I2iPZbV4qnzHjjYKcUAFLPzISPwqOM04KdJdQslnX+/Yy1cLtNWFvyXVq5lkAAefoAPuqQ/7ZcB23/XjG9v+14//nrsX/VbC8Vhw5d6y2x2mLMSFxnptxZaQ+kjcKQVKAUPmOlAZAbi91kiMixtZQz/ANHtoaR/sZG39eZW/wCO9fD7PXQw98Liq/xKUf8AOp3OaY+mwIvhvltFlWkKTcjLb92UN9tw7vy7b9O9LBmuPZWpxNkvttvBaG7ggTG3+Qep5FHas7yX9R6lR3cXIeSggez00MT2wuMn/CpQ/wA6+n2e2hu/+xkcfRav+dWDVeYCLoi2qnRk3FxtTyIheT4qkAgFQRvuQCQCdtutfi9ZBbMchmXdrjEtkUEJL8x9LKASdgOZRA3NY3sn6j1Kzu4/0joq/f8AR6aF9f8A0JiEnz3O/wDWvfwbgr0g07yi35DZcRiR7tb3A9FfUVKLKx2Unc9CNzU3+Kgt+JzAo235t+m1dG15Har4w+/brnDnsx3Cy85FkIdS2sd0qKSdlDfsetN5If8AI9Vnds/SFjOpGjOIas21ULJ7LGuTRGwLqAVD76g5n2bejjTx2t9xTEUrmVCbuL6GD8igL22qzEbIbXNtRuce5RH7aAomY0+lTICSQo84O3Qgg9emxrzLNqPimRSxFtOTWa6SiOYMwrgy8vb15UqJrDXyM+EkLDmxv+IArqad6TYlpRYRZsTsUOxwP3m4jQSVn1Ue6j8zUYZPwNaP5jkE+93fFmpt0nOl+RJccUVOLPcnrUnvavYLHdU07mmOtOJJBQu6sAg77duf1BrlhaqYZclOJiZdYpRbbU6sMXNhfKhI3Uo7K6ADqT2FZBkBxC6yQwjCbLytJdC8K0Pt86Hhljj2VmctLknwN93lJBCSrc+QJ/Gs1uFvj3WE9ElNJejvJKFoUNwQaW65xLxBZmwJTM2G8kLakR3A424n1SoEgj5iuvDyK1XC4y7fFucOTOiAGRFafQp1kHsVoB3Tv5bivMkk3KkLAWCx3TLSLF9ILdcYOLWxu2MXGYufKS2Ts4+oBJVsTsOiUjYbDpWZ104F5gXV2U3Cmx5bkVzwZCGHUrLK9geVYB+E7EHY9etdyhJJzWQABklKUrCylKUoiUpSiJXRuljt97YUzPhsy2lDYpdQFV3qURVu1Q4BdJtS1OvqsaLRPXufebefCVv69O/31VHUL2Td9hLcdxDJ2pjW+6Y9wb2P05k7f0rZ/X5Xzch5dubbpvVmOpli+FyrSU0UvxNWp1Gitj4DseazfPVwMp1MfKkY7YWiVRYjgH+sL3G6invvsAnoB1IIqDnWd37UrJ52RZJcXrpdpauZx949EjyQkdkpHkkdBW0bVv2ed2171QuGWZlqA+I7qvDiwIMZIEZgdkBSievck7dSfpWa6dezf0cwR1qRLs72SzGyCHLu8XU7+vJ0T+VbSOsjYMbzicfuy1clHI84Ge6wfd1qZ010ZzXV+5IhYhjk28rKtlPNN8rDfzW6dkj8d/lWw3hx9l1accdi3zVKU1f5yNnEWOKSIbZ7/tFdC79OifkavdY8bteMwW4Vpt8a3RGxshmM0EJSPkAK9Kqs1fLLk3IK1DQRxZuzKpbiOB2PiE4oM2tmWQ2pWKafRITFmxlQCYgdf8QqkKa+yopDfKncbDrXl8UOkOM6aX/FbbhMQYdPz66xMaud2tqiwpuE68C4kcuyeY8vKFEbjfYHrUr6ncO+VQ9UP7SNLb/HsGTuse6zY81jx4c9nm5vDeb3BICuqVJIUkk7HY7VjWUcMOpmu0OW7qnmsFotM8tstOMxDGYjPhSVJkKcWpThcSUjl2IA69968GvALXYshw++q93MNnNtmeP30WU5xwW6TK0zl2e34jbreiNHJZfbaAdCkj7Rc+1z+fNvvv13qhOmIz3ULUdzJbPeX5mc4FZ3FW+5SVlZmIjTlMBDx/fS40otr9e/erqv6ZcSmTWE4jdtQcdiWZxPgP5BGtKhdXWuxP8ApPCDhH7wSOvXasj0Q4S4WimpMq72qWhWPDHU2JmC6krecV4/jLfcc32JUSdxt3O/yqTJBG113XP36qL48ZbZth9+irfr7qG/xNTdH52FvvWu93JVxhKiKUQ/bJ6YL6HmVeYUk79R3SQR3rx7fcdMMW0+tmKZXpY/p9qJbYPgW+5PxUuw5k1LRSXG5Seocc+JWzgBJVtuTtU0ZfwQX6ProjP8EyhrG0I8WUIyo4d2lqYcZS8kK+EKCXD9oEHYb1zXXhg1W1tulgb1ZyewO2WxupkJRY7apmTcXkfYL6lLISN+pCAN/lUt4zCADl4349fvRRwPxEkZ+FuHRZfpQ4WeA3DVNqLZTiETYp6bfsRVfvZ1Y7bsvdyu0XeK3Ot0nDrGy9HdSChaPEl/CR5j5fOpNt3DlrlZ8DVpZbM2sUTT8BcZi4P25bt0iRFKJ8FCgsIVygkJUpO4G3fav3jfC3qhoxmlzm6V5Bj9ts8q2QbWli9W9ctwNxgsIVulxHUlxRP1qOJlnjF8XepYX3YcOiwNzQ/Tu08Veb204ZaH7PbcMM9iAqG2W0vCWhPNy8u2+xI3rMuDfh/wrU7SWLqJltnh5BkWQOSADKaStu2xmnlstRGEEcrSEJbA2SB1NSXppoBlcPVS65xnN8tl2n3LHlWSSzbISo7aiZAdDiQVq5QEgJ23O567+VYnZ9AtXdD7xd2dJ8lsqsXukpcw2XIoi32YryzutxlSFpUjmPUp6pJ69N6wZMQw4uWeayI8JxYcs8suxVN4ucWjaD5nfMGsHifqbkUZq5SLCz1ZbfZlM7OIb+ylS0qKCBsFfDv2qRtPo+OZ5xJY9edL8Al6aw8JfMzKJc9LENz3ZbSwI/hNqJWHfU/COUnfcVKWR8DWQ57brresrzBm76g3l+MH7l7pyRIMVp5Dvu8dkK3AJR1JVuTt6dch1+4R8gzrOHsjwHJGcQm3WA9abs6pkuJfiu9wUgjdSVbLSd+h39a9d8zCG3zzzz7P4XnunYi62WWWXb/KrXdtQZAzY8S4vMd39HZD7lDtSZaPGcsbW7Ek+Hzb/tCt1xI2/ukGp39okxEzbSDE47DqZltu95t6EltW6H2nXkAEeu4XuKziRwGaQtYgm1xMPtvv7URLCJ7rCVOrUlITzqVtuSdtyfnXlK4Usln6L6d4Nccmjyn8Vu0aUieuOolUSPJS6yyRzdVBCQ3zb7dAdq895GXNcDofL79VMRyBrmniPP79FGkbiOu9g4SpuKl5cnUyzTxhDTW/7WQ+SEQ3tu/xtKQon1Qv0qLdM8gkaNcPGoOn9muDbWT3vN/1ehS3XQgB1yLHS7IUokbBO63CT6Va1fB7Be4nkaprnJEFhlbrdpCDyrm8qkNPnrtu2lxwDpvuR1G1YThXAIxK1YyDIdQJkLIsakypUyDYDHJQiQ+G0l1wkkKKUNbAbd1b1Jskdjfjme/l981F0clxbhl4c/vkopw67wdI8H1l0VjXdi4Wti1OXyxPx5CXQtBb8KY2Ckn98Jd2/wCtXUVMxcX1EwfTzDsB0znY7qWxa4dyeySS2xDSG2Utl6W24lXiODudgNyFDcVbLWDgDs1ymWqdpixbMLnMFxuSpuN8D7Ljam3G1JTtuClX3ECvbzrg/uE7B9NWscvce25nhkOLFZvHgEIe8NoNOBSN9yhxHMlSd+xHpUhMzW+Z9eawYnnK2Q9OSqrfdKcSd4Df1wcsMBzJnblPQu5qjoLygLk4kfFtv26V6nF/ppjGmWoqYmLWWFYo72G3lx1MJhLfOfdm+/KBv5/iasvO4Q7tL4WY+lIv0VM73yRJXcfd1eGgOy1P7cnNueUK5e/XbeubiO4TrtrZl6LtDvUa2tIsM6z8jrJWSqQ0lsL6EdE8u+3n6isCZuO5OV3fRDCcGQzsPXNRRwza2NaBaNZth2RvllGMWxrIrMHD1cgSmwtTaPXw3ysfR1FRpoRmk3QS8ay5llilDJZ+LQbxKZWfjMmRIeLbA38wkto29RVm9R+CSHqLlGmtwl3RDcTHGYsa6MoaIFzZZS3u0Rv0SpbTZO+/QH615ed8EkvU3iGdyy+XaMrCZC4zk6xhklc3wC4pttSt9gjncBI2O4TtQSRm9zrr4fNZMcgtYaaffYo24XZbvD7rlj9nu+QQ7qdSreF3ZyPMQ8lq9jmfRvyk7cyFus/MoRWwMHcVVnVPgNwy6WSO5p7bLdhWURJLUqHd40VIUw62tK0L2TsTspI3G43G9WghJfTEZEpTa5PInxVNJKUFe3xEA7kDffaq0z2yWcNVYia5l2nRc9KUqurCUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoiUpSiJSlKIlKUoi/9k=" alt="Galeón Consultora Marítima">
@@ -614,42 +619,42 @@
     </section>
 
     <section class="contact-section" id="contacto">
-        <h2 class="section-title">Contáctate con la Red</h2>
+        <h2 class="section-title" data-i18n="contact_title">Contáctate con la Red</h2>
          <form class="contact-form" action="https://formsubmit.co/equipo@aeromarnetwork.com.ar" method="POST"><input type="hidden" name="_subject" value="Nueva consulta desde AEROMAR NETWORK"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://aeromarnetwork.com.ar/index.html#contacto">
             <div class="form-group">
-                <label for="nombre">Nombre completo / Empresa</label>
-                <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez - Naviera X">
+                <label for="nombre" data-i18n="contact_label_nombre">Nombre completo / Empresa</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez - Naviera X" data-i18n-placeholder="contact_ph_nombre">
             </div>
             <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com">
+                <label for="email" data-i18n="contact_label_email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com" data-i18n-placeholder="contact_ph_email">
             </div>
             <div class="form-group">
-                <label for="perfil">Perfil del Solicitante</label>
+                <label for="perfil" data-i18n="contact_label_perfil">Perfil del Solicitante</label>
                 <select id="perfil" name="perfil">
-                    <option value="naviera">Empresa Naviera / Portuaria</option>
-                    <option value="aviacion">Aviación General / RAAC 135</option>
-                    <option value="organismo">Organismo Público</option>
-                    <option value="particular">Particular / Náutica Deportiva</option>
+                    <option value="naviera" data-i18n="contact_opt_naviera">Empresa Naviera / Portuaria</option>
+                    <option value="aviacion" data-i18n="contact_opt_aviacion">Aviación General / RAAC 135</option>
+                    <option value="organismo" data-i18n="contact_opt_organismo">Organismo Público</option>
+                    <option value="particular" data-i18n="contact_opt_particular">Particular / Náutica Deportiva</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="area">Área de Interés</label>
+                <label for="area" data-i18n="contact_label_area">Área de Interés</label>
                 <select id="area" name="area">
-                    <option value="maritima">Asesoría / Certificaciones Marítimas</option>
-                    <option value="aeronautica">Consultoría Aeronáutica / Safety</option>
-                    <option value="sar">Capacitación / SAR App Gestion</option>
-                    <option value="calidad">Servicio Transversal: Gestión de Calidad</option>
-                    <option value="ipa">Servicio Transversal: Automatización IPA</option>
-                    <option value="uas">Servicio Transversal: UAS / RPAS</option>
-                    <option value="higiene">Servicio Transversal: Seguridad e Higiene</option>
+                    <option value="maritima" data-i18n="contact_opt_maritima">Asesoría / Certificaciones Marítimas</option>
+                    <option value="aeronautica" data-i18n="contact_opt_aeronautica">Consultoría Aeronáutica / Safety</option>
+                    <option value="sar" data-i18n="contact_opt_sar">Capacitación / SAR App Gestion</option>
+                    <option value="calidad" data-i18n="contact_opt_calidad">Servicio Transversal: Gestión de Calidad</option>
+                    <option value="ipa" data-i18n="contact_opt_ipa">Servicio Transversal: Automatización IPA</option>
+                    <option value="uas" data-i18n="contact_opt_uas">Servicio Transversal: UAS / RPAS</option>
+                    <option value="higiene" data-i18n="contact_opt_higiene">Servicio Transversal: Seguridad e Higiene</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="mensaje">Consulta o requerimiento</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Detalla las necesidades de tu organización..."></textarea>
+                <label for="mensaje" data-i18n="contact_label_mensaje">Consulta o requerimiento</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Detalla las necesidades de tu organización..." data-i18n-placeholder="contact_ph_mensaje"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer;">Enviar Mensaje</button>
+            <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer;" data-i18n="contact_submit">Enviar Mensaje</button>
         </form>
     </section>
 
@@ -673,33 +678,33 @@
     <div id="modalIntranet" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
         <div style="background:#fff; padding:30px; border-radius:8px; max-width:400px; width:90%; text-align:center; position:relative;">
             <span onclick="cerrarIntranet()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.5rem; font-weight:bold;">&times;</span>
-            <h3 style="color:var(--azul-marino); margin-bottom:15px;"><i class="fa-solid fa-user-shield"></i> Intranet de Referentes</h3>
-            <p style="font-size:0.85rem; margin-bottom:20px; color:#666;">Ingresa tu credencial para acceder a la Política de Transparencia y edición privada.</p>
-            <input type="password" id="passIntranet" placeholder="Clave de acceso..." style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;">
-            <button onclick="validarAccesoIntranet()" class="btn btn-primary" style="width:100%; border:none; cursor:pointer;">Ingresar a Transparencia</button>
+            <h3 style="color:var(--azul-marino); margin-bottom:15px;"><i class="fa-solid fa-user-shield"></i> <span data-i18n="modal_intranet_h">Intranet de Referentes</span></h3>
+            <p style="font-size:0.85rem; margin-bottom:20px; color:#666;" data-i18n="modal_intranet_p">Ingresa tu credencial para acceder a la Política de Transparencia y edición privada.</p>
+            <input type="password" id="passIntranet" placeholder="Clave de acceso..." style="width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;" data-i18n-placeholder="modal_intranet_ph">
+            <button onclick="validarAccesoIntranet()" class="btn btn-primary" style="width:100%; border:none; cursor:pointer;" data-i18n="modal_intranet_btn">Ingresar a Transparencia</button>
         </div>
     </div>
 
-    <a href="https://wa.me/#" class="whatsapp-float" target="_blank" title="Consulta Directa por WhatsApp">
+    <a href="https://wa.me/#" class="whatsapp-float" target="_blank" title="Consulta Directa por WhatsApp" data-i18n-attr="title:whatsapp_title">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <footer>
         <div class="social-container">
-            <h4>Seguinos en nuestras redes</h4>
+            <h4 data-i18n="footer_follow">Seguinos en nuestras redes</h4>
             <div class="social-links">
-                <a href="https://www.linkedin.com/company/aeromar-network/about/?viewAsMember=true" target="_blank" rel="noopener" class="social-btn" title="LinkedIn AEROMAR NETWORK">
+                <a href="https://www.linkedin.com/company/aeromar-network/about/?viewAsMember=true" target="_blank" rel="noopener" class="social-btn" data-i18n-attr="title:footer_linkedin_title" title="LinkedIn AEROMAR NETWORK">
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" title="Instagram AEROMAR NETWORK">
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" data-i18n-attr="title:footer_instagram_title" title="Instagram AEROMAR NETWORK">
                     <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a href="https://www.facebook.com/share/1DUSMsUbsj/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn" title="Facebook AEROMAR NETWORK">
+                <a href="https://www.facebook.com/share/1DUSMsUbsj/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn" data-i18n-attr="title:footer_facebook_title" title="Facebook AEROMAR NETWORK">
                     <i class="fa-brands fa-facebook-f"></i>
                 </a>
             </div>
         </div>
-        <p>&copy; 2026 AEROMAR NETWORK - Red de Profesionales Marítimos y Aeronáuticos. Todos los derechos reservados.</p>
+        <p data-i18n="footer_copy">&copy; 2026 AEROMAR NETWORK - Red de Profesionales Marítimos y Aeronáuticos. Todos los derechos reservados.</p>
     </footer>
 
     <script>
@@ -914,4 +919,364 @@
         window.addEventListener('DOMContentLoaded', loadNews);
     </script>
 </body>
+
+    <script>
+        // ===== Sistema de traducción ES/EN (AEROMAR NETWORK) =====
+        const AEROMAR_I18N = {
+  "es": {
+    "meta_title": "AEROMAR NETWORK - Red de Profesionales Marítimos y Aeronáuticos",
+    "nav_tagline": "Red de Profesionales Marítimos y Aeronáuticos",
+    "nav_servicios": "Servicios",
+    "nav_transversales": "Transversales",
+    "nav_noticias": "Noticias",
+    "nav_novedades": "Novedades",
+    "nav_lared": "La Red",
+    "nav_contacto": "Contacto",
+    "nav_intranet": "Intranet",
+    "hero_title": "Soluciones Integrales y Consultoría Especializada Marítima y Aeronáutica",
+    "hero_desc": "Conectamos talento interdisciplinario de alto prestigio para la toma de decisiones complejas en la industria.",
+    "hero_btn1": "Explorar Servicios",
+    "hero_btn2": "Solicitar Asesoría",
+    "selector_title": "¿A qué sector pertenece tu organización?",
+    "tab_todos": "Todos los servicios",
+    "tab_maritimo": "Sector Marítimo",
+    "tab_aero": "Sector Aeronáutico",
+    "svc_title": "Nuestros Servicios Especializados",
+    "svc1_h": "Protección e Infraestructura Marítima",
+    "svc1_p": "Cumplimiento integral de normativas internacionales ISPS e infraestructura naval.",
+    "svc1_li1": "Planes de protección e ISPS para buques e instalaciones",
+    "svc1_li2": "Auditorías, capacitaciones y evaluaciones de riesgo",
+    "svc1_li3": "Certificaciones internacionales náuticas y portuarias",
+    "svc1_li4": "Trámites y gestiones técnicas en Náutica Deportiva",
+    "svc2_h": "Pericias y Emergencias Marítimas",
+    "svc2_p": "Gestión técnica de siniestros y respuesta ante emergencias marítimas.",
+    "svc2_li1": "Investigación de Siniestros Navales y Pericias",
+    "svc2_li2": "Capacitación especializada en Operaciones SAR",
+    "svc2_li3": "Implementación de herramientas tecnológicas navales",
+    "svc2_li4": "Asesoramiento normativo y regulatorio",
+    "svc3_h": "Aeronáutica: Técnica e Infraestructura",
+    "svc3_p": "Consultoría técnica en aeronavegabilidad e infraestructura aeroportuaria.",
+    "svc3_li1": "Realizar auditorías para preparar a un TAR para la habilitación ANAC",
+    "svc3_li2": "Evaluar el estado de aeronavegabilidad de una aeronave (Aviación General)",
+    "svc3_li3": "Analizar factores que intervienen en la valorización de una aeronave",
+    "svc3_li4": "Analizar y adecuar programas de mantenimiento para las necesidades del usuario",
+    "svc3_li5": "Análisis y diseño de LAD. Tramitación ante ANAC",
+    "svc3_li6": "Informe sobre requisitos normativos para habilitación de LAD y Helipuertos",
+    "svc4_h": "Aeronáutica: Operativas, Safety y SAR",
+    "svc4_p": "Gestión de la seguridad, entrenamiento preventivo y respuesta SAR.",
+    "svc4_li1": "Análisis y estudio de mercado para la adquisición de aeronaves por tipo de servicio",
+    "svc4_li2": "Investigación de incidentes para la mejora de la seguridad de la empresa o escuela",
+    "svc4_li3": "Pericias aeronáuticas",
+    "svc4_li4": "Entrenamiento In-Company en gestión de la Seguridad Operacional (Identificación de Peligros, gestión y mitigación de riesgos)",
+    "svc4_li5": "Implementación de la Cultura Justa en la Organización",
+    "svc4_li6": "Servicios de capacitación en operaciones SAR y herramientas (SAR_App)",
+    "svc4_li7": "Primeros Auxilios, Principios médicos en triaje, Comunicación y gestión de crisis",
+    "trans_title": "Servicios Transversales",
+    "trans_sub": "Disciplinas que potencian a todas las áreas de la red, marítimas y aeronáuticas por igual.",
+    "t1_h": "Gestión de Calidad",
+    "t1_p": "Diseño e implementación de sistemas de gestión orientados a la mejora continua y el cumplimiento normativo.",
+    "t1_li1": "Implementación de sistemas de gestión de calidad",
+    "t1_li2": "Auditorías internas y de certificación",
+    "t1_li3": "Documentación y control de procesos",
+    "t1_li4": "Indicadores de desempeño y mejora continua",
+    "t2_h": "Automatización Inteligente de Procesos (IPA)",
+    "t2_p": "Diseño e integración de sistemas donde la IA realiza tareas operativas de forma autónoma.",
+    "t2_li1": "Automatización con Python: reportes de mantenimiento y flota, cargas de datos, procesos administrativos",
+    "t2_li2": "Flujos automatizados con N8N entre sistemas de flotas, buques, aeronaves y áreas administrativas",
+    "t2_li3": "IA aplicada al negocio: chatbots, clasificación documental, asistentes internos",
+    "t2_li4": "Gestión de proyectos end-to-end, del relevamiento a la entrega",
+    "t3_h": "Asesoría Integral en UAS / RPAS",
+    "t3_p": "Acompañamiento integral en el uso profesional de drones: planificación, normativa ANAC, seguridad operacional, capacitación y tecnología.",
+    "t3_li1": "Consultoría normativa (RAAC 100/101/102) y planificación de operaciones",
+    "t3_li2": "Seguridad operacional, gestión de riesgos y capacitación",
+    "t3_li3": "Aplicaciones marítimas, portuarias, SAR e inspección",
+    "t3_link": "Ampliar información",
+    "t4_h": "Seguridad e Higiene Especializada",
+    "t4_p": "Cumplimiento normativo integral en riesgos laborales, medioambientales y de gestión documental.",
+    "t4_li1": "Auditorías de Higiene y Seguridad con elaboración de informes",
+    "t4_li2": "Confeccionamiento de Legajo Técnico",
+    "t4_li3": "Seguimiento de ART: accidentes, RAR, RGRL",
+    "t4_li4": "Estudios en ambientes laborales",
+    "t4_li5": "Capacitaciones sobre Riesgos Laborales",
+    "t4_li6": "Estudios de impacto ambiental",
+    "t4_li7": "Inscripciones y recategorizaciones (Residuos Peligrosos/Patógenos)",
+    "t4_li8": "Habilitaciones, Programas de Seguridad y Mapa de Riesgos",
+    "t4_li9": "Plan de Evacuación y Estudio de Carga de Fuego",
+    "news_red_title": "Novedades y Anuncios de la Red AEROMAR",
+    "news_red_access": "Acceso Referentes (publicar novedad)",
+    "news_red_publish_h": "Publicar Novedad",
+    "news_red_image_label": "Imagen (opcional)",
+    "news_red_publish_btn": "Publicar Novedad",
+    "news_red_default_h": "Consolidación de la Red AEROMAR NETWORK",
+    "news_red_default_tag": "Anuncio Oficial",
+    "news_red_default_p": "Integración estratégica de servicios técnicos y alianzas interdisciplinarias aeronáuticas y marítimas.",
+    "news_sector_title": "Actualidad y Noticias del Sector",
+    "news_search_btn": "Buscar",
+    "news_search_clear": "Ver todas",
+    "news_search_expand": "Ampliar búsqueda en:",
+    "news_google": "Google Noticias",
+    "news_twitter": "X / Twitter",
+    "news_linkedin": "LinkedIn",
+    "news_youtube": "YouTube",
+    "news_results_h": "Resultados de la búsqueda",
+    "news_aero_h": "Noticias Aeronáuticas",
+    "news_aero_loading": "Cargando novedades aeronáuticas...",
+    "news_mar_h": "Noticias Marítimas",
+    "news_mar_loading": "Cargando novedades marítimas...",
+    "sar_badge": "Producto Destacado",
+    "sar_h": "Plataforma y Servicios SAR App Gestion",
+    "sar_p": "Desarrollamos soluciones avanzadas para operaciones de búsqueda y salvamento. Ofrecemos capacitaciones a medida en operaciones SAR, primeros auxilios, triaje médico y gestión de crisis.",
+    "sar_link": "Más información y Acceso",
+    "about_title": "Nuestra Visión y Valores",
+    "about_p": "Ser la red de servicios profesionales marítimos y aeronáuticos de mayor confianza y alcance global, convirtiéndonos en el aliado estratégico indispensable para la toma de decisiones complejas.",
+    "val1_h": "Excelencia Técnica",
+    "val1_p": "Rigor respaldado por la amplia trayectoria de nuestros expertos.",
+    "val2_h": "Compromiso y Seguridad",
+    "val2_p": "Soluciones éticas enfocadas en la seguridad y el éxito del cliente.",
+    "val3_h": "Seriedad e Integridad",
+    "val3_p": "Transparencia, confidencialidad y respeto a la normativa.",
+    "val4_h": "Sinergia Colaborativa",
+    "val4_p": "Trabajo en red multidisciplinario para multiplicar resultados.",
+    "allies_h": "Empresas y Entidades Amigas",
+    "contact_title": "Contáctate con la Red",
+    "contact_label_nombre": "Nombre completo / Empresa",
+    "contact_label_email": "Correo Electrónico",
+    "contact_label_perfil": "Perfil del Solicitante",
+    "contact_opt_naviera": "Empresa Naviera / Portuaria",
+    "contact_opt_aviacion": "Aviación General / RAAC 135",
+    "contact_opt_organismo": "Organismo Público",
+    "contact_opt_particular": "Particular / Náutica Deportiva",
+    "contact_label_area": "Área de Interés",
+    "contact_opt_maritima": "Asesoría / Certificaciones Marítimas",
+    "contact_opt_aeronautica": "Consultoría Aeronáutica / Safety",
+    "contact_opt_sar": "Capacitación / SAR App Gestion",
+    "contact_opt_calidad": "Servicio Transversal: Gestión de Calidad",
+    "contact_opt_ipa": "Servicio Transversal: Automatización IPA",
+    "contact_opt_uas": "Servicio Transversal: UAS / RPAS",
+    "contact_opt_higiene": "Servicio Transversal: Seguridad e Higiene",
+    "contact_label_mensaje": "Consulta o requerimiento",
+    "contact_submit": "Enviar Mensaje",
+    "modal_intranet_h": "Intranet de Referentes",
+    "modal_intranet_p": "Ingresa tu credencial para acceder a la Política de Transparencia y edición privada.",
+    "modal_intranet_btn": "Ingresar a Transparencia",
+    "footer_follow": "Seguinos en nuestras redes",
+    "footer_copy": "&copy; 2026 AEROMAR NETWORK - Red de Profesionales Marítimos y Aeronáuticos. Todos los derechos reservados.",
+    "news_red_title_ph": "Título de la novedad...",
+    "news_red_content_ph": "Detalles o noticias internas de la red...",
+    "news_search_ph": "Buscar por palabra clave: ANAC, buque, hidrovía, drones...",
+    "contact_ph_nombre": "Ej: Juan Pérez - Naviera X",
+    "contact_ph_email": "correo@ejemplo.com",
+    "contact_ph_mensaje": "Detalla las necesidades de tu organización...",
+    "modal_intranet_ph": "Clave de acceso...",
+    "sar_logo_title": "Información y Contenidos SAR App Gestion",
+    "whatsapp_title": "Consulta Directa por WhatsApp",
+    "footer_linkedin_title": "LinkedIn AEROMAR NETWORK",
+    "footer_instagram_title": "Instagram AEROMAR NETWORK",
+    "footer_facebook_title": "Facebook AEROMAR NETWORK",
+    "meta_desc": "Red de consultoría marítima y aeronáutica: SAR, seguridad operacional, ISPS, UAS/RPAS, calidad y automatización."
+  },
+  "en": {
+    "meta_title": "AEROMAR NETWORK - Maritime and Aeronautical Professionals Network",
+    "nav_tagline": "Maritime and Aeronautical Professionals Network",
+    "nav_servicios": "Services",
+    "nav_transversales": "Cross-Sector",
+    "nav_noticias": "News",
+    "nav_novedades": "Updates",
+    "nav_lared": "The Network",
+    "nav_contacto": "Contact",
+    "nav_intranet": "Intranet",
+    "hero_title": "Integrated Solutions and Specialized Maritime and Aeronautical Consulting",
+    "hero_desc": "We connect top-tier interdisciplinary talent for complex decision-making in the industry.",
+    "hero_btn1": "Explore Services",
+    "hero_btn2": "Request Advisory",
+    "selector_title": "Which sector does your organization belong to?",
+    "tab_todos": "All services",
+    "tab_maritimo": "Maritime Sector",
+    "tab_aero": "Aeronautical Sector",
+    "svc_title": "Our Specialized Services",
+    "svc1_h": "Maritime Protection and Infrastructure",
+    "svc1_p": "Full compliance with international ISPS regulations and naval infrastructure.",
+    "svc1_li1": "Protection and ISPS plans for vessels and facilities",
+    "svc1_li2": "Audits, training and risk assessments",
+    "svc1_li3": "International nautical and port certifications",
+    "svc1_li4": "Technical procedures and filings in Recreational Boating",
+    "svc2_h": "Maritime Surveys and Emergencies",
+    "svc2_p": "Technical management of casualties and response to maritime emergencies.",
+    "svc2_li1": "Naval casualty investigation and surveys",
+    "svc2_li2": "Specialized training in SAR operations",
+    "svc2_li3": "Implementation of naval technology tools",
+    "svc2_li4": "Regulatory and legal advisory",
+    "svc3_h": "Aeronautics: Technical and Infrastructure",
+    "svc3_p": "Technical consulting on airworthiness and airport infrastructure.",
+    "svc3_li1": "Conducting audits to prepare a TAR for ANAC certification",
+    "svc3_li2": "Assessing the airworthiness status of an aircraft (General Aviation)",
+    "svc3_li3": "Analyzing factors affecting aircraft valuation",
+    "svc3_li4": "Analyzing and adapting maintenance programs to user needs",
+    "svc3_li5": "LAD analysis and design. Filing with ANAC",
+    "svc3_li6": "Report on regulatory requirements for LAD and heliport certification",
+    "svc4_h": "Aeronautics: Operations, Safety and SAR",
+    "svc4_p": "Safety management, preventive training and SAR response.",
+    "svc4_li1": "Market analysis and research for aircraft acquisition by service type",
+    "svc4_li2": "Incident investigation to improve company or school safety",
+    "svc4_li3": "Aeronautical surveys",
+    "svc4_li4": "In-Company training in Safety Management (hazard identification, risk management and mitigation)",
+    "svc4_li5": "Implementation of a Just Culture within the organization",
+    "svc4_li6": "SAR operations training services and tools (SAR_App)",
+    "svc4_li7": "First Aid, medical triage principles, communication and crisis management",
+    "trans_title": "Cross-Sector Services",
+    "trans_sub": "Disciplines that strengthen every area of the network, maritime and aeronautical alike.",
+    "t1_h": "Quality Management",
+    "t1_p": "Design and implementation of management systems geared toward continuous improvement and regulatory compliance.",
+    "t1_li1": "Implementation of quality management systems",
+    "t1_li2": "Internal and certification audits",
+    "t1_li3": "Process documentation and control",
+    "t1_li4": "Performance indicators and continuous improvement",
+    "t2_h": "Intelligent Process Automation (IPA)",
+    "t2_p": "Design and integration of systems where AI performs operational tasks autonomously.",
+    "t2_li1": "Python automation: fleet and maintenance reports, data loading, administrative processes",
+    "t2_li2": "Automated N8N workflows between fleet, vessel, aircraft and administrative systems",
+    "t2_li3": "Business-applied AI: chatbots, document classification, internal assistants",
+    "t2_li4": "End-to-end project management, from assessment to delivery",
+    "t3_h": "Comprehensive UAS / RPAS Advisory",
+    "t3_p": "Comprehensive support for professional drone use: planning, ANAC regulations, operational safety, training and technology.",
+    "t3_li1": "Regulatory consulting (RAAC 100/101/102) and operations planning",
+    "t3_li2": "Operational safety, risk management and training",
+    "t3_li3": "Maritime, port, SAR and inspection applications",
+    "t3_link": "Learn more",
+    "t4_h": "Specialized Health and Safety",
+    "t4_p": "Full regulatory compliance in occupational, environmental and documentary risk management.",
+    "t4_li1": "Health and Safety audits with report preparation",
+    "t4_li2": "Preparation of Technical Files",
+    "t4_li3": "Workers' comp (ART) follow-up: accidents, RAR, RGRL",
+    "t4_li4": "Workplace environment studies",
+    "t4_li5": "Occupational risk training",
+    "t4_li6": "Environmental impact studies",
+    "t4_li7": "Registrations and recategorizations (hazardous/pathogenic waste)",
+    "t4_li8": "Permits, safety programs and risk mapping",
+    "t4_li9": "Evacuation plans and fire load studies",
+    "news_red_title": "AEROMAR Network Updates and Announcements",
+    "news_red_access": "Referrer Access (post an update)",
+    "news_red_publish_h": "Post an Update",
+    "news_red_image_label": "Image (optional)",
+    "news_red_publish_btn": "Post Update",
+    "news_red_default_h": "Consolidation of the AEROMAR NETWORK",
+    "news_red_default_tag": "Official Announcement",
+    "news_red_default_p": "Strategic integration of technical services and interdisciplinary aeronautical and maritime partnerships.",
+    "news_sector_title": "Industry News and Updates",
+    "news_search_btn": "Search",
+    "news_search_clear": "View all",
+    "news_search_expand": "Expand search on:",
+    "news_google": "Google News",
+    "news_twitter": "X / Twitter",
+    "news_linkedin": "LinkedIn",
+    "news_youtube": "YouTube",
+    "news_results_h": "Search results",
+    "news_aero_h": "Aeronautical News",
+    "news_aero_loading": "Loading aeronautical updates...",
+    "news_mar_h": "Maritime News",
+    "news_mar_loading": "Loading maritime updates...",
+    "sar_badge": "Featured Product",
+    "sar_h": "SAR App Gestion Platform and Services",
+    "sar_p": "We develop advanced solutions for search and rescue operations. We offer tailored training in SAR operations, first aid, medical triage and crisis management.",
+    "sar_link": "More information and Access",
+    "about_title": "Our Vision and Values",
+    "about_p": "To be the most trusted maritime and aeronautical professional services network with the widest global reach, becoming the indispensable strategic partner for complex decision-making.",
+    "val1_h": "Technical Excellence",
+    "val1_p": "Rigor backed by our experts' extensive track record.",
+    "val2_h": "Commitment and Safety",
+    "val2_p": "Ethical solutions focused on client safety and success.",
+    "val3_h": "Reliability and Integrity",
+    "val3_p": "Transparency, confidentiality and regulatory compliance.",
+    "val4_h": "Collaborative Synergy",
+    "val4_p": "Multidisciplinary network collaboration to multiply results.",
+    "allies_h": "Partner Companies and Organizations",
+    "contact_title": "Get in Touch with the Network",
+    "contact_label_nombre": "Full Name / Company",
+    "contact_label_email": "Email Address",
+    "contact_label_perfil": "Applicant Profile",
+    "contact_opt_naviera": "Shipping / Port Company",
+    "contact_opt_aviacion": "General Aviation / RAAC 135",
+    "contact_opt_organismo": "Public Agency",
+    "contact_opt_particular": "Individual / Recreational Boating",
+    "contact_label_area": "Area of Interest",
+    "contact_opt_maritima": "Maritime Advisory / Certifications",
+    "contact_opt_aeronautica": "Aeronautical Consulting / Safety",
+    "contact_opt_sar": "Training / SAR App Gestion",
+    "contact_opt_calidad": "Cross-Sector Service: Quality Management",
+    "contact_opt_ipa": "Cross-Sector Service: IPA Automation",
+    "contact_opt_uas": "Cross-Sector Service: UAS / RPAS",
+    "contact_opt_higiene": "Cross-Sector Service: Health and Safety",
+    "contact_label_mensaje": "Inquiry or requirement",
+    "contact_submit": "Send Message",
+    "modal_intranet_h": "Referrer Intranet",
+    "modal_intranet_p": "Enter your credential to access the Transparency Policy and private editing.",
+    "modal_intranet_btn": "Enter Transparency",
+    "footer_follow": "Follow us on our social networks",
+    "footer_copy": "&copy; 2026 AEROMAR NETWORK - Maritime and Aeronautical Professionals Network. All rights reserved.",
+    "news_red_title_ph": "Update title...",
+    "news_red_content_ph": "Details or internal network news...",
+    "news_search_ph": "Search by keyword: ANAC, vessel, waterway, drones...",
+    "contact_ph_nombre": "E.g.: John Smith - Shipping Co.",
+    "contact_ph_email": "email@example.com",
+    "contact_ph_mensaje": "Describe your organization's needs...",
+    "modal_intranet_ph": "Access password...",
+    "sar_logo_title": "SAR App Gestion Information and Content",
+    "whatsapp_title": "Direct WhatsApp Inquiry",
+    "footer_linkedin_title": "AEROMAR NETWORK LinkedIn",
+    "footer_instagram_title": "AEROMAR NETWORK Instagram",
+    "footer_facebook_title": "AEROMAR NETWORK Facebook",
+    "meta_desc": "Maritime and aeronautical consulting network: SAR, operational safety, ISPS, UAS/RPAS, quality and automation."
+  }
+};
+
+        function getIdiomaActual() {
+            const params = new URLSearchParams(window.location.search);
+            const fromUrl = params.get('lang');
+            if (fromUrl === 'en' || fromUrl === 'es') return fromUrl;
+            const saved = localStorage.getItem('aeromar_lang');
+            if (saved === 'en' || saved === 'es') return saved;
+            return 'es';
+        }
+
+        function aplicarIdioma(lang) {
+            const dict = AEROMAR_I18N[lang] || AEROMAR_I18N.es;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) el.innerHTML = dict[key];
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+            });
+
+            document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+                const spec = el.getAttribute('data-i18n-attr'); // "attr:key"
+                const [attr, key] = spec.split(':');
+                if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+            });
+
+            document.documentElement.lang = lang;
+            const labelEl = document.getElementById('langToggleLabel');
+            if (labelEl) labelEl.textContent = (lang === 'es') ? 'EN' : 'ES';
+
+            localStorage.setItem('aeromar_lang', lang);
+
+            const params = new URLSearchParams(window.location.search);
+            params.set('lang', lang);
+            const newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
+            window.history.replaceState({}, '', newUrl);
+        }
+
+        function toggleIdioma() {
+            const actual = document.documentElement.lang === 'en' ? 'en' : 'es';
+            aplicarIdioma(actual === 'es' ? 'en' : 'es');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            aplicarIdioma(getIdiomaActual());
+        });
+    </script>
+
 </html>
