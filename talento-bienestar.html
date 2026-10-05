@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="meta_title">Acompañamiento Estratégico del Talento, la Salud y el Bienestar Humano - AEROMAR NETWORK</title>
+<meta name="description" content="Selección de personal, coaching, salud aeronáutica, psicoterapia y capacitación: acompañamiento integral al talento humano, en alianza con ACAPA." data-i18n-attr="content:meta_desc" id="metaDescription">
+<link rel="alternate" hreflang="es" href="https://aeromarnetwork.com.ar/talento-bienestar.html">
+<link rel="alternate" hreflang="en" href="https://aeromarnetwork.com.ar/talento-bienestar.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://aeromarnetwork.com.ar/talento-bienestar.html">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root {
+        --azul-marino: #0d233a;
+        --azul-oceano: #1a4f7c;
+        --violeta: #4b306b;
+        --naranja-sar: #f36c21;
+        --ambar: #ffaa00;
+        --blanco: #ffffff;
+        --gris-claro: #f4f7f9;
+        --gris-texto: #333333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    body { color: var(--gris-texto); background-color: var(--blanco); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+    header { background-color: var(--azul-marino); color: var(--blanco); padding: 14px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .back-link { color: var(--ambar); text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+    .back-link:hover { color: var(--blanco); }
+    header .brand { font-size: 1rem; font-weight: 600; opacity: 0.9; }
+
+    .hero-tb {
+        background: linear-gradient(rgba(13, 35, 58, 0.88), rgba(75, 48, 107, 0.85)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80') center/cover;
+        color: var(--blanco); text-align: center; padding: 70px 20px;
+    }
+    .hero-tb h1 { font-size: 1.9rem; margin-bottom: 12px; max-width: 900px; margin-left:auto; margin-right:auto; }
+    .hero-tb p { max-width: 800px; margin: 0 auto; font-size: 1.05rem; color: var(--gris-claro); }
+    .badge-sar { background-color: var(--naranja-sar); color: var(--blanco); padding: 4px 14px; border-radius: 12px; font-size: 0.78rem; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 14px; }
+
+    main { max-width: 950px; margin: 0 auto; padding: 45px 20px 70px; }
+    section.block { margin-bottom: 45px; }
+    section.block h2 { color: var(--azul-marino); font-size: 1.4rem; margin-bottom: 14px; border-left: 4px solid var(--naranja-sar); padding-left: 12px; }
+    section.block p { font-size: 0.95rem; color: #444; margin-bottom: 10px; }
+
+    .group-banner {
+        background-color: var(--azul-marino);
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        padding: 22px 24px;
+        margin: 28px 0 16px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .group-banner:first-of-type { margin-top: 6px; }
+    .group-banner i { font-size: 1.5rem; color: var(--ambar); flex-shrink: 0; }
+    .group-banner h3 { font-size: 1.1rem; margin: 0; }
+
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 10px; }
+    .svc-item { background: var(--gris-claro); border-radius: 8px; padding: 18px 20px; border-top: 3px solid var(--azul-oceano); display: flex; gap: 14px; align-items: flex-start; }
+    .svc-item .svc-icon { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--azul-oceano), var(--violeta)); color: var(--blanco); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .svc-item h3 { color: var(--azul-marino); font-size: 0.98rem; margin-bottom: 6px; }
+    .svc-item p { font-size: 0.85rem; color: #555; margin: 0; }
+
+    .cta-contacto { text-align: center; padding: 40px 20px; background: var(--gris-claro); }
+    .btn-cta { background-color: var(--naranja-sar); color: var(--blanco); padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 12px; }
+
+    footer { background-color: var(--azul-marino); color: var(--blanco); text-align: center; padding: 25px 20px; border-top: 3px solid var(--naranja-sar); font-size: 0.85rem; }
+
+    @media (max-width: 700px) {
+        .svc-grid { grid-template-columns: 1fr; }
+        .group-banner { flex-direction: column; text-align: center; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_link">Volver a AEROMAR NETWORK</span></a>
+        <button type="button" id="btnLangToggle" onclick="toggleIdioma()" class="back-link" style="cursor:pointer; background:none; border:none;" title="Switch language / Cambiar idioma"><i class="fa-solid fa-globe"></i> <span id="langToggleLabel">EN</span></button>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span class="brand">AEROMAR NETWORK × ACAPA</span>
+        </div>
+    </div>
+</header>
+
+<section class="hero-tb">
+    <span class="badge-sar" data-i18n="badge">Servicio Transversal</span>
+    <h1 data-i18n="hero_h1">Acompañamiento Estratégico del Talento, la Salud y el Bienestar Humano</h1>
+    <p data-i18n="hero_p">En alianza con ACAPA, acompañamos a personas y organizaciones del sector aeronáutico y marítimo en selección de talento, salud psicofísica, coaching y bienestar integral.</p>
+</section>
+
+<main>
+
+    <section class="block">
+        <h2 data-i18n="s1_h">Concepto del servicio</h2>
+        <p data-i18n="s1_p1">Unidad especializada en el acompañamiento integral del talento humano, la salud psicofísica y el bienestar de personas y organizaciones del ámbito aeronáutico y marítimo, desarrollada en alianza con ACAPA.</p>
+        <p data-i18n="s1_p2">Combina selección y desarrollo de talento, salud aeronáutica, psicoterapia, coaching y capacitación, acompañando a cada persona y organización en los distintos momentos de su carrera y su bienestar.</p>
+    </section>
+
+    <section class="block">
+        <h2 data-i18n="s2_h">Nuestros servicios</h2>
+        <div class="group-banner" style="background-image: linear-gradient(rgba(13,35,58,0.55), rgba(13,35,58,0.75)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=75');">
+            <i class="fa-solid fa-people-group"></i>
+            <h3 data-i18n="g1_h">Selección y Desarrollo de Talento</h3>
+        </div>
+        <div class="svc-grid">
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-user-check"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc1_h">Selección de personal y customización de perfiles</h3>
+                        <p data-i18n="svc1_p">Agilizá tus procesos de selección. Generá perfiles compatibles con los roles que deseas cubrir. Optimizá el proceso para crear equipos sólidos y de baja rotación.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc3_h">Perfil conductual</h3>
+                        <p data-i18n="svc3_p">A través de una evaluación psicométrica online, en pocos minutos, obtendrás un reporte que detalla tus fortalezas y áreas de oportunidad, tu estilo de comunicación, tus motivaciones, eventuales debilidades y cómo te comportás bajo presión, entre otra información sumamente útil para el desarrollo de tu carrera.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-people-arrows"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc4_h">Desarrollo de talentos</h3>
+                        <p data-i18n="svc4_p">¿Estás alcanzando los resultados que te propones? ¿Conformás equipos eficientes y acciones en concordancia? ¿Tus relaciones interpersonales y de equipo son las que esperás? Nuestra propuesta: Coaching Individual, de Equipos y Organizacional para resultados esperados y sin precedentes.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc14_h">Coaching para ingresos o ascensos</h3>
+                        <p data-i18n="svc14_p">Un espacio de acompañamiento y preparación profesional destinado a quienes buscan ingresar, desarrollarse o avanzar en su carrera dentro del sector aeronáutico. Se trabajan herramientas para potenciar competencias, comunicación, liderazgo y toma de decisiones, así como estrategias para afrontar entrevistas, evaluaciones y procesos de selección o promoción.</p>
+                    </div>
+                </div>
+        </div>
+
+        <div class="group-banner" style="background-image: linear-gradient(rgba(13,35,58,0.55), rgba(13,35,58,0.75)), url('https://images.unsplash.com/photo-1540339832862-474599807836?auto=format&fit=crop&w=1200&q=75');">
+            <i class="fa-solid fa-plane-circle-check"></i>
+            <h3 data-i18n="g2_h">Salud Aeronáutica y Aptitud Psicofísica</h3>
+        </div>
+        <div class="svc-grid">
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-plane-circle-check"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc2_h">Tu vuelo empieza hoy</h3>
+                        <p data-i18n="svc2_p">Te acompañamos de manera integral e interdisciplinaria para que venzas el miedo a volar.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc5_h">Consultas Médicas Aeronáuticas</h3>
+                        <p data-i18n="svc5_p">Si tenés dudas sobre tu Certificación Médica Aeronáutica, sobre tu estado de salud o efecto de algún medicamento respecto a la seguridad de vuelo... Si necesitás asesorarte sobre tu aptitud psicofísica para determinada operación aérea, consultanos. Estamos para asesorarte y ayudarte.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-compass"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc6_h">Orientación Vocacional</h3>
+                        <p data-i18n="svc6_p">Conocé tus capacidades y habilidades y podrás alcanzar tus objetivos más fácilmente. ¡Diseñá tu futuro con herramientas!</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-file-medical"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc7_h">Informe psiquiátrico integral para solicitud de dispensa de la CMA</h3>
+                        <p data-i18n="svc7_p">Si resultaras calificado no apto y solicitás reconsideración al Comité de Aptitud y Dispensas, en ACAPA podemos ayudarte.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc11_h">Apoyo a Equipos de Aeroclubes frente a Eventos Críticos</h3>
+                        <p data-i18n="svc11_p">Si en tu aeroclub acaba de ocurrir un incidente o accidente, no esperen a que pase el tiempo para que todas las emociones relacionadas al evento desaparezcan, ya que esta es una de las causas principales de los Síndromes Secundarios de Desadaptación al Vuelo. Es natural que todos se sientan afectados, tanto instructores, pilotos, como aspirantes; pero depende de una intervención temprana el éxito de la gestión del impacto. Por eso, te proponemos acompañarlos en el proceso, a través de técnicas de defusing y debriefing que mitigarán las secuelas a mediano y largo plazo, fortaleciendo así la seguridad operacional.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-heart-circle-check"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc13_h">Abordaje del Síndrome de Desadaptación Secundaria al Vuelo</h3>
+                        <p data-i18n="svc13_p">Si sentís que la actividad aeronáutica te afecta en lo psicológico, en tu organismo o en tus relaciones interpersonales, te invitamos a que hablemos. Los Síndromes Secundarios de Desadaptación en la vida aeronáutica requieren de un espacio idóneo y ameno para tratarlos. Estamos para asesorarte y ayudarte.</p>
+                    </div>
+                </div>
+        </div>
+
+        <div class="group-banner" style="background-image: linear-gradient(rgba(13,35,58,0.55), rgba(13,35,58,0.75)), url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=75');">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h3 data-i18n="g3_h">Acompañamiento Psicológico y Bienestar</h3>
+        </div>
+        <div class="svc-grid">
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc8_h">Psicoterapia</h3>
+                        <p data-i18n="svc8_p">El área clínica ofrece un espacio de escucha y acompañamiento. Considerando la importancia capital que tienen la salud mental y el bienestar de las personas, tanto en su ámbito personal como laboral, buscamos terminar con tabúes y estigmas y generar un ambiente de confianza y apertura para trabajar sobre dichas cuestiones. Desde una perspectiva somato-psicológica brindaremos herramientas para el reconocimiento de los aspectos emocionales que afectan tu vida personal y laboral, y así gestionar dichas emociones y lograr un desarrollo más pleno y saludable.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-door-open"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc12_h">Apoyo Emocional frente al Retiro</h3>
+                        <p data-i18n="svc12_p">El programa brinda herramientas para planificar y transitar el proceso de retiro, abordando aspectos personales, emocionales, sociales y económicos. A través de espacios de reflexión y orientación, buscamos favorecer una transición saludable y planificada hacia una nueva etapa de vida, promoviendo nuevos proyectos, intereses y oportunidades.</p>
+                    </div>
+                </div>
+        </div>
+
+        <div class="group-banner" style="background-image: linear-gradient(rgba(13,35,58,0.55), rgba(13,35,58,0.75)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=75');">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <h3 data-i18n="g4_h">Capacitación y Diagnóstico Organizacional</h3>
+        </div>
+        <div class="svc-grid">
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc9_h">Diagnósticos organizacionales para la detección de necesidades e implementación de procesos</h3>
+                        <p data-i18n="svc9_p">Conocé la situación real de tu organización y descubrí problemas, necesidades y áreas de oportunidad a través de nuestro diagnóstico. Transformá tu organización mediante la implementación de nuevos procesos o la mejora de los ya existentes.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-language"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc10_h">Cursos de inglés para pilotos y tripulantes de cabina / Inglés OACI</h3>
+                        <p data-i18n="svc10_p">Si sos piloto o tripulante de cabina, sabrás que el inglés es fundamental en el desarrollo de tu carrera. Por eso, te ofrecemos cursos que pueden reforzar tu inglés y prepararte para nuevas oportunidades.</p>
+                    </div>
+                </div>
+
+                <div class="svc-item">
+                    <div class="svc-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <div class="svc-body">
+                        <h3 data-i18n="svc15_h">Clases particulares de Psicología aeronáutica y/o de Factores Humanos</h3>
+                        <p data-i18n="svc15_p">Clases personalizadas para comprender y aplicar conceptos de Psicología Aeronáutica y/o Factores Humanos a situaciones reales de la actividad aérea. Adaptamos los contenidos a tus necesidades, objetivos y nivel de formación.</p>
+                    </div>
+                </div>
+        </div>
+
+    </section>
+
+</main>
+
+<div class="cta-contacto">
+    <h3 style="color: var(--azul-marino);" data-i18n="cta_h">¿Querés conocer más sobre estos servicios?</h3>
+    <a href="index.html#contacto" class="btn-cta"><span data-i18n="cta_btn">Contactar a AEROMAR NETWORK</span> <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<footer data-i18n="footer_copy">
+    &copy; 2026 AEROMAR NETWORK — Red de Profesionales Marítimos y Aeronáuticos. En alianza con ACAPA.
+</footer>
+
+    <script>
+        // ===== Sistema de traducción ES/EN (Talento y Bienestar info page) =====
+        const AEROMAR_I18N = {
+  "es": {
+    "meta_title": "Acompañamiento Estratégico del Talento, la Salud y el Bienestar Humano - AEROMAR NETWORK",
+    "meta_desc": "Selección de personal, coaching, salud aeronáutica, psicoterapia y capacitación: acompañamiento integral al talento humano, en alianza con ACAPA.",
+    "back_link": "Volver a AEROMAR NETWORK",
+    "badge": "Servicio Transversal",
+    "hero_h1": "Acompañamiento Estratégico del Talento, la Salud y el Bienestar Humano",
+    "hero_p": "En alianza con ACAPA, acompañamos a personas y organizaciones del sector aeronáutico y marítimo en selección de talento, salud psicofísica, coaching y bienestar integral.",
+    "s1_h": "Concepto del servicio",
+    "s1_p1": "Unidad especializada en el acompañamiento integral del talento humano, la salud psicofísica y el bienestar de personas y organizaciones del ámbito aeronáutico y marítimo, desarrollada en alianza con ACAPA.",
+    "s1_p2": "Combina selección y desarrollo de talento, salud aeronáutica, psicoterapia, coaching y capacitación, acompañando a cada persona y organización en los distintos momentos de su carrera y su bienestar.",
+    "s2_h": "Nuestros servicios",
+    "cta_h": "¿Querés conocer más sobre estos servicios?",
+    "cta_btn": "Contactar a AEROMAR NETWORK",
+    "footer_copy": "&copy; 2026 AEROMAR NETWORK — Red de Profesionales Marítimos y Aeronáuticos. En alianza con ACAPA.",
+    "svc1_h": "Selección de personal y customización de perfiles",
+    "svc1_p": "Agilizá tus procesos de selección. Generá perfiles compatibles con los roles que deseas cubrir. Optimizá el proceso para crear equipos sólidos y de baja rotación.",
+    "svc2_h": "Tu vuelo empieza hoy",
+    "svc2_p": "Te acompañamos de manera integral e interdisciplinaria para que venzas el miedo a volar.",
+    "svc3_h": "Perfil conductual",
+    "svc3_p": "A través de una evaluación psicométrica online, en pocos minutos, obtendrás un reporte que detalla tus fortalezas y áreas de oportunidad, tu estilo de comunicación, tus motivaciones, eventuales debilidades y cómo te comportás bajo presión, entre otra información sumamente útil para el desarrollo de tu carrera.",
+    "svc4_h": "Desarrollo de talentos",
+    "svc4_p": "¿Estás alcanzando los resultados que te propones? ¿Conformás equipos eficientes y acciones en concordancia? ¿Tus relaciones interpersonales y de equipo son las que esperás? Nuestra propuesta: Coaching Individual, de Equipos y Organizacional para resultados esperados y sin precedentes.",
+    "svc5_h": "Consultas Médicas Aeronáuticas",
+    "svc5_p": "Si tenés dudas sobre tu Certificación Médica Aeronáutica, sobre tu estado de salud o efecto de algún medicamento respecto a la seguridad de vuelo... Si necesitás asesorarte sobre tu aptitud psicofísica para determinada operación aérea, consultanos. Estamos para asesorarte y ayudarte.",
+    "svc6_h": "Orientación Vocacional",
+    "svc6_p": "Conocé tus capacidades y habilidades y podrás alcanzar tus objetivos más fácilmente. ¡Diseñá tu futuro con herramientas!",
+    "svc7_h": "Informe psiquiátrico integral para solicitud de dispensa de la CMA",
+    "svc7_p": "Si resultaras calificado no apto y solicitás reconsideración al Comité de Aptitud y Dispensas, en ACAPA podemos ayudarte.",
+    "svc8_h": "Psicoterapia",
+    "svc8_p": "El área clínica ofrece un espacio de escucha y acompañamiento. Considerando la importancia capital que tienen la salud mental y el bienestar de las personas, tanto en su ámbito personal como laboral, buscamos terminar con tabúes y estigmas y generar un ambiente de confianza y apertura para trabajar sobre dichas cuestiones. Desde una perspectiva somato-psicológica brindaremos herramientas para el reconocimiento de los aspectos emocionales que afectan tu vida personal y laboral, y así gestionar dichas emociones y lograr un desarrollo más pleno y saludable.",
+    "svc9_h": "Diagnósticos organizacionales para la detección de necesidades e implementación de procesos",
+    "svc9_p": "Conocé la situación real de tu organización y descubrí problemas, necesidades y áreas de oportunidad a través de nuestro diagnóstico. Transformá tu organización mediante la implementación de nuevos procesos o la mejora de los ya existentes.",
+    "svc10_h": "Cursos de inglés para pilotos y tripulantes de cabina / Inglés OACI",
+    "svc10_p": "Si sos piloto o tripulante de cabina, sabrás que el inglés es fundamental en el desarrollo de tu carrera. Por eso, te ofrecemos cursos que pueden reforzar tu inglés y prepararte para nuevas oportunidades.",
+    "svc11_h": "Apoyo a Equipos de Aeroclubes frente a Eventos Críticos",
+    "svc11_p": "Si en tu aeroclub acaba de ocurrir un incidente o accidente, no esperen a que pase el tiempo para que todas las emociones relacionadas al evento desaparezcan, ya que esta es una de las causas principales de los Síndromes Secundarios de Desadaptación al Vuelo. Es natural que todos se sientan afectados, tanto instructores, pilotos, como aspirantes; pero depende de una intervención temprana el éxito de la gestión del impacto. Por eso, te proponemos acompañarlos en el proceso, a través de técnicas de defusing y debriefing que mitigarán las secuelas a mediano y largo plazo, fortaleciendo así la seguridad operacional.",
+    "svc12_h": "Apoyo Emocional frente al Retiro",
+    "svc12_p": "El programa brinda herramientas para planificar y transitar el proceso de retiro, abordando aspectos personales, emocionales, sociales y económicos. A través de espacios de reflexión y orientación, buscamos favorecer una transición saludable y planificada hacia una nueva etapa de vida, promoviendo nuevos proyectos, intereses y oportunidades.",
+    "svc13_h": "Abordaje del Síndrome de Desadaptación Secundaria al Vuelo",
+    "svc13_p": "Si sentís que la actividad aeronáutica te afecta en lo psicológico, en tu organismo o en tus relaciones interpersonales, te invitamos a que hablemos. Los Síndromes Secundarios de Desadaptación en la vida aeronáutica requieren de un espacio idóneo y ameno para tratarlos. Estamos para asesorarte y ayudarte.",
+    "svc14_h": "Coaching para ingresos o ascensos",
+    "svc14_p": "Un espacio de acompañamiento y preparación profesional destinado a quienes buscan ingresar, desarrollarse o avanzar en su carrera dentro del sector aeronáutico. Se trabajan herramientas para potenciar competencias, comunicación, liderazgo y toma de decisiones, así como estrategias para afrontar entrevistas, evaluaciones y procesos de selección o promoción.",
+    "svc15_h": "Clases particulares de Psicología aeronáutica y/o de Factores Humanos",
+    "svc15_p": "Clases personalizadas para comprender y aplicar conceptos de Psicología Aeronáutica y/o Factores Humanos a situaciones reales de la actividad aérea. Adaptamos los contenidos a tus necesidades, objetivos y nivel de formación.",
+    "g1_h": "Selección y Desarrollo de Talento",
+    "g2_h": "Salud Aeronáutica y Aptitud Psicofísica",
+    "g3_h": "Acompañamiento Psicológico y Bienestar",
+    "g4_h": "Capacitación y Diagnóstico Organizacional"
+  },
+  "en": {
+    "meta_title": "Strategic Talent, Health and Human Wellbeing Support - AEROMAR NETWORK",
+    "meta_desc": "Personnel selection, coaching, aeronautical health, psychotherapy and training: comprehensive human talent support, in partnership with ACAPA.",
+    "back_link": "Back to AEROMAR NETWORK",
+    "badge": "Cross-Sector Service",
+    "hero_h1": "Strategic Talent, Health and Human Wellbeing Support",
+    "hero_p": "In partnership with ACAPA, we support people and organizations in the aeronautical and maritime sector on talent selection, psychophysical health, coaching and comprehensive wellbeing.",
+    "s1_h": "Service Concept",
+    "s1_p1": "A specialized unit for comprehensive support of human talent, psychophysical health and wellbeing for people and organizations in the aeronautical and maritime field, developed in partnership with ACAPA.",
+    "s1_p2": "It combines talent selection and development, aeronautical health, psychotherapy, coaching and training, supporting each person and organization through the different stages of their career and wellbeing.",
+    "s2_h": "Our Services",
+    "cta_h": "Want to learn more about these services?",
+    "cta_btn": "Contact AEROMAR NETWORK",
+    "footer_copy": "&copy; 2026 AEROMAR NETWORK — Maritime and Aeronautical Professionals Network. In partnership with ACAPA.",
+    "svc1_p": "Speed up your selection processes. Generate profiles compatible with the roles you need to fill. Optimize the process to build solid, low-turnover teams.",
+    "svc2_p": "We provide comprehensive, interdisciplinary support to help you overcome the fear of flying.",
+    "svc3_p": "Through an online psychometric assessment, in just a few minutes you'll get a report detailing your strengths and areas for improvement, your communication style, your motivations, potential weaknesses and how you behave under pressure, among other information highly useful for your career development.",
+    "svc4_p": "Are you achieving the results you set out to? Do you build efficient teams with aligned actions? Are your interpersonal and team relationships what you expect? Our proposal: Individual, Team and Organizational Coaching for expected and unprecedented results.",
+    "svc5_p": "If you have questions about your Aeronautical Medical Certification, your health status, or the effect of a medication on flight safety... If you need advice on your psychophysical fitness for a given air operation, consult us. We're here to advise and help you.",
+    "svc6_p": "Get to know your abilities and skills and you'll reach your goals more easily. Design your future with the right tools!",
+    "svc7_p": "If you are found unfit and request reconsideration from the Fitness and Waiver Committee, at ACAPA we can help you.",
+    "svc8_p": "Our clinical area offers a space for listening and support. Given the central importance of mental health and wellbeing, both personally and professionally, we seek to end taboos and stigmas and create an environment of trust and openness to work on these issues. From a somato-psychological perspective, we provide tools to recognize the emotional aspects affecting your personal and work life, so you can manage those emotions and achieve fuller, healthier development.",
+    "svc9_p": "Get a real picture of your organization and uncover problems, needs and areas of opportunity through our diagnostic process. Transform your organization by implementing new processes or improving existing ones.",
+    "svc10_p": "If you're a pilot or cabin crew member, you know English is essential for your career development. That's why we offer courses that can strengthen your English and prepare you for new opportunities.",
+    "svc11_p": "If an incident or accident has just occurred at your aeroclub, don't wait for time to pass for the emotions tied to the event to fade, since that is one of the main causes of Secondary Flight Maladjustment Syndromes. It's natural for everyone to be affected — instructors, pilots and students alike — but successful impact management depends on early intervention. That's why we propose supporting your team through defusing and debriefing techniques that will mitigate medium- and long-term effects, strengthening operational safety.",
+    "svc12_p": "This program provides tools to plan and navigate the retirement process, addressing personal, emotional, social and financial aspects. Through spaces for reflection and guidance, we aim to foster a healthy, planned transition into a new stage of life, encouraging new projects, interests and opportunities.",
+    "svc13_p": "If you feel that aeronautical activity is affecting you psychologically, physically, or in your interpersonal relationships, we invite you to talk with us. Secondary Maladjustment Syndromes in aeronautical life require a suitable, supportive space to address them. We're here to advise and help you.",
+    "svc14_p": "A space for professional support and preparation for those seeking to enter, develop or advance their career in the aeronautical sector. We work on tools to strengthen competencies, communication, leadership and decision-making, as well as strategies for facing interviews, assessments and selection or promotion processes.",
+    "svc15_p": "Personalized classes to understand and apply concepts of Aeronautical Psychology and/or Human Factors to real-world aviation situations. We tailor the content to your needs, goals and level of training.",
+    "svc1_h": "Personnel Selection and Profile Customization",
+    "svc2_h": "Your Flight Starts Today",
+    "svc3_h": "Behavioral Profile",
+    "svc4_h": "Talent Development",
+    "svc5_h": "Aeronautical Medical Consultations",
+    "svc6_h": "Vocational Guidance",
+    "svc7_h": "Comprehensive Psychiatric Report for CMA Waiver Requests",
+    "svc8_h": "Psychotherapy",
+    "svc9_h": "Organizational Diagnostics for Needs Detection and Process Implementation",
+    "svc10_h": "English Courses for Pilots and Cabin Crew / ICAO English",
+    "svc11_h": "Support for Aeroclub Teams Facing Critical Events",
+    "svc12_h": "Emotional Support for Retirement",
+    "svc13_h": "Addressing Secondary Flight Maladjustment Syndrome",
+    "svc14_h": "Coaching for New Roles or Promotions",
+    "svc15_h": "Private Lessons in Aeronautical Psychology and/or Human Factors",
+    "g1_h": "Talent Selection and Development",
+    "g2_h": "Aeronautical Health and Psychophysical Fitness",
+    "g3_h": "Psychological Support and Wellbeing",
+    "g4_h": "Training and Organizational Diagnostics"
+  }
+};
+
+        function getIdiomaActual() {
+            const params = new URLSearchParams(window.location.search);
+            const fromUrl = params.get('lang');
+            if (fromUrl === 'en' || fromUrl === 'es') return fromUrl;
+            const saved = localStorage.getItem('aeromar_lang');
+            if (saved === 'en' || saved === 'es') return saved;
+            return 'es';
+        }
+
+        function aplicarIdioma(lang) {
+            const dict = AEROMAR_I18N[lang] || AEROMAR_I18N.es;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) el.innerHTML = dict[key];
+            });
+
+            document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+                const spec = el.getAttribute('data-i18n-attr');
+                const [attr, key] = spec.split(':');
+                if (dict[key] !== undefined) el.setAttribute(attr, dict[key]);
+            });
+
+            document.documentElement.lang = lang;
+            const labelEl = document.getElementById('langToggleLabel');
+            if (labelEl) labelEl.textContent = (lang === 'es') ? 'EN' : 'ES';
+
+            localStorage.setItem('aeromar_lang', lang);
+
+            const params = new URLSearchParams(window.location.search);
+            params.set('lang', lang);
+            const newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
+            window.history.replaceState({}, '', newUrl);
+        }
+
+        function toggleIdioma() {
+            const actual = document.documentElement.lang === 'en' ? 'en' : 'es';
+            aplicarIdioma(actual === 'es' ? 'en' : 'es');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            aplicarIdioma(getIdiomaActual());
+        });
+    </script>
+</body>
+</html>
