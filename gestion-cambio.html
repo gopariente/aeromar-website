@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formulario de Gestión de Riesgos</title>
+<meta name="description" content="Formulario interactivo de identificación de peligros y evaluación de riesgos (Gestión del Cambio). No almacena datos.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: hoja institucional — encabezado de control documental, tarjetas por peligro, anexo de matrices. */
+:root{
+  --bg:#f5f8fb; --paper:#ffffff; --ink:#14212e; --muted:#566676; --line:#b8c9da; --line-strong:#3d6e9e;
+  --navy:#1f4f7f; --navy-ink:#ffffff; --field:#fbfdff; --focus:#2f6fb0; --head:#e8f1fa; --head-ink:#173a5e; --wm:rgba(31,79,127,.08);
+  --alto:#c62828; --alto-bg:#fdeeee; --medio:#b26a00; --medio-bg:#fff6e3; --bajo:#2e7d32; --bajo-bg:#ebf7ec;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1720; --paper:#16212c; --ink:#e4ebf2; --muted:#9aa9b8; --line:#2c3b4a; --line-strong:#4c5f72;
+  --navy:#2a5785; --navy-ink:#ffffff; --field:#1c2935; --focus:#6aa6e0; --head:#1d3046; --head-ink:#cfe2f5; --wm:rgba(200,225,250,.06);
+  --alto:#ff6b6b; --alto-bg:#3a1a1c; --medio:#f0b04a; --medio-bg:#38290f; --bajo:#6cc070; --bajo-bg:#16301a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1720; --paper:#16212c; --ink:#e4ebf2; --muted:#9aa9b8; --line:#2c3b4a; --line-strong:#4c5f72;
+  --navy:#2a5785; --navy-ink:#ffffff; --field:#1c2935; --focus:#6aa6e0; --head:#1d3046; --head-ink:#cfe2f5; --wm:rgba(200,225,250,.06);
+  --alto:#ff6b6b; --alto-bg:#3a1a1c; --medio:#f0b04a; --medio-bg:#38290f; --bajo:#6cc070; --bajo-bg:#16301a; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.sheet{max-width:980px;margin:0 auto;display:grid;gap:20px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+label,.lbl{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* Encabezado documental */
+.doc-head{background:var(--paper);border:2px solid var(--line-strong);display:grid;grid-template-columns:auto 1fr}
+.doc-head>div{padding:14px 18px}
+.doc-brand{background:var(--navy);color:var(--navy-ink);display:flex;flex-direction:column;justify-content:center;gap:2px}
+.doc-brand b{font-family:var(--f-display);font-size:20px;letter-spacing:.04em}
+.doc-brand span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.doc-title h1{font-size:24px;line-height:1.15}
+.doc-title p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.doc-code{border-left:1px solid var(--line);display:grid;align-content:center;gap:2px;text-align:right}
+.doc-code .mono{font-size:18px}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.toolbar .note{font-size:13px;color:var(--muted);flex:1 1 280px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+button{font:600 14px var(--f-body);border-radius:4px;padding:9px 14px;cursor:pointer;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink)}
+button.primary{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+button.danger-armed{background:var(--alto);border-color:var(--alto);color:#fff}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,.cell:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+.panel{background:var(--paper);border:1.5px solid var(--line-strong);border-radius:4px;overflow:hidden}
+.panel-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1.5px solid var(--line-strong);background:var(--head);color:var(--head-ink)}
+.panel-h h2{font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.panel-b{padding:16px;display:grid;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 2fr;gap:14px}
+.f{display:grid;gap:4px;min-width:0}
+input[type=text],input[type=date],textarea,select{width:100%;font:15px/1.45 var(--f-body);color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:3px;padding:8px 10px}
+input[type=text]:hover,input[type=date]:hover,textarea:hover,select:hover{border-color:var(--line-strong)}
+textarea{resize:vertical;min-height:62px;overflow:hidden}
+textarea::placeholder,input::placeholder{color:var(--muted);opacity:.7}
+
+/* Tarjeta de peligro */
+.hz{background:var(--paper);border:2px solid var(--line-strong);border-radius:4px;overflow:hidden;break-inside:avoid}
+.hz-h{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--head);color:var(--head-ink);border-bottom:2px solid var(--line-strong)}
+.hz-h h3{font-size:16px;letter-spacing:.05em;flex:1}
+.hz-h .mono{opacity:.85;font-size:13px}
+.hz-h button{background:var(--paper);color:var(--head-ink);border-color:var(--line-strong);padding:5px 10px;font-size:13px}
+.hz-b{padding:16px;display:grid;gap:14px}
+.step{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start;min-width:0}
+.step>.lbl{padding-top:9px}
+.hint{font-size:12px;color:var(--muted);margin-top:2px}
+
+.evals{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ev{border:1.5px solid var(--line-strong);border-radius:4px;background:var(--field);padding:12px;display:grid;gap:10px;min-width:0}
+.ev-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ev-h h4{margin:0;font:700 13px var(--f-display);letter-spacing:.08em;text-transform:uppercase}
+.ev.locked{opacity:.5}
+.ev.locked .cell{cursor:not-allowed}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ev-body{display:grid;gap:10px;min-width:0}
+
+/* Mini matriz */
+.mx{display:grid;grid-template-columns:20px repeat(5,26px);grid-auto-rows:26px;gap:2px;font:600 10px var(--f-mono)}
+.mx .ax{display:grid;place-items:center;color:var(--muted)}
+.cell{border:0;padding:0;border-radius:2px;cursor:pointer;font:600 10px var(--f-mono);color:var(--ink);opacity:.55}
+.cell.A{background:var(--alto-bg);box-shadow:inset 0 0 0 1px var(--alto)}
+.cell.M{background:var(--medio-bg);box-shadow:inset 0 0 0 1px var(--medio)}
+.cell.B{background:var(--bajo-bg);box-shadow:inset 0 0 0 1px var(--bajo)}
+.cell:hover{opacity:1}
+.cell.sel{opacity:1;box-shadow:inset 0 0 0 3px var(--ink);font-weight:700}
+.mx-cap{font-size:10px;color:var(--muted);font-family:var(--f-mono);margin-top:4px}
+
+.result{border:1.5px solid var(--line);background:var(--paper);border-radius:3px;padding:10px;display:grid;gap:4px;min-height:84px;align-content:start}
+.badge{display:inline-flex;align-items:center;gap:6px;font:700 14px var(--f-display);letter-spacing:.06em;padding:3px 10px;border-radius:3px;width:max-content}
+.badge.A{background:var(--alto-bg);color:var(--alto);border:2px solid var(--alto)}
+.badge.M{background:var(--medio-bg);color:var(--medio);border:2px solid var(--medio)}
+.badge.B{background:var(--bajo-bg);color:var(--bajo);border:2px solid var(--bajo)}
+.result .tol{font-weight:600;font-size:13px}
+.result .act{font-size:12.5px;color:var(--muted)}
+.result.A{border-color:var(--alto);background:var(--alto-bg)}.result.M{border-color:var(--medio);background:var(--medio-bg)}.result.B{border-color:var(--bajo);background:var(--bajo-bg)}
+.crit{font-size:12.5px;color:var(--muted);min-height:1.4em}
+.delta{font-size:13px;padding:8px 12px;border-left:4px solid var(--line-strong);background:var(--field)}
+.delta.ok{border-color:var(--bajo)} .delta.warn{border-color:var(--medio)} .delta.bad{border-color:var(--alto)}
+
+.add{width:100%;border-style:dashed;padding:12px;background:transparent}
+
+/* Marca de agua */
+.wm{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:50;overflow:hidden}
+.wm span{font:700 clamp(120px,26vw,320px)/1 var(--f-display);letter-spacing:.12em;color:var(--wm);transform:rotate(-32deg);user-select:none}
+
+/* Peligro | Consecuencias */
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.pc>.f{min-width:0}
+.cons-list{display:grid;gap:6px;counter-reset:c}
+.ci{display:grid;grid-template-columns:22px 1fr auto;gap:6px;align-items:start;counter-increment:c}
+.ci::before{content:counter(c) ".";font:600 13px var(--f-mono);color:var(--muted);padding-top:9px;text-align:right}
+.ci textarea{min-height:40px}
+.ci .rmc{padding:6px 9px;font-size:13px;line-height:1}
+.addc{justify-self:start;padding:6px 10px;font-size:13px;border-style:dashed;margin-top:2px}
+
+/* Lista de peligros */
+.pc{display:grid;gap:8px;grid-template-columns:1fr!important}
+.hl{display:grid;gap:8px;counter-reset:h}
+.hl-head,.hr{display:grid;grid-template-columns:30px 1fr 1fr 64px;gap:10px;align-items:start}
+.hr{counter-increment:h;padding-top:8px;border-top:1px solid var(--line)}
+.hr:first-child{border-top:0;padding-top:0}
+.hr::before{content:counter(h,decimal-leading-zero);font:700 13px var(--f-mono);color:var(--head-ink);background:var(--head);border:1.5px solid var(--line-strong);border-radius:3px;text-align:center;padding:6px 0}
+.hr>.f{min-width:0;display:grid;gap:4px}
+.hr .rmh{padding:6px 0;font-size:12px;color:var(--alto);border-color:var(--alto)}
+.addh{justify-self:start;border-style:dashed;padding:7px 12px;font-size:13px}
+@media (max-width:760px){.hl-head{display:none}.hr{grid-template-columns:30px 1fr 64px}.hr>.f:nth-of-type(2){grid-column:2}}
+
+/* Firmas */
+.sigs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sig{border:1.5px solid var(--line-strong);border-radius:4px;padding:12px;display:grid;gap:8px;min-width:0}
+.sig .role{font-size:12px;color:var(--muted)}
+.sig .line{border-bottom:1px solid var(--line-strong);height:38px;display:flex;align-items:flex-end;font-size:11px;color:var(--muted)}
+
+/* Anexo de referencia */
+details.ref>summary{cursor:pointer;padding:10px 16px;font:700 15px var(--f-display);letter-spacing:.06em;text-transform:uppercase;background:var(--field);border-bottom:1px solid var(--line)}
+.steps{margin:0;padding-left:20px;font-size:14px;display:grid;gap:4px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font:600 12px var(--f-display);letter-spacing:.05em;text-transform:uppercase;background:var(--field)}
+td.n{font-family:var(--f-mono);text-align:center;width:52px}
+.big-mx td{text-align:center;font-family:var(--f-mono);font-weight:600;white-space:nowrap}
+.big-mx td.A{background:var(--alto-bg);color:var(--alto)} .big-mx td.M{background:var(--medio-bg);color:var(--medio)} .big-mx td.B{background:var(--bajo-bg);color:var(--bajo)}
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.priv{font-size:12px;color:var(--muted);text-align:center}
+
+.print-only{display:none}
+.pm{display:none}
+
+@media (max-width:760px){
+  .doc-head{grid-template-columns:1fr}
+  .grid3,.evals,.sigs,.ref-grid,.pc{grid-template-columns:1fr}
+  .step{grid-template-columns:1fr;gap:4px}
+  .step>.lbl{padding-top:0}
+}
+@media (max-width:420px){ .ev-body{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Impresión */
+@media print{
+  @page{size:A4;margin:12mm}
+  :root{--bg:#fff;--paper:#fff;--ink:#000;--muted:#333;--line:#999;--line-strong:#3d6e9e;--field:#fff;--navy:#173a5e;--head:#e8f1fa;--head-ink:#173a5e;
+    --alto:#c62828;--alto-bg:#fde7e7;--medio:#b26a00;--medio-bg:#fff2d6;--bajo:#2e7d32;--bajo-bg:#e3f3e4;color-scheme:light}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{padding:0;font-size:11pt}
+  .sheet{max-width:none;gap:10px}
+  .no-print,.toolbar,.add,.hz-h button,.hint{display:none!important}
+  .crit{font-size:8pt;min-height:0}
+  .print-only{display:block}
+  input[type=text],input[type=date],textarea,select{border:0;border-bottom:1px solid #999;border-radius:0;background:transparent;padding:2px 0;appearance:none;-webkit-appearance:none}
+  textarea{resize:none}
+  .ev.locked{opacity:1}
+  .cell{opacity:.35}.cell.sel{opacity:1}
+  details.ref{break-before:page}
+  details.ref>summary{list-style:none}
+  details.ref>summary::-webkit-details-marker{display:none}
+  body{font-size:9.5pt}
+  #hazards,#frm>section,#frm>div{margin-top:8px!important;gap:8px!important}
+  .hz{break-inside:auto}
+  .ev,.step,.delta,.sig,.hz-h{break-inside:avoid}
+  .hz-h{break-after:avoid}
+  .hz-b,.panel-b{padding:8px 10px;gap:6px}
+  .evals{grid-template-columns:1fr 1fr}
+  .result{min-height:0;padding:6px}
+  .result .act{font-size:8pt}
+  .sigs{grid-template-columns:repeat(3,1fr);gap:8px}
+  .sig{padding:6px 8px;gap:4px}
+  .sig .line{height:30px}
+  input::placeholder,textarea::placeholder{color:transparent}
+  .doc-head>div{padding:8px 12px}
+  .doc-title h1{font-size:16pt}
+  table{font-size:8pt}
+  th,td{padding:3px 5px}
+  .ref-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .steps{font-size:8.5pt}
+  @page{size:A4;margin:10mm}
+  body{font-size:9pt;line-height:1.35}
+  .wm span{font-size:150pt;color:rgba(31,79,127,.07)}
+  .hz-b{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"pc pc" "ctl mit" "evi evr" "dl dl";gap:6px 10px}
+  .hz-b>.pc{grid-area:pc}.hz-b>.ctl{grid-area:ctl}.hz-b>.mit{grid-area:mit}
+  .hz-b>[data-ev=i]{grid-area:evi}.hz-b>[data-ev=r]{grid-area:evr}.hz-b>.delta{grid-area:dl}
+  .hz-b>.step{grid-template-columns:1fr;gap:2px}.hz-b>.step>.lbl{padding-top:0}
+  .pc{gap:10px}.ci::before{padding-top:2px;font-size:8pt}.ci{grid-template-columns:16px 1fr;gap:4px}
+  .rmc,.addc{display:none!important}
+  .ev{padding:6px 8px;gap:4px}.ev-body{gap:4px}.pg{gap:6px}
+  .result .act{display:none}
+  .result{gap:2px}
+  .badge{font-size:9pt;padding:1px 6px}
+  .delta{padding:4px 8px;font-size:8.5pt}
+  label,.lbl{font-size:7.5pt}
+  .grid3{gap:8px}
+  textarea{min-height:0}
+  .ci textarea{min-height:0}
+  .doc-title h1{font-size:14pt}
+  .doc-brand b{font-size:14pt}
+  .panel-h{padding:4px 10px}.panel-h h2{font-size:10pt}
+  .hz-h{padding:4px 10px}.hz-h h3{font-size:11pt}
+  #frm{break-after:page}
+  .crit,.ev-h .hint,.lockmsg{display:none!important}
+  .ev-body{grid-template-columns:1fr auto;align-items:center}
+  .result{border:0;background:transparent!important;padding:0;display:flex;flex-direction:column;align-items:flex-end}
+  .result .tol{font-size:7.5pt}
+  .pg select{font-size:8.5pt;padding:0}
+  .ev-h h4{font-size:7.5pt}
+  .hz{break-inside:avoid}
+  #hazards{gap:6px!important}
+  .hz-b{padding:6px 8px}
+  .pm{font-size:8.5pt}
+  .pg select{display:none!important}
+  .pms{display:inline;border:0;padding:0;white-space:nowrap;font-size:8pt}
+  @page{size:A4;margin:8mm}
+  .hz-h{padding:2px 8px}.panel-h{padding:2px 8px}
+  .sig .role{font-size:7.5pt}.sig .line{height:16px;font-size:7pt}.sig input{font-size:8pt}
+  .sheet{gap:6px}
+  .grid3{grid-template-columns:1fr 3fr}
+  .rmh,.addh{display:none!important}
+  .pg{gap:16px!important}
+  .pg .f{flex:none!important}
+  .ev,.ev-body{flex-wrap:wrap!important}.pg{min-width:auto!important;flex:1 1 auto!important}.result{margin-left:auto}
+  .hl-head,.hr{grid-template-columns:22px 1fr 1fr;gap:8px}.hr::before{font-size:8pt;padding:1px 0}.hr{padding-top:3px}.hl{gap:3px}
+  .pms{display:inline!important;white-space:nowrap!important;margin-right:8px}
+  .hz-b>.delta{display:none!important}
+  .pc,.hz-b{row-gap:2px!important}
+  .ev{margin-top:2px}
+  #frm .panel-b{gap:2px}
+  /* Evaluaciones en una sola línea */
+  .ev{display:flex;align-items:center;gap:8px;padding:3px 6px;border-width:1px}
+  .ev-h{flex:none}.ev-h h4{font-size:7pt;white-space:nowrap}
+  .ev-body{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+  .pg{display:flex;gap:8px;flex:1;min-width:0}
+  .pg .f{display:flex;align-items:baseline;gap:3px;min-width:0}
+  .pg .lbl{font-size:0}.pg .f:first-child .lbl::before{content:"P";font-size:7pt}.pg .f:last-child .lbl::before{content:"G";font-size:7pt}
+  .pg select{border:0;font-size:8pt;width:auto}
+  .result .tol{display:none}
+  .badge{font-size:8pt;padding:0 5px;border-width:1.5px}
+  .hz-b{gap:4px 10px}
+  .pc .lbl,.step>.lbl{font-size:7pt}
+  .cons-list{gap:2px}.ci .pm{min-height:0}
+  .delta{padding:2px 6px;font-size:8pt}
+  .sig .line{height:22px}.sig{gap:2px}
+  .doc-head>div{padding:5px 10px}
+  .panel-b{padding:6px 8px;gap:4px}
+  textarea{display:none!important}
+  .pm{display:block;white-space:pre-wrap;overflow-wrap:anywhere;border-bottom:1px solid #999;padding:2px 0;min-height:1.35em}
+  details.ref{break-before:page}
+}
+</style>
+</head>
+<body>
+<div class="wm" aria-hidden="true"><span>DEMO</span></div>
+<main class="sheet" id="sheet">
+
+  <header class="doc-head">
+    <div class="doc-brand"><b>AEROMAR</b><span>Network</span></div>
+    <div class="doc-title">
+      <h1>Formulario de Gestión de Riesgos</h1>
+      <p>Identificación de peligros y evaluación de riesgos · SMS</p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <p class="note">Complete, imprima o guarde como PDF. <b>No se almacena ningún dato:</b> al imprimir o recargar la página, el formulario vuelve a quedar vacío.</p>
+    <div class="btns">
+      <button type="button" id="btnDemo">Cargar ejemplo</button>
+      <button type="button" id="btnClear">Limpiar</button>
+      <button type="button" class="primary" id="btnPrint">Imprimir / PDF</button>
+    </div>
+  </div>
+
+  <form id="frm" autocomplete="off" onsubmit="return false">
+    <section class="panel">
+      <div class="panel-h"><h2>Datos generales</h2><span class="mono" id="hzCount" style="font-size:12px"></span></div>
+      <div class="panel-b">
+        <div class="grid3">
+          <div class="f"><label for="fecha">Fecha</label><input type="date" id="fecha"></div>
+          <div class="f"><label for="lugar">Lugar</label><input type="text" id="lugar" placeholder="Base, aeródromo, buque, dependencia…"></div>
+        </div>
+        <div class="f"><label for="actividad">Actividad / cambio a evaluar</label>
+          <textarea id="actividad" rows="2" placeholder="Describa la actividad o el cambio que motiva la evaluación"></textarea></div>
+      </div>
+    </section>
+
+    <div id="hazards" style="display:grid;gap:20px;margin-top:20px"></div>
+
+    <section class="panel" style="margin-top:20px">
+      <div class="panel-h"><h2>Firmas</h2></div>
+      <div class="panel-b">
+        <div class="sigs">
+          <div class="sig"><span class="lbl">1 · Evaluación realizada por</span>
+            <div class="f"><label class="role" for="s_area">Personal del área</label><input type="text" id="s_area" placeholder="Área / sector"></div>
+            <input type="text" id="s_real" placeholder="Nombre y cargo"><div class="line">Firma</div></div>
+          <div class="sig"><span class="lbl">2 · Evaluación aprobada por</span><span class="role">Personal GSO</span>
+            <input type="text" id="s_apr" placeholder="Nombre y cargo"><div class="line">Firma</div></div>
+          <div class="sig"><span class="lbl">3 · Responsable del seguimiento</span><span class="role">Si aplica</span>
+            <input type="text" id="s_seg" placeholder="Nombre y cargo"><div class="line">Firma</div></div>
+        </div>
+      </div>
+    </section>
+  </form>
+
+  <details class="ref panel" id="ref" open>
+    <summary>Anexo · Criterios de valoración</summary>
+    <div class="panel-b">
+      <ol class="steps">
+        <li><b>Probabilidad:</b> identifique el valor de ocurrencia del suceso o exposición peligrosa.</li>
+        <li><b>Gravedad:</b> identifique el valor del daño o deterioro que puede causar.</li>
+        <li><b>Matriz:</b> combine probabilidad y gravedad para obtener el riesgo.</li>
+        <li><b>Tolerabilidad:</b> determine la acción según el nivel de riesgo.</li>
+      </ol>
+      <div class="ref-grid">
+        <div class="tw"><table>
+          <thead><tr><th colspan="3">Probabilidad</th></tr></thead>
+          <tbody id="tProb"></tbody></table></div>
+        <div class="tw"><table>
+          <thead><tr><th colspan="3">Gravedad</th></tr></thead>
+          <tbody id="tGrav"></tbody></table></div>
+      </div>
+      <div class="tw"><table class="big-mx" id="tMx"></table></div>
+      <div class="tw"><table>
+        <thead><tr><th>Riesgo</th><th>Tolerabilidad</th><th>Acciones</th></tr></thead>
+        <tbody id="tTol"></tbody></table></div>
+    </div>
+  </details>
+
+  <p class="priv no-print">Esta página funciona íntegramente en su navegador. No envía ni guarda información.</p>
+</main>
+
+<template id="tplHz">
+  <article class="hz">
+    <div class="hz-h"><h3>Evaluación de riesgo</h3><span class="mono sum"></span></div>
+    <div class="hz-b">
+      <div class="pc">
+        <div class="hl-head"><span></span><span class="lbl">Peligros</span><span class="lbl">Consecuencias</span><span></span></div>
+        <div class="hl"></div>
+        <button type="button" class="addh">+ Agregar peligro</button>
+      </div>
+      <div class="step ctl"><label class="lbl" data-for="controles">Controles existentes (defensas)</label>
+        <div class="f"><textarea data-k="controles" rows="2" placeholder="Defensas actuales: procedimientos, equipamiento, capacitación…"></textarea>
+          <span class="hint">Cumplido este paso, valore el riesgo del conjunto de peligros.</span></div></div>
+
+      <div class="ev" data-ev="i">
+        <div class="ev-h"><h4>Evaluación inicial</h4><span class="hint">Seleccione según los criterios</span></div>
+        <div class="ev-body">
+          <div class="pg">
+            <div class="f"><label class="lbl" data-for="pi">Probabilidad</label><select data-k="pi"></select><span class="crit" data-crit="pi"></span></div>
+            <div class="f"><label class="lbl" data-for="gi">Gravedad</label><select data-k="gi"></select><span class="crit" data-crit="gi"></span></div>
+          </div>
+          <div class="result" data-res="i"></div>
+        </div>
+      </div>
+
+      <div class="step mit"><label class="lbl" data-for="mitig">Mitigación</label>
+        <div class="f"><textarea data-k="mitig" rows="2" placeholder="Medidas adicionales para reducir probabilidad y/o gravedad"></textarea>
+          <span class="hint">Registrada la mitigación, se habilita la re-evaluación.</span></div></div>
+
+      <div class="ev locked" data-ev="r">
+        <div class="ev-h"><h4>Re-evaluación</h4><span class="hint lockmsg">Registre primero la mitigación</span></div>
+        <div class="ev-body">
+          <div class="pg">
+            <div class="f"><label class="lbl" data-for="pr">Probabilidad</label><select data-k="pr" disabled></select><span class="crit" data-crit="pr"></span></div>
+            <div class="f"><label class="lbl" data-for="gr">Gravedad</label><select data-k="gr" disabled></select><span class="crit" data-crit="gr"></span></div>
+          </div>
+          <div class="result" data-res="r"></div>
+        </div>
+      </div>
+      <div class="delta" hidden></div>
+    </div>
+  </article>
+</template>
+
+<script>
+(function(){
+"use strict";
+// ---- Criterios del formulario FSMS03.1 ----
+var PROB={1:["Frecuente","Se espera que se produzca al menos una vez durante la tarea o actividad."],
+  2:["Ocasional","Podría ocurrir durante la tarea o actividad."],
+  3:["Posible","Es concebible que pueda ocurrir, pero con poca frecuencia."],
+  4:["Improbable","Es concebible que pueda suceder, aunque sólo en circunstancias inusuales."],
+  5:["Raro","Es casi inconcebible que ocurra el evento."]};
+var GRAV={1:["Catastrófico","Pérdida de aeronave o equipamiento principal. Una o más fatalidades."],
+  2:["Peligroso","Daños serios a una o más personas, resultando en invalidez permanente. Daño sostenido o extenso a la aeronave o equipamiento."],
+  3:["Grave","Daños que requieren hospitalización (sin invalidez permanente). Daños a la aeronave o equipamiento con incapacidad temporal de uso."],
+  4:["Leve","Daños que sólo requieren primeros auxilios. Daños aislados a la aeronave, de rápida reparación."],
+  5:["Insignificante","Sin lesiones o lesiones muy pequeñas que no requieren primeros auxilios. Sin daños o daño menor a aeronave o equipo."]};
+// Matriz tal como figura en el formulario: MX[gravedad][probabilidad]
+var MX={1:{5:"M",4:"M",3:"A",2:"A",1:"A"},
+        2:{5:"B",4:"M",3:"M",2:"A",1:"A"},
+        3:{5:"B",4:"M",3:"M",2:"M",1:"A"},
+        4:{5:"B",4:"B",3:"M",2:"M",1:"M"},
+        5:{5:"B",4:"B",3:"B",2:"B",1:"M"}};
+var LVL={A:"ALTO",M:"MEDIO",B:"BAJO"};
+var TOL={A:["Riesgo intolerable","Inaceptable bajo todo punto de vista. Requiere una medida de mitigación inmediata."],
+         M:["Riesgo tolerable","Realice o revise la mitigación de riesgos, según sea necesario. Valores superiores a 8 pueden considerarse aceptables si ya han recibido medidas de mitigación. Evalúe realizar un seguimiento del caso."],
+         B:["Riesgo aceptable","La mitigación o revisión de riesgos es opcional."]};
+var RANK={A:3,M:2,B:1};
+var COLS=[5,4,3,2,1];
+
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+// ---- Anexo ----
+$("#tProb").innerHTML=[1,2,3,4,5].map(function(v){return "<tr><td class='n'>"+v+"</td><td><b>"+PROB[v][0]+"</b></td><td>"+PROB[v][1]+"</td></tr>"}).join("");
+$("#tGrav").innerHTML=[1,2,3,4,5].map(function(v){return "<tr><td class='n'>"+v+"</td><td><b>"+GRAV[v][0]+"</b></td><td>"+GRAV[v][1]+"</td></tr>"}).join("");
+$("#tMx").innerHTML="<thead><tr><th colspan='2'>Gravedad \\ Probabilidad</th>"+COLS.map(function(p){return "<th style='text-align:center'>"+p+"<br>"+PROB[p][0]+"</th>"}).join("")+"</tr></thead><tbody>"+
+  [1,2,3,4,5].map(function(g){return "<tr><td class='n' style='font-weight:600'>"+g+"</td><td style='text-align:left;font-family:var(--f-body)'>"+GRAV[g][0]+"</td>"+
+    COLS.map(function(p){var c=MX[g][p];return "<td class='"+c+"'>"+LVL[c]+" ("+(p*g)+")</td>"}).join("")+"</tr>"}).join("")+"</tbody>";
+$("#tTol").innerHTML=["B","M","A"].map(function(c){return "<tr><td><span class='badge "+c+"'>"+LVL[c]+"</span></td><td><b>"+TOL[c][0]+"</b></td><td>"+TOL[c][1]+"</td></tr>"}).join("");
+
+// ---- Textareas auto-ajustables (para que se impriman completas) ----
+function grow(t){t.style.height="auto";t.style.height=(t.scrollHeight+2)+"px"}
+document.addEventListener("input",function(e){if(e.target.tagName==="TEXTAREA")grow(e.target)});
+
+// ---- Desplegables: muestran el criterio completo al abrir, nombre corto al cerrar ----
+function setTxt(sel,k){Array.prototype.forEach.call(sel.options,function(o){if(o.dataset[k])o.textContent=o.dataset[k]})}
+document.addEventListener("mousedown",function(e){if(e.target.tagName==="SELECT")setTxt(e.target,"l")},true);
+document.addEventListener("keydown",function(e){if(e.target.tagName==="SELECT")setTxt(e.target,"l")},true);
+document.addEventListener("change",function(e){if(e.target.tagName==="SELECT")setTxt(e.target,"s")},true);
+document.addEventListener("focusout",function(e){if(e.target.tagName==="SELECT")setTxt(e.target,"s")},true);
+
+// ---- Peligros ----
+var seq=0;
+function opts(map,label){return "<option value=''>— "+label+" —</option>"+[1,2,3,4,5].map(function(v){return "<option value='"+v+"' title='"+map[v][1]+"' data-s='"+v+" · "+map[v][0]+"' data-l='"+v+" · "+map[v][0]+" — "+map[v][1]+"'>"+v+" · "+map[v][0]+"</option>"}).join("")}
+
+
+function addCons(row,text){
+  var r2=document.createElement("div");r2.className="ci";
+  r2.innerHTML="<textarea class='cons' rows='1' placeholder='Resultado potencial si el peligro se materializa' aria-label='Consecuencia'></textarea><button type='button' class='rmc' title='Quitar consecuencia' aria-label='Quitar consecuencia'>×</button>";
+  var t=r2.querySelector("textarea");if(text)t.value=text;
+  r2.querySelector(".rmc").addEventListener("click",function(){
+    var list=r2.parentNode;if(list.children.length>1)r2.remove();else{t.value="";grow(t)}
+  });
+  $(".cons-list",row).appendChild(r2);grow(t);return t;
+}
+function addRow(node,data){
+  var row=document.createElement("div");row.className="hr";
+  row.innerHTML="<div class='f'><textarea class='pel' rows='2' placeholder='Condición u objeto con potencial de causar daño' aria-label='Peligro'></textarea></div>"+
+    "<div class='f'><div class='cons-list'></div><button type='button' class='addc'>+ Agregar consecuencia</button></div>"+
+    "<button type='button' class='rmh' title='Quitar peligro' aria-label='Quitar peligro'>Quitar</button>";
+  $(".hl",node).appendChild(row);
+  var pel=$(".pel",row);
+  if(data&&data.peligro)pel.value=data.peligro;
+  (data&&data.cons&&data.cons.length?data.cons:[""]).forEach(function(c){addCons(row,c)});
+  $(".addc",row).addEventListener("click",function(){addCons(row).focus()});
+  $(".rmh",row).addEventListener("click",function(){
+    if($$(".hr",node).length>1)row.remove();else{pel.value="";$(".cons-list",row).innerHTML="";addCons(row)}
+    $$("textarea",row).forEach(grow);renumber();
+  });
+  grow(pel);renumber();return row;
+}
+function addHazard(data){
+  seq++;
+  var node=$("#tplHz").content.firstElementChild.cloneNode(true);
+  var id="h"+seq;
+  $$("[data-k]",node).forEach(function(el){el.id=id+"_"+el.dataset.k});
+  $$("label[data-for]",node).forEach(function(l){l.htmlFor=id+"_"+l.dataset.for});
+  $("[data-k=pi]",node).innerHTML=opts(PROB,"Probabilidad");
+  $("[data-k=pr]",node).innerHTML=opts(PROB,"Probabilidad");
+  $("[data-k=gi]",node).innerHTML=opts(GRAV,"Gravedad");
+  $("[data-k=gr]",node).innerHTML=opts(GRAV,"Gravedad");
+  var evI=$("[data-ev=i]",node), evR=$("[data-ev=r]",node);
+  addRow(node);
+  $(".addh",node).addEventListener("click",function(){$(".pel",addRow(node)).focus()});
+  node.addEventListener("input",function(){update(node)});
+  node.addEventListener("change",function(){update(node)});
+  $("#hazards").appendChild(node);
+  if(data){Object.keys(data).forEach(function(k){var el=$("[data-k="+k+"]",node);if(el)el.value=data[k]})}
+  renumber();update(node);
+  $$("textarea",node).forEach(grow);
+  return node;
+}
+
+function renumber(){var n=$$(".hr").length;var c=$("#hzCount");if(c)c.textContent=n+(n===1?" peligro identificado":" peligros identificados")}
+
+function renderResult(box,p,g){
+  box.className="result";
+  if(!p||!g){box.innerHTML="<span class='hint'>Sin valorar</span>";return null}
+  var c=MX[g][p],v=p*g;box.classList.add(c);
+  var extra="";
+  box.innerHTML="<span class='badge "+c+"'>"+LVL[c]+" <span class='mono'>("+v+")</span></span>"+
+    "<span class='tol'>"+TOL[c][0]+"</span><span class='act'>"+TOL[c][1]+"</span>";
+  return {c:c,v:v};
+}
+
+function update(node){
+  var val=function(k){return +$("[data-k="+k+"]",node).value||0};
+  var pi=val("pi"),gi=val("gi"),pr=val("pr"),gr=val("gr");
+  var evI=$("[data-ev=i]",node),evR=$("[data-ev=r]",node);
+  var hasMit=$("[data-k=mitig]",node).value.trim().length>0;
+  evR.classList.toggle("locked",!hasMit);
+  $("[data-k=pr]",node).disabled=!hasMit;$("[data-k=gr]",node).disabled=!hasMit;
+  $(".lockmsg",evR).textContent=hasMit?"Valore el riesgo residual":"Registre primero la mitigación";
+  [["pi",PROB],["gi",GRAV],["pr",PROB],["gr",GRAV]].forEach(function(a){var v=val(a[0]);$("[data-crit="+a[0]+"]",node).textContent=v?a[1][v][1]:""});
+  var ri=renderResult($("[data-res=i]",node),pi,gi);
+  var rr=hasMit?renderResult($("[data-res=r]",node),pr,gr):(renderResult($("[data-res=r]",node),0,0),null);
+  // Resumen en cabecera
+  $(".sum",node).textContent=(ri?LVL[ri.c]+" ("+ri.v+")":"—")+(rr?"  →  "+LVL[rr.c]+" ("+rr.v+")":"");
+  // Conclusión
+  var d=$(".delta",node);d.className="delta";
+  if(ri&&ri.c==="A"&&!hasMit){d.hidden=false;d.classList.add("bad");d.textContent="Riesgo ALTO: la actividad no puede continuar sin una medida de mitigación inmediata.";return}
+  if(!ri||!rr){d.hidden=true;return}
+  d.hidden=false;
+  if(rr.c==="A"){d.classList.add("bad");d.textContent="El riesgo residual sigue siendo ALTO (intolerable). Revise o agregue medidas de mitigación.";}
+  else if(RANK[rr.c]>RANK[ri.c]||rr.v<ri.v){d.classList.add("bad");d.textContent="El riesgo residual resulta mayor que el inicial. Verifique la valoración.";}
+  else if(rr.c==="M"&&rr.v>8){d.classList.add("ok");d.textContent="Riesgo residual MEDIO ("+rr.v+") con mitigación aplicada: puede considerarse aceptable. Evalúe realizar seguimiento del caso.";}
+  else if(rr.c==="M"){d.classList.add("warn");d.textContent="Riesgo residual tolerable ("+rr.v+"). Mantenga la mitigación y revise según sea necesario.";}
+  else{d.classList.add("ok");d.textContent="Riesgo residual BAJO ("+rr.v+"): aceptable.";}
+  if(rr.c!=="A"&&rr.v===ri.v&&rr.c===ri.c){d.className="delta warn";d.textContent+=" La mitigación no modificó la valoración.";}
+}
+
+// ---- Reinicio total (no se guarda nada) ----
+function resetAll(){
+  $("#frm").reset();
+  $("#hazards").innerHTML="";seq=0;addHazard();
+  $$("#frm textarea").forEach(grow);
+  window.scrollTo(0,0);
+}
+
+// Botón Limpiar con confirmación en dos pasos
+var armT=null,btnC=$("#btnClear");
+btnC.addEventListener("click",function(){
+  if(btnC.classList.contains("danger-armed")){clearTimeout(armT);btnC.classList.remove("danger-armed");btnC.textContent="Limpiar";resetAll();return}
+  btnC.classList.add("danger-armed");btnC.textContent="¿Borrar todo? Confirmar";
+  armT=setTimeout(function(){btnC.classList.remove("danger-armed");btnC.textContent="Limpiar"},3500);
+});
+
+
+// Imprimir y luego vaciar
+var printing=false;
+$("#btnPrint").addEventListener("click",function(){
+  $$("#frm textarea").forEach(grow);
+  $("#ref").open=true;
+  mirror();printing=true;window.print();
+  // Algunos navegadores no disparan afterprint: respaldo
+  setTimeout(function(){if(printing){printing=false;resetAll()}},800);
+});
+window.addEventListener("afterprint",function(){if(printing){printing=false;setTimeout(resetAll,50)}});
+// Copia de texto para impresión: los textos largos nunca se cortan
+function mirror(){$$(".pm").forEach(function(d){d.remove()});
+  $$("#frm textarea").forEach(function(t){var d=document.createElement("div");d.className="pm";d.textContent=t.value;t.parentNode.insertBefore(d,t.nextSibling)});
+  $$("#frm .pg select").forEach(function(sel){var o=sel.options[sel.selectedIndex];var d=document.createElement("span");d.className="pm pms";d.textContent=(o&&o.value)?(o.dataset.s||o.textContent):"—";sel.parentNode.insertBefore(d,sel.nextSibling)})}
+window.addEventListener("beforeprint",mirror);
+// Si se vuelve con "Atrás" desde caché, también queda vacío
+window.addEventListener("pageshow",function(e){if(e.persisted)resetAll()});
+
+// Ejemplo de demostración (SAR)
+$("#btnDemo").addEventListener("click",function(){
+  resetAll();
+  $("#fecha").value=new Date().toISOString().slice(0,10);
+  $("#lugar").value="Base aeronaval — ejemplo";
+  $("#actividad").value="EJEMPLO: incorporación de operaciones SAR nocturnas con helicóptero sobre el mar.";
+  var n=$(".hz");$(".hl",n).innerHTML="";
+  [{peligro:"Desorientación espacial en vuelo nocturno sobre el mar sin referencias visuales.",cons:["Pérdida de control e impacto contra el agua (CFIT).","Pérdida de la aeronave y tripulación."]},
+   {peligro:"Izado (winch) con mar gruesa y movimiento de la embarcación asistida.",cons:["Lesiones al rescatador o al sobreviviente.","Enganche del cable y daño al guinche."]},
+   {peligro:"Fatiga de la tripulación por extensión de la misión nocturna.",cons:["Errores de juicio y omisión de procedimientos."]}
+  ].forEach(function(d){addRow(n,d)});
+  var d={controles:"Habilitación IFR de pilotos; radioaltímetro con alerta; procedimiento de izado estándar con rescatador calificado; régimen de tiempos de servicio vigente.",
+    pi:"2",gi:"1",
+    mitig:"NVG obligatorio con entrenamiento recurrente; hover con acople automático; hi-line y límite de estado de mar para izado; tripulación de relevo y control IMSAFE antes de cada salida.",
+    pr:"4",gr:"2"};
+  Object.keys(d).forEach(function(k){$("[data-k="+k+"]",n).value=d[k]});
+  $$("textarea").forEach(grow);update(n);
+});
+
+resetAll();
+})();
+</script>
+</body>
+</html>

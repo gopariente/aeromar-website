@@ -348,7 +348,91 @@
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 100; text-decoration: none; }
 
         @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } nav ul { flex-wrap: wrap; justify-content: center; } .hero h2 { font-size: 1.7rem; } .sar-container { flex-direction: column; text-align: center; } }
+        @media (max-width: 768px) { .hero h2 { font-size: 1.7rem; } .sar-container { flex-direction: column; text-align: center; } }
+
+        /* ===== Barra superior: menú compacto en celulares ===== */
+        .nav-actions { display: none; align-items: center; gap: 8px; }
+        .nav-toggle { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: var(--blanco); width: 42px; height: 42px; border-radius: 10px; font-size: 1.15rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+        .nav-toggle:focus-visible, nav a:focus-visible { outline: 2px solid var(--ambar); outline-offset: 2px; }
+        .lang-mobile { padding: 6px 12px; }
+        .nav-toggle .bars { display: grid; gap: 5px; width: 20px; }
+        .nav-toggle .bars span { display: block; height: 2px; background: currentColor; border-radius: 2px; transition: transform .2s, opacity .2s; }
+        header.nav-open .nav-toggle .bars span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        header.nav-open .nav-toggle .bars span:nth-child(2) { opacity: 0; }
+        header.nav-open .nav-toggle .bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (prefers-reduced-motion: reduce) { .nav-toggle .bars span { transition: none; } }
+        @media (max-width: 1100px) {
+            .nav-container { flex-wrap: wrap; padding: 0.4rem 16px; gap: 0; }
+            .logo-container { gap: 10px; min-width: 0; flex: 1; }
+            .logo-img-wrapper { width: 40px; height: 40px; }
+            .logo-text h1 { font-size: 1.02rem; letter-spacing: 0.5px; white-space: nowrap; }
+            .logo-text p { font-size: 0.66rem; line-height: 1.25; }
+            .nav-actions { display: flex; }
+            nav { flex-basis: 100%; display: none; }
+            header.nav-open nav { display: block; }
+            nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: 6px 0 12px; border-top: 1px solid rgba(255,255,255,0.12); margin-top: 8px; }
+            nav ul li a { display: block; padding: 12px 4px; font-size: 0.98rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+            nav ul li.li-intranet { padding-top: 12px; }
+            nav ul li.li-intranet a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-bottom: 1px solid var(--ambar); }
+            nav ul li.li-lang { display: none; }
+        }
+        @media (max-width: 380px) { .logo-text p { display: none; } }
+
+        /* ===== Gestión de Riesgos Operacionales ===== */
+        .gr-section { background: linear-gradient(180deg, var(--gris-claro), #ffffff); padding: 64px 20px; border-top: 4px solid var(--azul-oceano); }
+        .gr-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 44px; align-items: start; }
+        .gr-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--azul-marino); color: var(--ambar); padding: 5px 13px; border-radius: 12px; font-size: 0.76rem; font-weight: bold; letter-spacing: 0.06em; text-transform: uppercase; }
+        .gr-text h2 { color: var(--azul-marino); font-size: 2rem; line-height: 1.15; margin: 14px 0 6px; text-wrap: balance; }
+        .gr-lead { font-size: 1.08rem; color: var(--azul-oceano); font-weight: 500; margin-bottom: 14px; }
+        .gr-text p { margin-bottom: 12px; max-width: 64ch; }
+        .gr-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 22px; padding: 0; list-style: none; }
+        .gr-tags li { display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid var(--azul-oceano); color: var(--azul-oceano); border-radius: 16px; padding: 4px 12px; font-size: 0.82rem; font-weight: bold; background: #fff; }
+        .gr-tags li.alt { border-color: #8aa3bb; color: #4c6a86; border-style: dashed; }
+        .gr-steps { list-style: none; padding: 0; margin: 6px 0 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; counter-reset: grs; }
+        .gr-steps li { counter-increment: grs; background: #fff; border: 1.5px solid #c9d6e3; border-top: 4px solid var(--azul-oceano); border-radius: 8px; padding: 10px 10px 12px; font-size: 0.8rem; line-height: 1.35; }
+        .gr-steps li::before { content: counter(grs, decimal-leading-zero); display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--naranja-sar); font-size: 1rem; margin-bottom: 4px; }
+        .gr-steps li b { display: block; color: var(--azul-marino); font-size: 0.86rem; margin-bottom: 2px; }
+        .gr-maritime { display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1.5px dashed #8aa3bb; border-radius: 10px; padding: 12px 14px; margin: 4px 0 22px; font-size: 0.9rem; }
+        .gr-maritime i { color: var(--azul-oceano); font-size: 1.3rem; margin-top: 2px; }
+        .gr-actions { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; }
+        .gr-actions .btn-primary { background-color: var(--azul-marino); color: var(--blanco); }
+        .gr-actions .gr-link { color: var(--azul-oceano); font-weight: bold; text-decoration: none; }
+        .gr-actions .gr-link:hover { color: var(--naranja-sar); text-decoration: underline; }
+        .gr-note { font-size: 0.78rem; color: #66788a; margin-top: 10px; }
+        .gr-card { background: #fff; border: 2px solid var(--azul-oceano); border-radius: 12px; box-shadow: 0 14px 30px rgba(13,35,58,0.12); overflow: hidden; }
+        .gr-card-h { background: #e8f1fa; color: var(--azul-marino); padding: 12px 16px; border-bottom: 2px solid var(--azul-oceano); display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+        .gr-card-h h3 { font-size: 0.98rem; }
+        .gr-card-h span { font-size: 0.72rem; color: #4c6a86; font-weight: bold; letter-spacing: 0.06em; }
+        .gr-card-b { padding: 16px; }
+        .gr-cycle { display: block; width: 100%; max-width: 460px; height: auto; margin: 0 auto; }
+        .gr-cycle text { font-family: 'Montserrat', 'Roboto', sans-serif; }
+        .gr-cycle .gc-n { fill: #ffffff; font-size: 19px; font-weight: 800; }
+        .gr-cycle .gc-a { font-size: 15px; font-weight: 800; }
+        .gr-cycle .gc-b { fill: #0d233a; font-size: 13px; font-weight: 600; }
+        .gr-cycle .gc-k { fill: #ffaa00; font-size: 11px; font-weight: 800; letter-spacing: 2px; }
+        .gr-cycle .gc-t { fill: #ffffff; font-size: 19px; font-weight: 800; }
+        .gr-cycle .gc-l { fill: #4c6a86; font-size: 12px; font-weight: 600; letter-spacing: 1px; font-style: italic; }
+        .gr-cycle .gc-node { transition: transform .25s; transform-box: fill-box; transform-origin: center; }
+        .gr-card:hover .gc-node:hover { transform: scale(1.04); }
+        @media (prefers-reduced-motion: reduce) { .gr-cycle .gc-node { transition: none; } }
+        .gr-cycle-cap { font-size: 0.85rem; color: var(--azul-marino); text-align: center; margin: 6px auto 0; max-width: 40ch; }
+        .gr-mx { display: grid; grid-template-columns: 22px 92px repeat(5, minmax(0, 1fr)); gap: 3px; font-size: 0.72rem; }
+        .gr-mx .ax { display: flex; align-items: center; justify-content: center; color: #4c6a86; font-weight: bold; text-align: center; line-height: 1.15; }
+        .gr-mx .axl { justify-content: flex-start; }
+        .gr-mx .c { border-radius: 4px; text-align: center; padding: 7px 0; font-weight: bold; font-family: 'Roboto Mono', ui-monospace, monospace; }
+        .gr-mx .A { background: #fdeeee; color: #c62828; box-shadow: inset 0 0 0 1.5px #c62828; }
+        .gr-mx .M { background: #fff6e3; color: #a35f00; box-shadow: inset 0 0 0 1.5px #b26a00; }
+        .gr-mx .B { background: #ebf7ec; color: #2e7d32; box-shadow: inset 0 0 0 1.5px #2e7d32; }
+        .gr-mx .cap { grid-column: 3 / -1; text-align: center; font-weight: bold; color: var(--azul-marino); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; }
+        .gr-legend { display: grid; gap: 6px; margin-top: 14px; padding: 0; list-style: none; font-size: 0.8rem; }
+        .gr-legend li { display: flex; gap: 8px; align-items: baseline; }
+        .gr-legend b { min-width: 62px; text-align: center; border-radius: 4px; padding: 1px 6px; font-size: 0.74rem; }
+        .gr-legend .A { background: #fdeeee; color: #c62828; border: 1.5px solid #c62828; }
+        .gr-legend .M { background: #fff6e3; color: #a35f00; border: 1.5px solid #b26a00; }
+        .gr-legend .B { background: #ebf7ec; color: #2e7d32; border: 1.5px solid #2e7d32; }
+        .gr-refs { margin-top: 14px; padding-top: 12px; border-top: 1px solid #dbe4ee; font-size: 0.76rem; color: #4c6a86; }
+        @media (max-width: 960px) { .gr-container { grid-template-columns: 1fr; } .gr-steps { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); } }
+        @media (max-width: 480px) { .gr-text h2 { font-size: 1.6rem; } .gr-section { padding: 44px 16px; } .gr-mx { grid-template-columns: 16px 74px repeat(5, minmax(0, 1fr)); font-size: 0.62rem; } .gr-mx .c { padding: 6px 0; } }
     </style>
 </head>
 <body>
@@ -364,9 +448,14 @@
                     <p data-i18n="nav_tagline">Red de Profesionales Marítimos y Aeronáuticos</p>
                 </div>
             </div>
-            <nav>
+            <div class="nav-actions">
+                <button type="button" onclick="toggleIdioma()" class="btn-intranet lang-mobile" title="Switch language / Cambiar idioma"><i class="fa-solid fa-globe"></i> <span class="langToggleLabelM">EN</span></button>
+                <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
+            </div>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#servicios" data-i18n="nav_servicios">Servicios</a></li>
+                    <li><a href="#gestion-riesgos" data-i18n="nav_riesgos">Riesgos</a></li>
                     <li><a href="#transversales" data-i18n="nav_transversales">Transversales</a></li>
                     <li><a href="#noticias" data-i18n="nav_noticias">Noticias</a></li>
                     <li><a href="#novedades-red" data-i18n="nav_novedades">Novedades</a></li>
@@ -374,8 +463,8 @@
                     <li><a href="#nosotros" data-i18n="nav_lared">La Red</a></li>
                     <li><a href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
                     <!-- BOTÓN INTRANET PROTEGIDO CON CLAVE QUE DIRECCIONA A TRANSPARENCIA.HTML -->
-                    <li><a href="javascript:void(0)" onclick="abrirIntranet()" class="btn-intranet"><i class="fa-solid fa-lock"></i> <span data-i18n="nav_intranet">Intranet</span></a></li>
-                    <li><button type="button" id="btnLangToggle" onclick="toggleIdioma()" class="btn-intranet" style="cursor:pointer;" title="Switch language / Cambiar idioma"><i class="fa-solid fa-globe"></i> <span id="langToggleLabel">EN</span></button></li>
+                    <li class="li-intranet"><a href="javascript:void(0)" onclick="abrirIntranet()" class="btn-intranet"><i class="fa-solid fa-lock"></i> <span data-i18n="nav_intranet">Intranet</span></a></li>
+                    <li class="li-lang"><button type="button" id="btnLangToggle" onclick="toggleIdioma()" class="btn-intranet" style="cursor:pointer;" title="Switch language / Cambiar idioma"><i class="fa-solid fa-globe"></i> <span id="langToggleLabel">EN</span></button></li>
                 </ul>
             </nav>
         </div>
@@ -458,6 +547,71 @@
                 </ul>
             </div>
 
+        </div>
+    </section>
+
+    <!-- ===== GESTIÓN DE RIESGOS OPERACIONALES (Aeronáutico, adaptable a Marítimo) ===== -->
+    <section class="gr-section" id="gestion-riesgos">
+        <div class="gr-container">
+            <div class="gr-text">
+                <span class="gr-eyebrow"><i class="fa-solid fa-plane"></i> <span data-i18n="gr_badge">Seguridad Operacional · SMS</span></span>
+                <h2 data-i18n="gr_h">Gestión de Riesgos Operacionales</h2>
+                <p class="gr-lead" data-i18n="gr_lead">Identificar el peligro antes de que se convierta en un suceso.</p>
+                <p data-i18n="gr_p1">En aviación, la seguridad operacional no se apoya solo en la experiencia y en evitar errores: se construye con un proceso sistemático que detecta peligros, mide el riesgo y decide qué hacer con él. La gestión de riesgos es el núcleo del Sistema de Gestión de la Seguridad Operacional (SMS) que establece el Anexo 19 de la OACI y que desarrolla el Manual de Gestión de la Seguridad Operacional (Doc 9859).</p>
+                <p data-i18n="gr_p2">Cada cambio en la operación —una nueva ruta, un equipo, un procedimiento o una misión nocturna— introduce peligros. Evaluarlos con un criterio común de probabilidad y gravedad permite priorizar recursos, justificar decisiones ante la autoridad y dejar constancia de que el riesgo residual es tolerable antes de operar.</p>
+                <ul class="gr-tags">
+                    <li><i class="fa-solid fa-plane"></i> <span data-i18n="gr_tag1">Aeronáutico</span></li>
+                    <li class="alt"><i class="fa-solid fa-anchor"></i> <span data-i18n="gr_tag2">Adaptable a Marítimo</span></li>
+                    <li><i class="fa-solid fa-print"></i> <span data-i18n="gr_tag3">Imprimible A4</span></li>
+                </ul>
+                <ol class="gr-steps">
+                    <li><b data-i18n="gr_s1h">Peligros</b><span data-i18n="gr_s1">Identificación y sus consecuencias</span></li>
+                    <li><b data-i18n="gr_s2h">Defensas</b><span data-i18n="gr_s2">Controles existentes</span></li>
+                    <li><b data-i18n="gr_s3h">Evaluación</b><span data-i18n="gr_s3">Probabilidad × gravedad</span></li>
+                    <li><b data-i18n="gr_s4h">Mitigación</b><span data-i18n="gr_s4">Medidas adicionales</span></li>
+                    <li><b data-i18n="gr_s5h">Re-evaluación</b><span data-i18n="gr_s5">Riesgo residual y firmas</span></li>
+                </ol>
+                <div class="gr-maritime">
+                    <i class="fa-solid fa-anchor"></i>
+                    <p style="margin:0" data-i18n="gr_mar">Diseñada para operaciones aeronáuticas y adaptable al ámbito marítimo: la misma metodología sostiene la evaluación de riesgos que exige el Código IGS (ISM) de la OMI a compañías y buques, y la planificación de operaciones SAR.</p>
+                </div>
+                <div class="gr-actions">
+                    <a href="gestion-riesgos.html" class="btn btn-primary"><i class="fa-solid fa-table-cells"></i> <span data-i18n="gr_btn">Probar la hoja de gestión de riesgos</span></a>
+                    <a href="#contacto" class="gr-link"><span data-i18n="gr_btn2">Implementarla en mi organización</span> <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <p class="gr-note" data-i18n="gr_note">Versión de demostración: funciona en su navegador, se imprime y no guarda ningún dato.</p>
+            </div>
+
+            <aside class="gr-card" aria-label="Ciclo de gestión del riesgo">
+                <div class="gr-card-h"><h3 data-i18n="gr_card_h">Ciclo de gestión del riesgo</h3><span>SMS</span></div>
+                <div class="gr-card-b">
+                    <svg class="gr-cycle" viewBox="0 0 500 480" role="img" aria-labelledby="grCycleT"><title id="grCycleT">Ciclo de gestión del riesgo: identificar peligros, establecer consecuencias, evaluar el riesgo, mitigar y re-evaluar</title>
+                    <defs>
+                    <marker id="grArr0" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#173a5e"/></marker>
+                    <marker id="grArr1" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f6fb0"/></marker>
+                    <marker id="grArr2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#c27a00"/></marker>
+                    <marker id="grArr3" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2e7d32"/></marker>
+                    <radialGradient id="grGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e8f1fa"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>
+                    <circle cx="250" cy="240" r="198" fill="url(#grGlow)"/>
+                    <circle cx="250" cy="240" r="158" fill="none" stroke="#dbe4ee" stroke-width="14"/>
+                    <path d="M338.4 109.0 A158 158 0 0 1 377.8 147.1" fill="none" stroke="#173a5e" stroke-width="5" stroke-linecap="round" marker-end="url(#grArr0)"/>
+                    <path d="M381.0 328.4 A158 158 0 0 1 342.9 367.8" fill="none" stroke="#2f6fb0" stroke-width="5" stroke-linecap="round" marker-end="url(#grArr1)"/>
+                    <path d="M161.6 371.0 A158 158 0 0 1 122.2 332.9" fill="none" stroke="#c27a00" stroke-width="5" stroke-linecap="round" marker-end="url(#grArr2)"/>
+                    <path d="M119.0 151.6 A158 158 0 0 1 157.1 112.2" fill="none" stroke="#2e7d32" stroke-width="5" stroke-linecap="round" marker-end="url(#grArr3)"/>
+                    <circle cx="250" cy="240" r="78" fill="#0d233a"/><circle cx="250" cy="240" r="70" fill="none" stroke="#ffaa00" stroke-width="1.5" stroke-dasharray="3 5"/>
+                    <text x="250" y="226" text-anchor="middle" class="gc-k" data-i18n="gr_cc1">CICLO SMS</text>
+                    <text x="250" y="250" text-anchor="middle" class="gc-t" data-i18n="gr_cc2">Riesgo</text>
+                    <text x="250" y="272" text-anchor="middle" class="gc-t" data-i18n="gr_cc3">tolerable</text>
+                    <g class="gc-node"><rect x="166.0" y="50.0" width="168" height="64" rx="32" fill="#ffffff" stroke="#173a5e" stroke-width="2.5"/><circle cx="198.0" cy="82.0" r="21" fill="#173a5e"/><text x="198.0" y="88.5" text-anchor="middle" class="gc-n">1</text><text x="228.0" y="79.0" class="gc-a" fill="#173a5e" data-i18n="gr_c1a">Identificar</text><text x="228.0" y="97.0" class="gc-b" data-i18n="gr_c1b">peligros</text></g>
+                    <g class="gc-node"><rect x="324.0" y="208.0" width="168" height="64" rx="32" fill="#ffffff" stroke="#2f6fb0" stroke-width="2.5"/><circle cx="356.0" cy="240.0" r="21" fill="#2f6fb0"/><text x="356.0" y="246.5" text-anchor="middle" class="gc-n">2</text><text x="386.0" y="237.0" class="gc-a" fill="#2f6fb0" data-i18n="gr_c2a">Establecer</text><text x="386.0" y="255.0" class="gc-b" data-i18n="gr_c2b">consecuencias</text></g>
+                    <g class="gc-node"><rect x="166.0" y="366.0" width="168" height="64" rx="32" fill="#ffffff" stroke="#c27a00" stroke-width="2.5"/><circle cx="198.0" cy="398.0" r="21" fill="#c27a00"/><text x="198.0" y="404.5" text-anchor="middle" class="gc-n">3</text><text x="228.0" y="395.0" class="gc-a" fill="#c27a00" data-i18n="gr_c3a">Evaluar</text><text x="228.0" y="413.0" class="gc-b" data-i18n="gr_c3b">el riesgo</text></g>
+                    <g class="gc-node"><rect x="8.0" y="208.0" width="168" height="64" rx="32" fill="#ffffff" stroke="#2e7d32" stroke-width="2.5"/><circle cx="40.0" cy="240.0" r="21" fill="#2e7d32"/><text x="40.0" y="246.5" text-anchor="middle" class="gc-n">4</text><text x="70.0" y="237.0" class="gc-a" fill="#2e7d32" data-i18n="gr_c4a">Mitigar</text><text x="70.0" y="255.0" class="gc-b" data-i18n="gr_c4b">y re-evaluar</text></g>
+                    <text x="118.5" y="108.5" text-anchor="middle" class="gc-l" transform="rotate(-45 118.5 108.5)" data-i18n="gr_cl">monitoreo continuo</text>
+                    </svg>
+                    <p class="gr-cycle-cap" data-i18n="gr_cap">Un proceso que no termina: cada mitigación se re-evalúa y cada cambio en la operación vuelve a abrir el ciclo.</p>
+                    <p class="gr-refs" data-i18n="gr_refs">Referencias: OACI Anexo 19 y Doc 9859 · OMI Código IGS (ISM).</p>
+                </div>
+            </aside>
         </div>
     </section>
 
@@ -1130,6 +1284,38 @@
     "bf_c4": "Sin conexión",
     "bf_link": "Conocer BriefAir",
     "bf_buy": "Adquirir en www.briefair.com.ar",
+    "nav_riesgos": "Riesgos",
+    "gr_badge": "Seguridad Operacional · SMS",
+    "gr_h": "Gestión de Riesgos Operacionales",
+    "gr_lead": "Identificar el peligro antes de que se convierta en un suceso.",
+    "gr_p1": "En aviación, la seguridad operacional no se apoya solo en la experiencia y en evitar errores: se construye con un proceso sistemático que detecta peligros, mide el riesgo y decide qué hacer con él. La gestión de riesgos es el núcleo del Sistema de Gestión de la Seguridad Operacional (SMS) que establece el Anexo 19 de la OACI y que desarrolla el Manual de Gestión de la Seguridad Operacional (Doc 9859).",
+    "gr_p2": "Cada cambio en la operación —una nueva ruta, un equipo, un procedimiento o una misión nocturna— introduce peligros. Evaluarlos con un criterio común de probabilidad y gravedad permite priorizar recursos, justificar decisiones ante la autoridad y dejar constancia de que el riesgo residual es tolerable antes de operar.",
+    "gr_tag1": "Aeronáutico",
+    "gr_tag2": "Adaptable a Marítimo",
+    "gr_tag3": "Imprimible A4",
+    "gr_s1h": "Peligros", "gr_s1": "Identificación y sus consecuencias",
+    "gr_s2h": "Defensas", "gr_s2": "Controles existentes",
+    "gr_s3h": "Evaluación", "gr_s3": "Probabilidad × gravedad",
+    "gr_s4h": "Mitigación", "gr_s4": "Medidas adicionales",
+    "gr_s5h": "Re-evaluación", "gr_s5": "Riesgo residual y firmas",
+    "gr_mar": "Diseñada para operaciones aeronáuticas y adaptable al ámbito marítimo: la misma metodología sostiene la evaluación de riesgos que exige el Código IGS (ISM) de la OMI a compañías y buques, y la planificación de operaciones SAR.",
+    "gr_btn": "Probar la hoja de gestión de riesgos",
+    "gr_btn2": "Implementarla en mi organización",
+    "gr_note": "Versión de demostración: funciona en su navegador, se imprime y no guarda ningún dato.",
+    "gr_card_h": "Ciclo de gestión del riesgo",
+    "gr_c1a": "Identificar", "gr_c1b": "peligros",
+    "gr_c2a": "Establecer", "gr_c2b": "consecuencias",
+    "gr_c3a": "Evaluar", "gr_c3b": "el riesgo",
+    "gr_c4a": "Mitigar", "gr_c4b": "y re-evaluar",
+    "gr_cc1": "CICLO SMS", "gr_cc2": "Riesgo", "gr_cc3": "tolerable",
+    "gr_cl": "monitoreo continuo",
+    "gr_cap": "Un proceso que no termina: cada mitigación se re-evalúa y cada cambio en la operación vuelve a abrir el ciclo.",
+    "gr_lv_b": "BAJO", "gr_lv_m": "MEDIO", "gr_lv_a": "ALTO",
+    "gr_lg_b": "Aceptable. La mitigación es opcional.",
+    "gr_lg_m": "Tolerable. Mitigar o revisar según sea necesario.",
+    "gr_lg_a": "Intolerable. Requiere mitigación inmediata.",
+    "gr_refs": "Referencias: OACI Anexo 19 y Doc 9859 · OMI Código IGS (ISM).",
+    "gr_ax_p": "Probabilidad", "gr_ax_g": "Gravedad",
     "about_title": "Nuestra Visión y Valores",
     "about_p": "Ser la red de servicios profesionales marítimos y aeronáuticos de mayor confianza y alcance global, convirtiéndonos en el aliado estratégico indispensable para la toma de decisiones complejas.",
     "val1_h": "Excelencia Técnica",
@@ -1299,6 +1485,38 @@
     "bf_c4": "Offline",
     "bf_link": "Discover BriefAir",
     "bf_buy": "Get it at www.briefair.com.ar",
+    "nav_riesgos": "Risk",
+    "gr_badge": "Safety Management · SMS",
+    "gr_h": "Operational Risk Management",
+    "gr_lead": "Identify the hazard before it becomes an occurrence.",
+    "gr_p1": "In aviation, safety does not rest on experience and error avoidance alone: it is built through a systematic process that detects hazards, measures risk and decides what to do about it. Risk management is the core of the Safety Management System (SMS) established by ICAO Annex 19 and developed in the Safety Management Manual (Doc 9859).",
+    "gr_p2": "Every change in the operation —a new route, equipment, procedure or night mission— introduces hazards. Assessing them against a common probability and severity criterion lets you prioritise resources, justify decisions to the authority and record that residual risk is tolerable before operating.",
+    "gr_tag1": "Aeronautical",
+    "gr_tag2": "Adaptable to Maritime",
+    "gr_tag3": "A4 printable",
+    "gr_s1h": "Hazards", "gr_s1": "Identification and consequences",
+    "gr_s2h": "Defences", "gr_s2": "Existing controls",
+    "gr_s3h": "Assessment", "gr_s3": "Probability × severity",
+    "gr_s4h": "Mitigation", "gr_s4": "Additional measures",
+    "gr_s5h": "Re-assessment", "gr_s5": "Residual risk and sign-off",
+    "gr_mar": "Designed for aviation operations and adaptable to the maritime domain: the same methodology underpins the risk assessment required by the IMO ISM Code for companies and ships, and SAR operations planning.",
+    "gr_btn": "Try the risk management sheet",
+    "gr_btn2": "Implement it in my organisation",
+    "gr_note": "Demo version: runs in your browser, prints, and stores no data.",
+    "gr_card_h": "Risk management cycle",
+    "gr_c1a": "Identify", "gr_c1b": "hazards",
+    "gr_c2a": "Establish", "gr_c2b": "consequences",
+    "gr_c3a": "Assess", "gr_c3b": "the risk",
+    "gr_c4a": "Mitigate", "gr_c4b": "and reassess",
+    "gr_cc1": "SMS CYCLE", "gr_cc2": "Tolerable", "gr_cc3": "risk",
+    "gr_cl": "continuous monitoring",
+    "gr_cap": "A process that never ends: every mitigation is reassessed and every operational change reopens the cycle.",
+    "gr_lv_b": "LOW", "gr_lv_m": "MEDIUM", "gr_lv_a": "HIGH",
+    "gr_lg_b": "Acceptable. Mitigation is optional.",
+    "gr_lg_m": "Tolerable. Mitigate or review as needed.",
+    "gr_lg_a": "Intolerable. Requires immediate mitigation.",
+    "gr_refs": "References: ICAO Annex 19 and Doc 9859 · IMO ISM Code.",
+    "gr_ax_p": "Probability", "gr_ax_g": "Severity",
     "about_title": "Our Vision and Values",
     "about_p": "To be the most trusted maritime and aeronautical professional services network with the widest global reach, becoming the indispensable strategic partner for complex decision-making.",
     "val1_h": "Technical Excellence",
@@ -1381,6 +1599,7 @@
             document.documentElement.lang = lang;
             const labelEl = document.getElementById('langToggleLabel');
             if (labelEl) labelEl.textContent = (lang === 'es') ? 'EN' : 'ES';
+            document.querySelectorAll('.langToggleLabelM').forEach(el => { el.textContent = (lang === 'es') ? 'EN' : 'ES'; });
 
             localStorage.setItem('aeromar_lang', lang);
 
@@ -1389,6 +1608,21 @@
             const newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
             window.history.replaceState({}, '', newUrl);
         }
+
+        // Menú móvil
+        (function () {
+            const header = document.querySelector('header');
+            const btn = document.getElementById('navToggle');
+            if (!header || !btn) return;
+            const setOpen = (open) => {
+                header.classList.toggle('nav-open', open);
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            };
+            btn.addEventListener('click', () => setOpen(!header.classList.contains('nav-open')));
+            document.querySelectorAll('#mainNav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+            window.addEventListener('resize', () => { if (window.innerWidth > 1100) setOpen(false); });
+        })();
 
         function toggleIdioma() {
             const actual = document.documentElement.lang === 'en' ? 'en' : 'es';
