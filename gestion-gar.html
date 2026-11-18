@@ -256,7 +256,7 @@ function render(){
 
     <div class="actions"><button class="primary" onclick="imprimir()">🖨️ Imprimir</button></div>
     <p class="foot">La matriz de recomendación (Paso 3) es orientativa y debe ajustarse a la política interna de cada operador.<br>
-      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix. Los datos no se guardan: quedan solo en esta pantalla.</p>`;
+      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix. No se almacena ningún dato: al imprimir o recargar la página, el formulario vuelve a quedar vacío.</p>`;
   document.querySelectorAll('[data-k]').forEach(el=> el.oninput = ()=> S[el.dataset.k] = el.value);
   autoH(document.getElementById('sit')); autoH(document.getElementById('med'));
   pintarTag(n);
@@ -314,6 +314,11 @@ function imprimir(){
       Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix · Generado con el modelo de SAR App Gestión · AEROMAR NETWORK</div>`;
   setTimeout(()=> window.print(), 80);
 }
+// Al terminar la impresión (o guardar como PDF) el formulario vuelve a quedar vacío.
+window.addEventListener('afterprint', ()=>{
+  S = estadoInicial(); resetValores(); render();
+  document.getElementById('printReport').innerHTML = ''; window.scrollTo(0,0);
+});
 render();
 </script>
 </body>
