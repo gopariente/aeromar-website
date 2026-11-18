@@ -402,6 +402,8 @@
         .gr-maritime i { color: var(--azul-oceano); font-size: 1.3rem; margin-top: 2px; }
         .gr-actions { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; }
         .gr-actions .btn-primary { background-color: var(--azul-marino); color: var(--blanco); }
+        .gr-actions .btn-gar { background-color: transparent; border: 2px solid var(--azul-marino); color: var(--azul-marino); padding: 10px 26px; }
+        .gr-actions .btn-gar:hover { background-color: var(--azul-marino); color: var(--blanco); }
         .gr-actions .gr-link { color: var(--azul-oceano); font-weight: bold; text-decoration: none; }
         .gr-actions .gr-link:hover { color: var(--naranja-sar); text-decoration: underline; }
         .gr-note { font-size: 0.78rem; color: #66788a; margin-top: 10px; }
@@ -583,6 +585,7 @@
                 </div>
                 <div class="gr-actions">
                     <a href="gestion-cambio.html" class="btn btn-primary"><i class="fa-solid fa-table-cells"></i> <span data-i18n="gr_btn">Probar la hoja de gestión de riesgos</span></a>
+                    <a href="gestion-gar.html" class="btn btn-gar"><i class="fa-solid fa-life-ring"></i> <span data-i18n="gr_btn_gar">Probar el modelo GAR (SAR)</span></a>
                     <a href="#contacto" class="gr-link"><span data-i18n="gr_btn2">Implementarla en mi organización</span> <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <p class="gr-note" data-i18n="gr_note">Versión de demostración: funciona en su navegador, se imprime y no guarda ningún dato.</p>
@@ -1346,6 +1349,7 @@
     "gr_s5h": "Re-evaluación", "gr_s5": "Riesgo residual y firmas",
     "gr_mar": "Diseñada para operaciones aeronáuticas y adaptable al ámbito marítimo: la misma metodología sostiene la evaluación de riesgos que exige el Código IGS (ISM) de la OMI a compañías y buques, y la planificación de operaciones SAR.",
     "gr_btn": "Probar la hoja de gestión de riesgos",
+    "gr_btn_gar": "Probar el modelo GAR (SAR)",
     "gr_btn2": "Implementarla en mi organización",
     "gr_note": "Versión de demostración: funciona en su navegador, se imprime y no guarda ningún dato.",
     "gr_card_h": "Ciclo de gestión del riesgo",
@@ -1557,6 +1561,7 @@
     "gr_s5h": "Re-assessment", "gr_s5": "Residual risk and sign-off",
     "gr_mar": "Designed for aviation operations and adaptable to the maritime domain: the same methodology underpins the risk assessment required by the IMO ISM Code for companies and ships, and SAR operations planning.",
     "gr_btn": "Try the risk management sheet",
+    "gr_btn_gar": "Try the GAR model (SAR)",
     "gr_btn2": "Implement it in my organisation",
     "gr_note": "Demo version: runs in your browser, prints, and stores no data.",
     "gr_card_h": "Risk management cycle",

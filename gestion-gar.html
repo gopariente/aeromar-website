@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestión de Riesgo Operacional (GAR) — AEROMAR NETWORK</title>
+<meta name="description" content="Modelo interactivo de Gestión de Riesgo Operacional (matriz GAR, U.S.C.G.) para operaciones SAR con buques y aeronaves. No almacena datos.">
+<link rel="canonical" href="https://aeromarnetwork.com.ar/gestion-gar.html">
+<style>
+  :root{
+    --bg:#080D18; --panel:#141F38; --panel2:#0F1830; --line:#33456B;
+    --text:#F5F8FC; --muted:#9DB0D1; --cyan:#5EEAD4; --amber:#F5A623; --danger:#FB7185;
+    --naranja:#FB923C;
+    --sans:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); padding:20px;}
+  .wrap{max-width:760px; margin:0 auto;}
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;
+    flex-wrap:wrap; gap:10px; padding:14px 18px; border-radius:14px;
+    background:linear-gradient(135deg, rgba(251,146,60,0.14), rgba(251,146,60,0.03));
+    border:1px solid rgba(251,146,60,0.35);
+  }
+  .topbar h1{font-size:17px; margin:0; font-weight:700;}
+  .topbar small{display:block; font-size:11px; color:var(--muted); margin-top:3px;}
+  .topbar .reset{background:transparent; border:1px solid var(--line); color:var(--muted);
+    border-radius:8px; padding:8px 12px; font-size:12.5px; cursor:pointer;}
+  .grid{display:grid; gap:12px; margin-bottom:10px;}
+  .grid.g2{grid-template-columns:repeat(2,1fr);}
+  .grid.g3{grid-template-columns:repeat(3,1fr);}
+  @media (max-width:600px){.grid.g2,.grid.g3{grid-template-columns:1fr 1fr;}}
+  .field label, .field-full label{display:block; font-size:11.5px; color:var(--muted); margin-bottom:5px; font-weight:600;}
+  .field input, .field-full textarea{
+    width:100%; background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+    color:var(--text); font-family:inherit; font-size:13px; padding:9px 10px;
+  }
+  .field input:focus, .field-full textarea:focus, .medidas:focus{outline:none; border-color:var(--cyan);}
+  .field-full{margin-bottom:14px;}
+  .field-full textarea{resize:none; overflow:hidden; min-height:38px; line-height:1.5;}
+  input[type=date]{color-scheme:dark;}
+  .mode-toggle{display:flex; gap:8px; margin-bottom:18px;}
+  .mode-toggle button{flex:1; padding:11px; border-radius:10px; border:1px solid var(--line);
+    background:var(--panel2); color:var(--muted); font-size:13.5px; font-weight:600; cursor:pointer;}
+  .mode-toggle button.active{background:rgba(251,146,60,0.12); border-color:var(--naranja); color:var(--naranja);}
+  .step{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:16px;}
+  .step-head{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .step-num{width:26px; height:26px; border-radius:8px; background:rgba(251,146,60,0.15); color:var(--naranja);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex:none;}
+  .step-head h2{font-size:14.5px; margin:0; font-weight:700;}
+  .step-head p{font-size:12px; color:var(--muted); margin:2px 0 0;}
+  .factor{margin-bottom:16px;}
+  .factor-label{display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;}
+  .factor-label b{font-weight:600;}
+  .factor-label span{color:var(--naranja); font-weight:700;}
+  .factor-desc{font-size:11px; color:var(--muted); margin-bottom:7px; line-height:1.4;}
+  .factor input[type=range]{-webkit-appearance:none; appearance:none; width:100%; height:8px; border-radius:6px;
+    background:linear-gradient(90deg,#34D399,#FACC15 50%,var(--danger)); outline:none;}
+  .factor input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background:#fff; border:3px solid var(--naranja); cursor:pointer;}
+  .factor input[type=range]::-moz-range-thumb{width:14px; height:14px; border-radius:50%; background:#fff; border:3px solid var(--naranja); cursor:pointer;}
+  .scale-marks{display:flex; justify-content:space-between; font-size:9.5px; color:var(--muted); margin-top:4px;}
+  .total-box{margin-top:6px; padding:14px; border-radius:12px; background:var(--panel2); border:1px solid var(--line); text-align:center;}
+  .total-label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; margin-bottom:6px;}
+  .total-num{font-size:34px; font-weight:800; letter-spacing:-1px;}
+  .gauge{position:relative; height:10px; border-radius:6px; margin:12px 0 6px;
+    background:linear-gradient(90deg,#34D399,#FACC15 40%, #FB923C 70%, var(--danger));}
+  .gauge-marker{position:absolute; top:-5px; width:3px; height:20px; background:#fff; border-radius:2px; box-shadow:0 0 6px rgba(255,255,255,.6);}
+  .gauge-scale{display:flex; justify-content:space-between; font-size:10px; color:var(--muted);}
+  .tag{display:inline-block; margin-top:8px; padding:4px 14px; border-radius:999px; font-size:12px; font-weight:700;}
+  .gar-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
+  .gar-col{flex:1 1 0; min-width:110px; text-align:center; padding:12px 8px; border-radius:10px; border:1px solid var(--line); background:var(--panel2);}
+  .gar-col p{font-size:10.5px; color:var(--muted); margin:0 0 10px; line-height:1.4; min-height:44px;}
+  .gar-col label{display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer;}
+  .gar-col input{accent-color:var(--naranja); width:17px; height:17px;}
+  .gar-col b{font-size:11.5px;}
+  .medidas-label{font-size:12px; color:var(--muted); margin:2px 0 6px; font-weight:600;}
+  .medidas{width:100%; min-height:60px; resize:none; overflow:hidden; background:var(--panel2); border:1px solid var(--line);
+    border-radius:10px; color:var(--text); font-family:inherit; font-size:12.5px; padding:10px 12px; line-height:1.5;}
+  .gain-row{display:flex; gap:8px; margin-bottom:14px;}
+  .gain-row button{flex:1; padding:10px; border-radius:10px; border:1px solid var(--line); background:var(--panel2);
+    color:var(--muted); font-size:12.5px; font-weight:700; cursor:pointer;}
+  .gain-row button.sel{border-color:var(--naranja); color:var(--naranja); background:rgba(251,146,60,0.1);}
+  .recommend{border-radius:12px; padding:14px; font-size:12.5px; line-height:1.5; border:1px solid var(--line); background:var(--panel2);}
+  .recommend b{display:block; margin-bottom:4px; font-size:13px;}
+  .actions{display:flex; gap:10px; margin-top:16px;}
+  .actions button{flex:1; padding:11px; border-radius:10px; border:1px solid var(--line); background:var(--panel2);
+    color:var(--text); font-size:13px; font-weight:600; cursor:pointer;}
+  .actions button.primary{background:var(--naranja); color:#241300; border-color:var(--naranja);}
+  .back{display:inline-block; color:var(--muted); font-size:12.5px; text-decoration:none; margin-bottom:12px;}
+  .back:hover{color:var(--naranja); text-decoration:underline;}
+  .wm{position:fixed; inset:0; display:grid; place-items:center; pointer-events:none; z-index:50; overflow:hidden;}
+  .wm span{font:800 clamp(110px,24vw,300px)/1 var(--sans); letter-spacing:.12em; color:rgba(255,255,255,.035); transform:rotate(-32deg); user-select:none;}
+  .foot{font-size:10.5px; color:var(--muted); text-align:center; margin-top:10px; line-height:1.6;}
+
+  /* ---- Reporte imprimible ---- */
+  #printReport{display:none; font-family:Arial,Helvetica,sans-serif; color:#111; background:#fff; max-width:900px; margin:0 auto;}
+  #printReport h1{font-size:20px; margin:0 0 2px; text-align:center;}
+  #printReport h2.pr-sub{font-size:12px; text-align:center; color:#444; margin:0 0 16px; font-weight:normal;}
+  #printReport .pr-hdr{display:grid; grid-template-columns:1fr 1fr; gap:2px 24px; font-size:12px; margin-bottom:10px; border:1px solid #999; padding:8px 12px; border-radius:4px;}
+  #printReport .pr-field{font-size:12px; margin-bottom:12px; white-space:pre-wrap;}
+  #printReport section{margin-bottom:14px; break-inside:avoid;}
+  #printReport section h3{font-size:13px; background:#e5e5e5; padding:4px 8px; margin:0 0 6px; border-left:4px solid #333;}
+  #printReport table{width:100%; border-collapse:collapse; font-size:11px; margin-bottom:6px;}
+  #printReport th, #printReport td{border:1px solid #999; padding:3px 6px; text-align:left;}
+  #printReport th{background:#f0f0f0;}
+  #printReport td.c{text-align:center; width:90px;}
+  #printReport .pr-total{font-size:22px; font-weight:bold; text-align:center; margin:6px 0;}
+  #printReport .pr-medidas{border:1px solid #999; border-radius:4px; padding:8px 10px; font-size:11.5px; min-height:40px; white-space:pre-wrap;}
+  #printReport .pr-rec b{display:block;}
+  #printReport .pr-firmas{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:40px; font-size:11px; text-align:center;}
+  #printReport .pr-firmas div{border-top:1px solid #333; padding-top:4px;}
+  #printReport .pr-foot{font-size:9px; color:#777; text-align:center; margin-top:20px; border-top:1px solid #ccc; padding-top:6px;}
+  @media print{
+    body{background:#fff; padding:0;}
+    .wrap{display:none;}
+    .wm{z-index:0;} .wm span{font-size:150pt; color:rgba(0,0,0,.06);}
+    #printReport{position:relative; z-index:1;}
+    #printReport{display:block;}
+    @page{size:A4; margin:14mm;}
+  }
+</style>
+</head>
+<body>
+<div class="wm" aria-hidden="true"><span>DEMO</span></div>
+<div class="wrap" id="app"></div>
+<div id="printReport"></div>
+
+<script>
+// Gestión de Riesgo Operacional — versión independiente de SAR App Gestión.
+// Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix. No guarda datos en servidor.
+const TXT = {
+  planning:{l:'Planning / Planificación', d:'Grado de planificación previa. Aumentan el riesgo: respuesta B-0, desvío de otro recurso.', lo:'Adecuada', hi:'Nula'},
+  event:{l:'Event / Suceso', d:'Complejidad de la misión y doctrina disponible.', lo:'Guía clara', hi:'Compleja / requiere innovación'},
+  crew:{l:'Asset (Recurso) — Crew / Tripulación', d:'Selección del recurso: tiempo en unidad, familiaridad con la zona, fatiga, descanso, supervisión.', lo:'Excelente', hi:'Marginal'},
+  cutter:{l:'Asset (Recurso) — Cutter/Boat / Buque-Embarcación', d:'Capacidad operativa del medio naval.', lo:'Totalmente apto', hi:'Parcialmente apto'},
+  pilots:{l:'Asset (Recurso) — Pilots / Pilotos', d:'Experiencia y aptitud de los pilotos asignados.', lo:'Excelente', hi:'Marginal'},
+  aircrew:{l:'Asset (Recurso) — Aircrew / Tripulación', d:'Aptitud de la tripulación (no pilotos).', lo:'Excelente', hi:'Marginal'},
+  airframe:{l:'Asset (Recurso) — Airframe / Aeronave-Recursos', d:'Capacidad operativa de la aeronave y recursos asociados.', lo:'Totalmente apta', hi:'Parcialmente apta'},
+  comms:{l:'Communications / Comunicaciones', d:'Capacidad de mantener comunicación interna y externa durante toda la misión.', lo:'Adecuada', hi:'Nula'},
+  env:{l:'Environment / Entorno', d:'Condiciones externas: clima, día/noche, estado del mar, temp. del agua/aire, visibilidad.', lo:'Benigno', hi:'Peligroso'}
+};
+const F = (id,min=1,max=5,step=1)=>({id,min,max,step});
+const FACTORES = {
+  buque:[F('planning'),F('event'),F('crew'),F('cutter'),F('comms'),F('env',2,10,2)],
+  aero:[F('planning'),F('event'),F('pilots'),F('aircrew'),F('airframe'),F('comms'),F('env',2,10,2)]
+};
+const THRESH = { buque:{min:7,max:35,cuts:[14,21,28]}, aero:{min:8,max:40,cuts:[16,24,32]} };
+const GAR = [
+  {t:'Spread-out (dispersar)', d:'Distribuir el riesgo aumentando el intervalo entre eventos o sumando medios adicionales.'},
+  {t:'Transfer (transferir)', d:'Si es viable, asignar un recurso o tripulación más adecuada para la misión.'},
+  {t:'Avoid (evitar)', d:'Circunvalar el peligro: esperar a que baje el riesgo (luz de día, ventana de clima).'},
+  {t:'Accept (aceptar)', d:'El beneficio justifica asumir el riesgo, dejando constancia de la decisión (sin ajuste al puntaje).'},
+  {t:'Reduce (reducir)', d:'Limitar la exposición: EPP adicional, entrenamiento, reducción de fatiga/estrés.'}
+];
+const NIVEL_LBL = {bajo:'BAJO', medio:'MEDIO', alto:'ALTO', critico:'CRÍTICO'};
+const NIVEL_COL = {bajo:'#34D399', medio:'#FACC15', alto:'#FB923C', critico:'#FB7185'};
+const NIVEL_COL_PRINT = {bajo:'#15803d', medio:'#a16207', alto:'#c2410c', critico:'#b91c1c'};
+const REC = {
+  bajo_Bajo:['Proceder','El riesgo es bajo; la misión puede continuar con los controles habituales.'],
+  bajo_Medio:['Proceder','Riesgo bajo y beneficio concreto: condiciones favorables para operar.'],
+  bajo_Alto:['Proceder','Riesgo bajo frente a un beneficio crítico: prioridad de ejecución.'],
+  medio_Bajo:['Reconsiderar','Riesgo medio con beneficio intangible. Evaluar aplicar controles del Paso 2 antes de proceder.'],
+  medio_Medio:['Proceder con controles','Aplicar al menos una medida de mitigación del Paso 2 y reevaluar.'],
+  medio_Alto:['Proceder con controles','Beneficio crítico justifica el riesgo medio; documentar medidas aplicadas.'],
+  alto_Bajo:['No proceder','Riesgo alto sin beneficio concreto que lo justifique. Evitar o transferir la misión.'],
+  alto_Medio:['Escalar autorización','Requiere autorización de mando y mitigación reforzada antes de proceder.'],
+  alto_Alto:['Proceder con autorización','Riesgo alto pero beneficio crítico (riesgo de vida). Autorización de mando + mitigación máxima; dejar constancia.'],
+  critico_Bajo:['No proceder','Riesgo crítico sin beneficio que lo justifique. No autorizar.'],
+  critico_Medio:['No proceder salvo excepción','Solo con autorización del máximo nivel y control exhaustivo de riesgo.'],
+  critico_Alto:['Autorización de máximo nivel','Situación límite: solo si el beneficio es de vida y no hay alternativa. Autorización expresa y registro completo.']
+};
+
+function estadoInicial(){
+  return {modo:'buque', valores:{}, gar:[false,false,false,false,false], gain:null, medidas:'',
+    nombreCaso:'', nroCaso:'', fecha:new Date().toISOString().slice(0,10), planificador:'', nroPlan:'', situacion:''};
+}
+let S = estadoInicial();
+// Regla: ante ausencia de datos, se asume el valor máximo (peor caso).
+function resetValores(){ S.valores = {}; FACTORES[S.modo].forEach(f=> S.valores[f.id] = f.max); }
+resetValores();
+
+const esc = s => String(s??'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const total = ()=> FACTORES[S.modo].reduce((a,f)=> a + S.valores[f.id], 0);
+function nivel(t){ const c = THRESH[S.modo].cuts; return t<=c[0]?'bajo':t<=c[1]?'medio':t<=c[2]?'alto':'critico'; }
+function recHTML(n){
+  if(!S.gain) return 'Seleccioná el beneficio de la misión para ver la recomendación.';
+  const r = REC[n+'_'+S.gain];
+  return `<b>${r[0]} — ${NIVEL_LBL[n]} / ${S.gain}</b>${r[1]}`;
+}
+function autoH(el){ el.style.height='auto'; el.style.height=el.scrollHeight+'px'; }
+
+function render(){
+  const fs = FACTORES[S.modo], th = THRESH[S.modo], tot = total(), n = nivel(tot);
+  const pct = Math.max(0, Math.min(100, (tot-th.min)/(th.max-th.min)*100));
+  document.getElementById('app').innerHTML = `
+    <a class="back" href="index.html#gestion-riesgos">← Volver a AEROMAR NETWORK</a>
+    <div class="topbar">
+      <div><h1>Gestión de Riesgo Operacional</h1><small>Modelo SAR App Gestión · AEROMAR NETWORK</small></div>
+      <button class="reset" onclick="limpiar()">↺ Limpiar</button>
+    </div>
+    <div class="grid g3">
+      <div class="field"><label>Nombre del caso</label><input data-k="nombreCaso" value="${esc(S.nombreCaso)}"></div>
+      <div class="field"><label>Nº de caso</label><input data-k="nroCaso" value="${esc(S.nroCaso)}"></div>
+      <div class="field"><label>Fecha</label><input type="date" data-k="fecha" value="${esc(S.fecha)}"></div>
+    </div>
+    <div class="grid g2">
+      <div class="field"><label>Planificador</label><input data-k="planificador" value="${esc(S.planificador)}"></div>
+      <div class="field"><label>Nº de plan</label><input data-k="nroPlan" value="${esc(S.nroPlan)}"></div>
+    </div>
+    <div class="field-full"><label>Situación</label>
+      <textarea id="sit" rows="1" placeholder="Resumen breve de la situación del caso..." oninput="S.situacion=this.value;autoH(this)">${esc(S.situacion)}</textarea></div>
+
+    <div class="mode-toggle">
+      <button class="${S.modo==='buque'?'active':''}" onclick="setModo('buque')">🚤 Buques</button>
+      <button class="${S.modo==='aero'?'active':''}" onclick="setModo('aero')">✈️ Aeronaves</button>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><div class="step-num">1</div><div><h2>1. Evaluación de Riesgo</h2>
+        <p>Puntuá cada factor según la información disponible. Ante ausencia de datos, asumí el valor máximo.</p></div></div>
+      ${fs.map(f=>`
+        <div class="factor">
+          <div class="factor-label"><b>${TXT[f.id].l}</b><span id="v_${f.id}">${S.valores[f.id]}</span></div>
+          <div class="factor-desc">${TXT[f.id].d}</div>
+          <input type="range" min="${f.min}" max="${f.max}" step="${f.step}" value="${S.valores[f.id]}" oninput="slide('${f.id}',this.value)">
+          <div class="scale-marks"><span>${TXT[f.id].lo}</span><span>${TXT[f.id].hi}</span></div>
+        </div>`).join('')}
+      <div class="total-box">
+        <div class="total-label">Puntaje total</div>
+        <div class="total-num" id="totNum">${tot}</div>
+        <div class="gauge"><div class="gauge-marker" id="gm" style="left:${pct}%"></div></div>
+        <div class="gauge-scale"><span>${th.min}</span><span>${th.cuts[0]}</span><span>${th.cuts[1]}</span><span>${th.cuts[2]}</span><span>${th.max}</span></div>
+        <span class="tag" id="tag"></span>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><div class="step-num">2</div><div><h2>2. Gestión de Riesgo (GAR)</h2><p>Opciones de control. Marcá las aplicadas.</p></div></div>
+      <div class="gar-row">
+        ${GAR.map((g,i)=>`<div class="gar-col"><p>${g.d}</p><label>
+          <input type="checkbox" ${S.gar[i]?'checked':''} onchange="S.gar[${i}]=this.checked"><b>${g.t}</b></label></div>`).join('')}
+      </div>
+      <div class="medidas-label">Medidas Tomadas</div>
+      <textarea class="medidas" id="med" rows="1" placeholder="Describí las medidas de control aplicadas o a aplicar..."
+        oninput="S.medidas=this.value;autoH(this)">${esc(S.medidas)}</textarea>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><div class="step-num">3</div><div><h2>3. Riesgo vs. Beneficio</h2><p>Seleccioná el beneficio de la misión.</p></div></div>
+      <div class="gain-row">
+        ${['Bajo','Medio','Alto'].map(g=>`<button class="${S.gain===g?'sel':''}" onclick="setGain('${g}')">Beneficio ${g}</button>`).join('')}
+      </div>
+      <div class="recommend" id="rec">${recHTML(n)}</div>
+    </div>
+
+    <div class="actions"><button class="primary" onclick="imprimir()">🖨️ Imprimir</button></div>
+    <p class="foot">La matriz de recomendación (Paso 3) es orientativa y debe ajustarse a la política interna de cada operador.<br>
+      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix. Los datos no se guardan: quedan solo en esta pantalla.</p>`;
+  document.querySelectorAll('[data-k]').forEach(el=> el.oninput = ()=> S[el.dataset.k] = el.value);
+  autoH(document.getElementById('sit')); autoH(document.getElementById('med'));
+  pintarTag(n);
+}
+function pintarTag(n){
+  const tag = document.getElementById('tag'), c = NIVEL_COL[n];
+  tag.textContent = NIVEL_LBL[n]; tag.style.color = c; tag.style.border = '1px solid '+c; tag.style.background = c+'22';
+}
+function slide(id,v){
+  S.valores[id] = Number(v);
+  document.getElementById('v_'+id).textContent = v;
+  const th = THRESH[S.modo], tot = total(), n = nivel(tot);
+  document.getElementById('totNum').textContent = tot;
+  document.getElementById('gm').style.left = Math.max(0,Math.min(100,(tot-th.min)/(th.max-th.min)*100))+'%';
+  pintarTag(n);
+  document.getElementById('rec').innerHTML = recHTML(n);
+}
+function setModo(m){ S.modo = m; resetValores(); S.gain = null; render(); }
+function setGain(g){ S.gain = g; render(); }
+function limpiar(){ if(confirm('¿Borrar todos los datos cargados?')){ S = estadoInicial(); resetValores(); render(); window.scrollTo(0,0); } }
+
+function imprimir(){
+  const fs = FACTORES[S.modo], tot = total(), n = nivel(tot);
+  const nb = v => (v==null || String(v).trim()==='') ? '—' : esc(v);
+  const fecha = S.fecha ? S.fecha.split('-').reverse().join('/') : '—';
+  document.getElementById('printReport').innerHTML = `
+    <h1>Gestión de Riesgo Operacional</h1>
+    <h2 class="pr-sub">${S.modo==='buque'?'Buques':'Aeronaves'} — impreso el ${new Date().toLocaleDateString('es-AR')}</h2>
+    <div class="pr-hdr">
+      <div><b>Nombre del caso:</b> ${nb(S.nombreCaso)}</div><div><b>Nº de caso:</b> ${nb(S.nroCaso)}</div>
+      <div><b>Fecha:</b> ${fecha}</div><div><b>Planificador:</b> ${nb(S.planificador)}</div>
+      <div><b>Nº de plan:</b> ${nb(S.nroPlan)}</div>
+    </div>
+    <div class="pr-field"><b>Situación:</b> ${nb(S.situacion)}</div>
+    <section><h3>1. Evaluación de Riesgo</h3>
+      <table><tr><th>Factor</th><th class="c">Rango</th><th class="c">Puntaje</th></tr>
+        ${fs.map(f=>`<tr><td>${TXT[f.id].l}</td><td class="c">${f.min}–${f.max}</td><td class="c">${S.valores[f.id]}</td></tr>`).join('')}
+      </table>
+      <div class="pr-total" style="color:${NIVEL_COL_PRINT[n]}">${tot} — ${NIVEL_LBL[n]}</div>
+      <div style="font-size:10px;text-align:center;color:#555">Escala ${THRESH[S.modo].min}–${THRESH[S.modo].max} · Bajo ≤${THRESH[S.modo].cuts[0]} · Medio ≤${THRESH[S.modo].cuts[1]} · Alto ≤${THRESH[S.modo].cuts[2]} · Crítico &gt;${THRESH[S.modo].cuts[2]}</div>
+    </section>
+    <section><h3>2. Gestión de Riesgo (GAR)</h3>
+      <table><tr><th>GAR</th><th class="c">Aplicada</th></tr>
+        ${GAR.map((g,i)=>`<tr><td>${g.t}</td><td class="c">${S.gar[i]?'✓':'—'}</td></tr>`).join('')}
+      </table>
+      <div style="margin-top:8px;font-size:12px"><b>Medidas Tomadas:</b></div>
+      <div class="pr-medidas">${S.medidas.trim() ? esc(S.medidas) : 'Sin medidas registradas.'}</div>
+    </section>
+    <section><h3>3. Riesgo vs. Beneficio</h3>
+      <div class="pr-field"><b>Beneficio:</b> ${S.gain || 'No seleccionado'}</div>
+      <div class="pr-field pr-rec">${recHTML(n)}</div>
+    </section>
+    <div class="pr-firmas"><div>Planificador</div><div>Autorizó (SMC / Mando)</div></div>
+    <div class="pr-foot">La matriz de recomendación es orientativa y debe ajustarse a la política interna de cada operador.<br>
+      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix · Generado con el modelo de SAR App Gestión · AEROMAR NETWORK</div>`;
+  setTimeout(()=> window.print(), 80);
+}
+render();
+</script>
+</body>
+</html>
