@@ -256,7 +256,7 @@ function render(){
 
     <div class="actions"><button class="primary" onclick="imprimir()">🖨️ Imprimir</button></div>
     <p class="foot">La matriz de recomendación (Paso 3) es orientativa y debe ajustarse a la política interna de cada operador.<br>
-      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix. No se almacena ningún dato: al imprimir o recargar la página, el formulario vuelve a quedar vacío.</p>`;
+      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix. No se almacena ningún dato: al imprimir o recargar la página, el formulario vuelve a quedar vacío.<br>© 2026 AEROMAR NETWORK. Todos los derechos reservados. Obra protegida por la Ley 11.723 de Propiedad Intelectual: prohibida su reproducción, copia o uso comercial total o parcial sin autorización escrita.</p>`;
   document.querySelectorAll('[data-k]').forEach(el=> el.oninput = ()=> S[el.dataset.k] = el.value);
   autoH(document.getElementById('sit')); autoH(document.getElementById('med'));
   pintarTag(n);
@@ -311,7 +311,7 @@ function imprimir(){
     </section>
     <div class="pr-firmas"><div>Planificador</div><div>Autorizó (SMC / Mando)</div></div>
     <div class="pr-foot">La matriz de recomendación es orientativa y debe ajustarse a la política interna de cada operador.<br>
-      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix · Generado con el modelo de SAR App Gestión · AEROMAR NETWORK</div>`;
+      Basado en la U.S.C.G. Afloat / Aviation Risk Assessment Matrix · Generado con el modelo de SAR App Gestión · AEROMAR NETWORK<br>© 2026 AEROMAR NETWORK. Todos los derechos reservados. Obra protegida por la Ley 11.723 de Propiedad Intelectual: prohibida su reproducción, copia o uso comercial total o parcial sin autorización escrita.</div>`;
   setTimeout(()=> window.print(), 80);
 }
 // Al terminar la impresión (o guardar como PDF) el formulario vuelve a quedar vacío.
